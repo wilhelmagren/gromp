@@ -1,3 +1,4 @@
+#
 # MIT License
 #
 # Copyright (c) 2023 Wilhelm Ågren
@@ -24,5 +25,5 @@
 # Last updated: 2023-01-23
 #
 
-from gromp.api import *
-from gromp.hook import *
+from .base import BaseHook
+from .league import LeagueHook

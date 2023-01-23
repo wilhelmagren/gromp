@@ -1,3 +1,4 @@
+#
 # MIT License
 #
 # Copyright (c) 2023 Wilhelm Ågren
@@ -24,5 +25,13 @@
 # Last updated: 2023-01-23
 #
 
-from gromp.api import *
-from gromp.hook import *
+__all__ = (
+    'BaseHook',
+)
+
+class BaseHook(object):
+    def __init__(self, token, platform, region):
+        self._token = token
+        self._platform = platform
+        self._region = region
+    

@@ -1,3 +1,4 @@
+#
 # MIT License
 #
 # Copyright (c) 2023 Wilhelm Ågren
@@ -24,5 +25,16 @@
 # Last updated: 2023-01-23
 #
 
-from gromp.api import *
-from gromp.hook import *
+from gromp.api import BaseLeagueAPI
+
+__all__ = (
+    'LolStatusAPIv4',
+)
+
+URLS = [
+    '/lol/status/v4/platform-data'
+]
+
+class LolStatusAPIv4(BaseLeagueAPI):
+    def __init__(self, api):
+        pass

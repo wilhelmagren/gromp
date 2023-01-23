@@ -1,3 +1,4 @@
+#
 # MIT License
 #
 # Copyright (c) 2023 Wilhelm Ågren
@@ -24,5 +25,29 @@
 # Last updated: 2023-01-23
 #
 
-from gromp.api import *
-from gromp.hook import *
+import requests
+
+__all__ = (
+    'BaseLeagueAPI',
+    'BaseValorantAPI',
+)
+
+class BaseLeagueAPI(object):
+    def __init__(self, platform='euw1', region='europe'):
+        self._platform = platform
+        self._region = region
+    
+    def get(self, token, endpoint, params=None):
+
+        url = f'https://{endpoint}?api_key={token}'
+
+        if params is not None:
+            for key, value in params.items():
+                url = url.replace(key, value)
+
+        response = requests.get(url)
+        return response
+
+class BaseValorantAPI(object):
+    def __init__(self, *args, **kwargs):
+        pass

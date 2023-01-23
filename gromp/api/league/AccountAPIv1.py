@@ -1,3 +1,4 @@
+#
 # MIT License
 #
 # Copyright (c) 2023 Wilhelm Ågren
@@ -24,5 +25,19 @@
 # Last updated: 2023-01-23
 #
 
-from gromp.api import *
-from gromp.hook import *
+from gromp.api import BaseLeagueAPI
+
+__all__ = (
+    'AccountAPIv1',
+)
+
+URLS = [
+    '/riot/account/v1/accounts/by-puuid/{puuid}',
+    '/riot/account/v1/accounts/by-riot-id/{gameName}/{tagLine}',
+    '/riot/account/v1/accounts/me',
+    '/riot/account/v1/active-shards/by-game/{game}/by-puuid/{puuid}',
+]
+
+class AccountAPIv1(BaseLeagueAPI):
+    def __init__(self, query):
+        super().__init__(query)

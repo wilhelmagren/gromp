@@ -1,3 +1,4 @@
+#
 # MIT License
 #
 # Copyright (c) 2023 Wilhelm Ågren
@@ -24,5 +25,16 @@
 # Last updated: 2023-01-23
 #
 
-from gromp.api import *
-from gromp.hook import *
+__all__ = (
+    'AccountAPIv1',
+    'LeagueAPIv4',
+    'LolStatusAPIv4',
+    'MatchAPIv5',
+    'SummonerAPIv4',
+)
+
+from .AccountAPIv1 import *
+from .LeagueAPIv4 import *
+from .LolStatusAPIv4 import *
+from .MatchAPIv5 import *
+from .SummonerAPIv4 import *

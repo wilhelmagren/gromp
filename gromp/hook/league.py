@@ -1,3 +1,4 @@
+#
 # MIT License
 #
 # Copyright (c) 2023 Wilhelm Ågren
@@ -24,5 +25,37 @@
 # Last updated: 2023-01-23
 #
 
-from gromp.api import *
-from gromp.hook import *
+from gromp.hook import BaseHook
+from gromp.api.league import *
+
+__all__ = (
+    'LeagueHook',
+)
+
+class LeagueHook(BaseHook):
+
+    def get_summoner(self, summonerName, platform=None, region=None):
+        if platform is None:
+            platform = self._platform
+        
+        if region is None:
+            region = self._region
+
+        api = SummonerAPIv4(platform=platform, region=region)
+        response = api.summonerName(self._token, summonerName)
+        summoner = response.json()
+
+        return summoner
+    
+    def get_matches(self, puuid, platform=None, region=None):
+        if platform is None:
+            platform = self._platform
+        
+        if region is None:
+            region = self._region
+        
+        api = MatchAPIv5(platform=platform, region=region)
+        response = api.puuid(self._token, puuid)
+        matches = response.json()
+
+        return matches

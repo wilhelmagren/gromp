@@ -1,3 +1,4 @@
+#
 # MIT License
 #
 # Copyright (c) 2023 Wilhelm Ågren
@@ -24,5 +25,39 @@
 # Last updated: 2023-01-23
 #
 
-from gromp.api import *
-from gromp.hook import *
+from gromp.api import BaseLeagueAPI
+
+__all__ = (
+    'MatchAPIv5',
+)
+
+URL = {
+    'puuid': '{region}.api.riotgames.com/lol/match/v5/matches/by-puuid/{puuid}/ids',
+    'matchId': '{region}.api.riotgames.com/lol/match/v5/matches/{matchId}',
+}
+
+class MatchAPIv5(BaseLeagueAPI):
+    def __init__(self, platform='euw1', region='europe'):
+        super().__init__(platform=platform, region=region)
+    
+    def puuid(self, token, puuid):
+        http_response = self.get(
+            token,
+            URL['puuid'],
+            params={
+                '{puuid}': puuid,
+                '{region}': self._region,
+            }
+        )
+        return http_response
+
+    def matchId(self, token, matchId):
+        http_response = self.get(
+            token,
+            URL['matchId'],
+            params={
+                '{matchId}': matchId,
+                '{region}': self._region,
+            }
+        )
+        return http_response
