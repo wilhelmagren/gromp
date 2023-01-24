@@ -38,7 +38,6 @@ class BaseLeagueAPI(object):
         self._region = region
     
     def get(self, token, endpoint, params=None):
-
         url = f'https://{endpoint}?api_key={token}'
 
         if params is not None:
