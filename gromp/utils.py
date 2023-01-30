@@ -1,3 +1,4 @@
+#
 # MIT License
 #
 # Copyright (c) 2023 Wilhelm Ågren
@@ -20,10 +21,53 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 #
-# File created: 2023-01-23
-# Last updated: 2023-01-23
+# File created: 2023-01-30
+# Last updated: 2023-01-30
 #
 
-from gromp.api import *
-from gromp.hook import *
-from gromp.utils import *
+__all__ = (
+    'LeaguePLATFORMS',
+    'LeagueREGIONS',
+    'PLATFORMS',
+    'REGIONS',
+    'is_platform',
+    'is_region',
+)
+
+class LeaguePLATFORMS:
+    br1 = 'br1'
+    eun1 = 'eun1'
+    euw1 = 'euw1'
+    jp1 = 'jp1'
+    kr = 'kr'
+    la1 = 'la1'
+    la2 = 'la2'
+    na1 = 'na1'
+    oc1 = 'oc1'
+    tr1 = 'tr1'
+    ru = 'ru'
+    ph2 = 'ph2'
+    sg2 = 'sg2'
+    th2 = 'th2'
+    tw2 = 'tw2'
+    vn2 = 'vn2'
+
+class LeagueREGIONS:
+    americas = 'americas'
+    asia = 'asia'
+    europe = 'europe'
+    sea = 'sea'
+
+class PLATFORMS:
+    league = LeaguePLATFORMS
+
+class REGIONS:
+    league = LeagueREGIONS
+
+def is_platform(string, game) -> bool:
+    """ Return `true` if the provided string is a valid platform, else `false`. """
+    return string in vars(getattr(PLATFORMS, game)).values()
+
+def is_region(string, game) -> bool:
+    """ Return `true` if the provided string is a valid region, else `false`. """
+    return string in vars(getattr(REGIONS, game)).values()

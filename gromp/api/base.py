@@ -25,28 +25,70 @@
 # Last updated: 2023-01-23
 #
 
+import logging
+import sys
 import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+logger.addHandler(logging.StreamHandler(sys.stdout))
 
 __all__ = (
+    'BaseAPI',
     'BaseLeagueAPI',
     'BaseValorantAPI',
 )
 
-class BaseLeagueAPI(object):
-    def __init__(self, platform='euw1', region='europe'):
+class BaseAPI(object):
+    def __init__(self, game, api, platform, region):
+        self._game = game
+        self._api = api
         self._platform = platform
         self._region = region
+
+    @property
+    def platform(self):
+        return self._platform
     
-    def get(self, token, endpoint, params=None):
-        url = f'https://{endpoint}?api_key={token}'
+    @property
+    def region(self):
+        return self._region
 
-        if params is not None:
-            for key, value in params.items():
-                url = url.replace(key, value)
+    @property
+    def params(self):
+        return self._params
 
-        response = requests.get(url)
+    def set_params(self, **kwargs):
+        """ Set the interally stored parameter dictionary. """
+        params = {}
+        for k, value in kwargs.items():
+            key = '{' + f'{k}' + '}'
+            params[key] = value
+
+        self._params = params
+    
+    def get(self, token, endpoint):
+        """ Perform a GET request. """
+        url = f'http://{endpoint}?api_key={token}'
+
+        for key, value in self.params.items():
+            url = url.replace(key, value)
+        
+        session = requests.Session()
+        retry = Retry(connect=3, backoff_factor=0.5)
+        adapter = HTTPAdapter(max_retries=Retry)
+        session.mount('https://', adapter)
+
+        logger.info(f'GET {url}')
+        response = session.get(url)
         return response
 
-class BaseValorantAPI(object):
-    def __init__(self, *args, **kwargs):
-        pass
+class BaseLeagueAPI(BaseAPI):
+    def __init__(self, api, platform, region):
+        super().__init__('league', api, platform, region)
+
+class BaseValorantAPI(BaseAPI):
+    def __init__(self, api, platform, region):
+        super().__init__('valorant', api, platform, region)
