@@ -71,7 +71,7 @@ class BaseAPI(object):
     
     def get(self, token, endpoint):
         """ Perform a GET request. """
-        url = f'http://{endpoint}?api_key={token}'
+        url = f'https://{endpoint}?api_key={token}'
 
         for key, value in self.params.items():
             url = url.replace(key, value)
