@@ -22,88 +22,79 @@
 # SOFTWARE.
 #
 # File created: 2023-01-23
-# Last updated: 2023-01-23
+# Last updated: 2023-01-31
 #
 
 from gromp.api import BaseLeagueAPI
+from gromp.utils import LeaguePLATFORMS, LeagueREGIONS
 
 __all__ = (
     'SummonerAPIv4',
 )
 
-URL = {
-    'rsoPUUID': '{platform}.api.riotgames.com/fulfillment/v1/summoners/by-puuid/{rsoPUUID}',
-    'encryptedAccountId': '{platform}.api.riotgames.com/lol/summoner/v4/summoners/by-account/{encryptedAccountId}',
-    'summonerName': '{platform}.api.riotgames.com/lol/summoner/v4/summoners/by-name/{summonerName}',
-    'encryptedPUUID': '{platform}.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/{encryptedPUUID}',
-    'me': '{platform}.api.riotgames.com/lol/summoner/v4/summoners/me',
-    'encryptedSummonerId': '{platform}.api.riotgames.com/lol/summoner/v4/summoners/{encryptedSummonerId}',
-}
+class urls:
+    rsoPUUID = '{platform}.api.riotgames.com/fulfillment/v1/summoners/by-puuid/{rsoPUUID}'
+    encryptedAccountId = '{platform}.api.riotgames.com/lol/summoner/v4/summoners/by-account/{encryptedAccountId}'
+    summonerName = '{platform}.api.riotgames.com/lol/summoner/v4/summoners/by-name/{summonerName}'
+    encryptedPUUID = '{platform}.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/{encryptedPUUID}'
+    me = '{platform}.api.riotgames.com/lol/summoner/v4/summoners/me'
+    encryptedSummonerId = '{platform}.api.riotgames.com/lol/summoner/v4/summoners/{encryptedSummonerId}'
+
 
 class SummonerAPIv4(BaseLeagueAPI):
-    def __init__(self, platform='euw1', region='europe'):
-        super().__init__(platform=platform, region=region)
-
+    def __init__(self, platform=LeaguePLATFORMS.euw1, region=LeagueREGIONS.europe):
+        super().__init__(self.__class__.__name__, platform, region)
+    
     def rsoPUUID(self, token, rsoPUUID):
+        self.set_params(platform=self.platform, rsoPUUID=rsoPUUID)
         http_response = self.get(
             token, 
-            URL['rsoPUUID'],
-            params={
-                '{rsoPUUID}': rsoPUUID,
-                '{platform}': self._platform,
-            }
+            urls.rsoPUUID,
         )
+
         return http_response
     
     def encryptedAccountId(self, token, encryptedAccountId):
+        self.set_params(platform=self.platform, encryptedAccountId=encryptedAccountId)
         http_response = self.get(
             token,
-            URL['encryptedAccountId'],
-            params={
-                '{encryptedAccountId}': encryptedAccountId,
-                '{platform}': self._platform,
-            },
+            urls.encryptedAccountId,
         )
+
+        return http_response
     
     def summonerName(self, token, summonerName):
+        self.set_params(platform=self.platform, summonerName=summonerName)
         http_response = self.get(
             token,
-            URL['summonerName'],
-            params={
-                '{summonerName}': summonerName,
-                '{platform}': self._platform,
-            },
+            urls.summonerName,
         ) 
+
         return http_response
 
     def encryptedPUUID(self, token, encryptedPUUID):
+        self.set_params(platform=self.platform, encryptedPUUID=encryptedPUUID)
         http_response = self.get(
             token,
-            URL['encryptedPUUID'],
-            params={
-                '{encryptedPUUID}': encryptedPUUID,
-                '{platform}': self._platform,
-            }
+            urls.encryptedPUUID,
         )
+
         return http_response
 
     def me(self, token):
+        self.set_params(platform=self.platform)
         http_response = self.get(
             token,
-            URL['me'],
-            params={
-                '{platform}': self._platform,
-            }
+            urls.me,
         ) 
+
         return http_response
     
     def encryptedSummonerId(self, token, encryptedSummonerId):
+        self.set_params(platform=self.platform, encryptedSummonerId=encryptedSummonerId)
         http_response = self.get(
             token,
-            URL['encryptedSummonerId'],
-            params={
-                '{encryptedSummonerId}': encryptedSummonerId,
-                '{platform}': self._platform,
-            }
+            urls.encryptedSummonerId,
         )
+
         return http_response

@@ -22,15 +22,28 @@
 # SOFTWARE.
 #
 # File created: 2023-01-23
-# Last updated: 2023-01-23
+# Last updated: 2023-01-30
 #
+
+from gromp.utils import is_platform, is_region
 
 __all__ = (
     'BaseHook',
 )
 
 class BaseHook(object):
-    def __init__(self, token, platform, region):
+    def __init__(self, token, game, platform, region):
+
+        if not is_platform(platform, game):
+            raise ValueError(
+                f'User provided platform for {game=} is not valid.'
+            )
+
+        if not is_region(region, game):
+            raise ValueError(
+                f'User provided region for {game=} is not valid.'
+            )
+
         self._token = token
         self._platform = platform
         self._region = region

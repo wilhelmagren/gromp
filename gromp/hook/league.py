@@ -27,12 +27,15 @@
 
 from gromp.hook import BaseHook
 from gromp.api.league import *
+from gromp.utils import LeaguePLATFORMS, LeagueREGIONS
 
 __all__ = (
     'LeagueHook',
 )
 
 class LeagueHook(BaseHook):
+    def __init__(self, token, platform=LeaguePLATFORMS.euw1, region=LeagueREGIONS.europe):
+        super().__init__(token, 'league', platform, region)
 
     def get_summoner(self, summonerName, platform=None, region=None):
         if platform is None:
