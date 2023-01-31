@@ -22,7 +22,7 @@
 # SOFTWARE.
 #
 # File created: 2023-01-23
-# Last updated: 2023-01-23
+# Last updated: 2023-01-31
 #
 
 from gromp.hook import BaseHook
@@ -37,7 +37,7 @@ class LeagueHook(BaseHook):
     def __init__(self, token, platform=LeaguePLATFORMS.euw1, region=LeagueREGIONS.europe):
         super().__init__(token, 'league', platform, region)
 
-    def get_summoner(self, summonerName, platform=None, region=None):
+    def get_summoner_by_name(self, summonerName, platform=None, region=None):
         if platform is None:
             platform = self._platform
         
@@ -50,7 +50,7 @@ class LeagueHook(BaseHook):
 
         return summoner
     
-    def get_matches(self, puuid, platform=None, region=None):
+    def get_matches_by_puuid(self, puuid, platform=None, region=None):
         if platform is None:
             platform = self._platform
         
@@ -62,3 +62,4 @@ class LeagueHook(BaseHook):
         matches = response.json()
 
         return matches
+
