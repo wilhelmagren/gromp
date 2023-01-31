@@ -22,15 +22,18 @@
 # SOFTWARE.
 #
 # File created: 2023-01-23
-# Last updated: 2023-01-23
+# Last updated: 2023-01-31
 #
 
 import logging
 import sys
 import requests
-from requests.adapters import HTTPAdapter
-from urllib3.util.retry import Retry
 
+strformat = '%(asctime)s %(message)s'
+logging.basicConfig(
+    level=logging.DEBUG,
+    format=strformat,
+)
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 logger.addHandler(logging.StreamHandler(sys.stdout))
@@ -42,26 +45,39 @@ __all__ = (
 )
 
 class BaseAPI(object):
-    def __init__(self, game, api, platform, region):
+    def __init__(self, game, api, platform, region) -> None:
         self._game = game
         self._api = api
         self._platform = platform
         self._region = region
 
     @property
-    def platform(self):
+    def platform(self) -> str:
+        """ Return the set API platform, e.g., euw1 for League of Legends. """
         return self._platform
     
     @property
-    def region(self):
+    def region(self) -> str:
+        """ Return the set API region, e.g., europe for League of Legends. """
         return self._region
 
     @property
-    def params(self):
+    def params(self) -> dict:
+        """ Return the internal parameter dictionary. """
         return self._params
 
-    def set_params(self, **kwargs):
-        """ Set the interally stored parameter dictionary. """
+    def set_params(self, **kwargs) -> None:
+        """
+        Set the internal parameter dictionary with the provided key-value pairs.
+        For example, `region`: `europe`, or `platform`: `euw1`.
+
+        Parameters
+        ----------
+        **kwargs: dict
+            The dictionary of parameters which is later used in the substitution
+            during the GET request. Keys are subtituted for corresponding values.
+
+        """
         params = {}
         for k, value in kwargs.items():
             key = '{' + f'{k}' + '}'
@@ -69,26 +85,40 @@ class BaseAPI(object):
 
         self._params = params
     
-    def get(self, token, endpoint):
-        """ Perform a GET request. """
+    def get(self, token, endpoint) -> requests.Response:
+        """
+        Perform a GET request to the REST endpoint provided by Riot Games.
+        The token required is never stored internally, as it is personal.
+
+        Parameters
+        ----------
+        token: str
+            The token identifying your access rights to the Riot Games
+            developer api, personal, provided at runtime to Hook.
+        endpoint: str
+            The api endpoint to perform a GET request to.
+        
+        Returns
+        -------
+        The HTTP response from the GET request to the endpoint. See
+        requests.Response for all possible HTTP response codes.
+
+        """
         url = f'https://{endpoint}?api_key={token}'
 
         for key, value in self.params.items():
             url = url.replace(key, value)
         
-        session = requests.Session()
-        retry = Retry(connect=3, backoff_factor=0.5)
-        adapter = HTTPAdapter(max_retries=Retry)
-        session.mount('https://', adapter)
+        response = requests.get(url)
 
-        logger.info(f'GET {url}')
-        response = session.get(url)
         return response
 
 class BaseLeagueAPI(BaseAPI):
-    def __init__(self, api, platform, region):
+    """ """
+    def __init__(self, api, platform, region) -> None:
         super().__init__('league', api, platform, region)
 
 class BaseValorantAPI(BaseAPI):
-    def __init__(self, api, platform, region):
+    """ """
+    def __init__(self, api, platform, region) -> None:
         super().__init__('valorant', api, platform, region)
