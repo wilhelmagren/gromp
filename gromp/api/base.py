@@ -31,11 +31,10 @@ import requests
 
 strformat = '%(asctime)s %(message)s'
 logging.basicConfig(
-    level=logging.DEBUG,
+    level=logging.INFO,
     format=strformat,
 )
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
 logger.addHandler(logging.StreamHandler(sys.stdout))
 
 __all__ = (
@@ -45,6 +44,27 @@ __all__ = (
 )
 
 class BaseAPI(object):
+    """
+    Implementation of fundamental api object functionality. The BaseAPI is 
+    inherited by specific game api, which in turn are inherited by specific
+    endpoint implementations. For a full list of all available api's, 
+    take a look at the official Riot Games developer documentation.
+    
+    Parameters
+    ----------
+    game: str
+        A string specifying what game the api is connected to.
+    api: str
+        A string specifying the name of the endpoint, Riot Games api.
+    platform: str
+        A string specifying what platform the requests are made to.
+        For example, `euw1` for League of Legends.
+    region: str
+        A strig specifying what region the requests are made to.
+        For exampl,e 'europe', for League of Legends.
+
+    """
+
     def __init__(self, game, api, platform, region) -> None:
         self._game = game
         self._api = api
@@ -53,12 +73,12 @@ class BaseAPI(object):
 
     @property
     def platform(self) -> str:
-        """ Return the set API platform, e.g., euw1 for League of Legends. """
+        """ Return the set API platform. """
         return self._platform
     
     @property
     def region(self) -> str:
-        """ Return the set API region, e.g., europe for League of Legends. """
+        """ Return the set API region. """
         return self._region
 
     @property
@@ -114,11 +134,12 @@ class BaseAPI(object):
         return response
 
 class BaseLeagueAPI(BaseAPI):
-    """ """
+    """ Define parent class for all League of legends endpoints. """
     def __init__(self, api, platform, region) -> None:
         super().__init__('league', api, platform, region)
 
 class BaseValorantAPI(BaseAPI):
-    """ """
+    """ Define parent class for all Valorant endpoints. """
     def __init__(self, api, platform, region) -> None:
         super().__init__('valorant', api, platform, region)
+
