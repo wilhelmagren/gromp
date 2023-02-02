@@ -21,7 +21,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 #
-# File created: 2023-01-23
+# File created: 2023-02-02
 # Last updated: 2023-02-02
 #
 
@@ -30,28 +30,41 @@ from gromp.api import BaseLeagueAPI
 from gromp.utils import LeaguePLATFORMS, LeagueREGIONS
 
 __all__ = (
-    'LolStatusAPIv4',
+    'SpectatorAPIv4',
 )
 
 class urls:
-    platform = '{platform}.api.riotgames.com/lol/status/v4/platform-data'
+    encryptedSummonerId = '{platform}.api.riotgames.com/lol/spectator/v4/active-games/by-summoner/{encryptedSummonerId}'
+    featuredGames = '{platform}.api.riotgames.com/lol/spectator/v4/featured-games'
 
-class LolStatusAPIv4(BaseLeagueAPI):
+class SpectatorAPIv4(BaseLeagueAPI):
     """
     Official documentation:
-    https://developer.riotgames.com/apis#lol-status-v4
+    https://developer.riotgames.com/apis#spectator-v4
     """
-    def __init__(self, platform=LeaguePLATFORMS.euw1, region=LeagueREGION.europe) -> None:
+    def __init__(self, platform=LeaguePLATFORMS.euw1, region=LeagueREGIONS.europe) -> None:
         super().__init__(self.__class__.__name__, platform, region)
     
-    def platform(self, token) -> requests.Response:
+    def encryptedSummonerId(self, token, encryptedSummonerId) -> requests.Response:
         """
-        Get League of Legends status for the given platform.
+        Get current game information for the given summoner ID and platform.
+        """
+        self.set_params(platform=self.platform, encryptedSummonerId=encryptedSummonerId)
+        http_response = self.get(
+            token,
+            urls.encryptedSummonerId,
+        )
+
+        return http_response
+
+    def featuredGames(self, token) -> requests.Response:
+        """
+        Get list of featured games for platform.
         """
         self.set_params(platform=self.platform)
         http_response = self.get(
             token,
-            urls.platform,
+            urls.featuredGames,
         )
 
         return http_response

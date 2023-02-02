@@ -22,9 +22,10 @@
 # SOFTWARE.
 #
 # File created: 2023-01-23
-# Last updated: 2023-01-31
+# Last updated: 2023-02-02
 #
 
+import requests
 from gromp.api import BaseLeagueAPI
 from gromp.utils import LeaguePLATFORMS, LeagueREGIONS
 
@@ -40,12 +41,18 @@ class urls:
     me = '{platform}.api.riotgames.com/lol/summoner/v4/summoners/me'
     encryptedSummonerId = '{platform}.api.riotgames.com/lol/summoner/v4/summoners/{encryptedSummonerId}'
 
-
 class SummonerAPIv4(BaseLeagueAPI):
-    def __init__(self, platform=LeaguePLATFORMS.euw1, region=LeagueREGIONS.europe):
+    """
+    Official documentation:
+    https://developer.riotgames.com/apis#summoner-v4
+    """
+    def __init__(self, platform=LeaguePLATFORMS.euw1, region=LeagueREGIONS.europe) -> None:
         super().__init__(self.__class__.__name__, platform, region)
 
-    def rsoPUUID(self, token, rsoPUUID):
+    def rsoPUUID(self, token, rsoPUUID) -> requests.Response:
+        """
+        Get a summoner by its RSO encrypted PUUID.
+        """
         self.set_params(platform=self.platform, rsoPUUID=rsoPUUID)
         http_response = self.get(
             token, 
@@ -54,7 +61,10 @@ class SummonerAPIv4(BaseLeagueAPI):
 
         return http_response
     
-    def encryptedAccountId(self, token, encryptedAccountId):
+    def encryptedAccountId(self, token, encryptedAccountId) -> requests.Response:
+        """
+        Get a summoner by account ID.
+        """
         self.set_params(platform=self.platform, encryptedAccountId=encryptedAccountId)
         http_response = self.get(
             token,
@@ -63,7 +73,10 @@ class SummonerAPIv4(BaseLeagueAPI):
 
         return http_response
     
-    def summonerName(self, token, summonerName):
+    def summonerName(self, token, summonerName) -> requests.Response:
+        """
+        Get a summoner by summoner name.
+        """
         self.set_params(platform=self.platform, summonerName=summonerName)
         http_response = self.get(
             token,
@@ -72,7 +85,10 @@ class SummonerAPIv4(BaseLeagueAPI):
 
         return http_response
 
-    def encryptedPUUID(self, token, encryptedPUUID):
+    def encryptedPUUID(self, token, encryptedPUUID) -> requests.Response:
+        """
+        Get a summoner by PUUID.
+        """
         self.set_params(platform=self.platform, encryptedPUUID=encryptedPUUID)
         http_response = self.get(
             token,
@@ -81,7 +97,10 @@ class SummonerAPIv4(BaseLeagueAPI):
 
         return http_response
 
-    def me(self, token):
+    def me(self, token) -> requests.Response:
+        """
+        Get a summoner by access token.
+        """
         self.set_params(platform=self.platform)
         http_response = self.get(
             token,
@@ -90,7 +109,10 @@ class SummonerAPIv4(BaseLeagueAPI):
 
         return http_response
     
-    def encryptedSummonerId(self, token, encryptedSummonerId):
+    def encryptedSummonerId(self, token, encryptedSummonerId) -> requests.Response:
+        """
+        Get a summoner by summoner ID.
+        """
         self.set_params(platform=self.platform, encryptedSummonerId=encryptedSummonerId)
         http_response = self.get(
             token,
@@ -98,4 +120,3 @@ class SummonerAPIv4(BaseLeagueAPI):
         )
 
         return http_response
-

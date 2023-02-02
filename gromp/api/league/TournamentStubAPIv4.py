@@ -21,7 +21,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 #
-# File created: 2023-01-23
+# File created: 2023-02-02
 # Last updated: 2023-02-02
 #
 
@@ -30,67 +30,71 @@ from gromp.api import BaseLeagueAPI
 from gromp.utils import LeaguePLATFORMS, LeagueREGIONS
 
 __all__ = (
-    'AccountAPIv1',
+    'TournamentStubAPIv4',
 )
 
 class urls:
-    puuid = '{region}.api.riotgames.com/riot/account/v1/accounts/by-puuid/{puuid}'
-    gameNameTagLine = '{region}.api.riotgames.com/riot/account/v1/accounts/by-riot-id/{gameName}/{tagLine}'
-    me = '{region}.api.riotgames.com/riot/account/v1/accounts/me'
-    gamePuuid = '{region}.api.riotgames.com/riot/account/v1/active-shards/by-game/{game}/by-puuid/{puuid}'
+    codes = '{region}.api.riotgames.com/lol/tournament-stub/v4/codes'
+    tournamentCode = '{region}.api.riotgames.com/lol/tournament-stub/v4/lobby-events/by-code/{tournamentCode}'
+    providers = '{region}.api.riotgames.com/lol/tournament-stub/v4/providers'
+    tournaments = '{region}.api.riotgames.com/lol/tournament-sub/v4/tournaments'
 
-class AccountAPIv1(BaseLeagueAPI):
+class TournamentStubAPIv4(BaseLeagueAPI):
     """
+    The tournament-stub API is a stand in that simulates the behavior of the tournament API.
+    Developers looking to apply for tournament API access should use the stub to mock their
+    implementation before applying for a production key.
+
     Official documentation:
-    https://developer.riotgames.com/apis#account-v1
+    https://developer.riotgames.com/apis#tournament-stub-v4
     """
     def __init__(self, platform=LeaguePLATFORMS.euw1, region=LeagueREGIONS.europe) -> None:
         super().__init__(self.__class__.__name__, platform, region)
-    
-    def puuid(self, token, puuid) -> requests.Response:
+
+    def codes(self, token) -> requests.Response:
         """
-        Get account by puuid.
+        Create a mock tournament code for the given tournament.
         """
-        self.set_params(region=self.region, puuid=puuid)
+        self.set_params(region=self.region) 
         http_response = self.get(
             token,
-            urls.puuid,
+            urls.codes,
         )
 
         return http_response
     
-    def gameNameTagLine(self, token, gameName, tagLine) -> requests.Response:
+    def tournamentCode(self, token, tournamentCode) -> requests.Response:
         """
-        Get account by riot id.
+        Gets a mock list of lobby events by tournament code.
         """
-        self.set_params(region=self.region, gameName=gameName, tagLine=tagLine)
+        self.set_params(region=self.region, tournamentCode=tournamentCode)
         http_response = self.get(
             token,
-            urls.gameNameTagLine,
+            urls.tournamentCode,
         )
-
+    
         return http_response
     
-    def me(self, token) -> requests.Response:
+    def providers(self, token) -> requests.Response:
         """
-        Get account by access token.
+        Creates a mock tournament provider and returns its ID.
         """
         self.set_params(region=self.region)
         http_response = self.get(
             token,
-            urls.me,
+            urls.providers,
         )
 
         return http_response
 
-    def gamePuuid(self, token, game, puuid) -> requests.Response:
+    def tournaments(self, token) -> requests.Response:
         """
-        Get active shard for a player.
+        Creates a mock tournament and returns its ID.
         """
-        self.set_params(region=self.region, game=game, puuid=puuid)
+        self.set_params(region=self.region)
         http_response = self.get(
             token,
-            urls.gamePuuid,
+            urls.tournaments,
         )
-
+        
         return http_response
