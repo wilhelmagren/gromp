@@ -46,11 +46,23 @@ class LeagueHook(BaseHook):
 
         api = SummonerAPIv4(platform=platform, region=region)
         response = api.summonerName(self._token, summonerName)
-        summoner = response.json()
 
-        return summoner
+        return response.json()
+
     
-    def matches_by_puuid(self, puuid, platform=None, region=None):
+    def summoner_by_puuid(self, puuid, platform=None, region=None):
+        if platform is None:
+            platform = self._platform
+
+        if region is None:
+            region = self._region
+        
+        api = SummonerAPIv4(platform=platform, region=region)
+        response = api.encryptedPUUID(self._token, puuid)
+        
+        return response.json()
+    
+    def matches_by_puuid(self, puuid, platform=None, region=None, **kwargs):
         if platform is None:
             platform = self._platform
         
@@ -58,8 +70,18 @@ class LeagueHook(BaseHook):
             region = self._region
         
         api = MatchAPIv5(platform=platform, region=region)
-        response = api.puuid(self._token, puuid)
-        matches = response.json()
+        response = api.puuid(self._token, puuid, **kwargs)
 
-        return matches
+        return response.json()
+    
+    def match_by_id(self, matchId, platform=None, region=None):
+        if platform is None:
+            platform = self._platform
+        
+        if region is None:
+            region = self._region
+        
+        api = MatchAPIv5(platform=platform, region=region)
+        response = api.matchId(self._token, matchId)
 
+        return response.json()
