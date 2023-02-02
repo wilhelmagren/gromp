@@ -4,11 +4,11 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "gromp"
-version = "0.0.1"
+version = "0.2"
 authors = [
     { name="Wilhelm Ågren", email="wilhelmagren98@gmail.com" },
 ]
-description = "Minimal wrapper for Riot Games public developer API written in Python."
+description = "Minimal python wrapper for the public Riot Games developer API, written in Python. "
 readme = "README.md"
 requires-python = ">=3.7"
 classifiers = [
