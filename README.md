@@ -13,7 +13,7 @@ For a full list of all available requests, see the respective games hook documen
 ## Setup
 Either clone this repository and perform a local install accordingly
 ```
-git clone https://github.com/willeagren/gromp
+git clone https://github.com/willeagren/gromp.git
 cd gromp
 pip install -e .
 ```
