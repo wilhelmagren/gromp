@@ -41,7 +41,7 @@ class LolStatusAPIv4(BaseLeagueAPI):
     Official documentation:
     https://developer.riotgames.com/apis#lol-status-v4
     """
-    def __init__(self, platform=LeaguePLATFORMS.euw1, region=LeagueREGION.europe) -> None:
+    def __init__(self, platform=LeaguePLATFORMS.euw1, region=LeagueREGIONS.europe) -> None:
         super().__init__(self.__class__.__name__, platform, region)
     
     def platform(self, token) -> requests.Response:
