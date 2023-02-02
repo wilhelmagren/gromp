@@ -110,7 +110,7 @@ class LeagueAPIv4(BaseLeagueAPI):
         """
         Get the master league for given queue and platform.
         """
-        self.set_params(platform=self.platform, masterQueue)
+        self.set_params(platform=self.platform, masterQueue=masterQueue)
         http_response = self.get(
             token,
             urls.masterQueue,
