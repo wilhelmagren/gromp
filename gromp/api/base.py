@@ -98,6 +98,7 @@ class BaseAPI(object):
             during the GET request. Keys are subtituted for corresponding values.
 
         """
+        logging.info(f'setting params: {kwargs}')
         params = {}
         for k, value in kwargs.items():
             key = '{' + f'{k}' + '}'
@@ -127,8 +128,10 @@ class BaseAPI(object):
         url = f'https://{endpoint}?api_key={token}'
 
         for key, value in self.params.items():
-            url = url.replace(key, value)
+            if value is not None:
+                url = url.replace(key, str(value))
         
+        logging.info(f'GET {url}')
         response = requests.get(url)
 
         return response
