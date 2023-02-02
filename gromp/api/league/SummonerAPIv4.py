@@ -44,7 +44,7 @@ class urls:
 class SummonerAPIv4(BaseLeagueAPI):
     def __init__(self, platform=LeaguePLATFORMS.euw1, region=LeagueREGIONS.europe):
         super().__init__(self.__class__.__name__, platform, region)
-    
+
     def rsoPUUID(self, token, rsoPUUID):
         self.set_params(platform=self.platform, rsoPUUID=rsoPUUID)
         http_response = self.get(
@@ -98,3 +98,4 @@ class SummonerAPIv4(BaseLeagueAPI):
         )
 
         return http_response
+
