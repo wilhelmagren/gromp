@@ -1,4 +1,4 @@
-![Gromp](https://github.com/willeagren/gromp/blob/main/assets/gromp.png)
+![Gromp](https://github.com/willeagren/gromp/blob/2b4d6727a5d1470f183739e27c62df6744d2ad66/assets/gromp.png)
 # Gromp [![PyPi version](https://img.shields.io/pypi/v/gromp.svg)](https://pypi.org/project/gromp/) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Gromp is a minimal wrapper of the public [Riot Games developer API](https://developer.riotgames.com/apis), 
