@@ -19,3 +19,6 @@ classifiers = [
 
 [project.urls]
 "Homepage" = "https://github.com/willeagren/gromp"
+
+[tool.setuptools]
+packages = ["gromp"]
