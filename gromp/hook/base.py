@@ -50,12 +50,12 @@ class Hook(object):
         **kwargs
     ) -> None:
 
-        assert is_platform(platform, game), \
+        assert is_platform(platform, game.lower()), \
             f'User provided platform is not valid, {platform=}. ' \
-            f'Valid platforms are: {PLATFORMS}'
-        assert is_region(region, game), \
+            f'Valid platforms are: {vars(getattr(PLATFORMS, game)).values()}.'
+        assert is_region(region, game.lower()), \
             f'User provided region is not valid, {region=}. ' \
-            f'Valid regions are: {REGIONS}'
+            f'Valid regions are: {vars(getattr(REGIONS, game)).values()}.'
         assert timeout > 0, \
             f'You have provided a timeout value <= 0 which is not valid, ' \
             f'This is the allowed time to wait for response, defaults to 5 second.'
@@ -89,7 +89,7 @@ class Hook(object):
     def token(self) -> str:
         return rsa.decrypt(
             self._config['token'],
-            self._config['private_key'],
+            self._config['keys']['private'],
         ).decode()
 
     @property
@@ -105,12 +105,24 @@ class Hook(object):
         return self._config['region']
 
     @property
+    def timeout(self) -> int:
+        return self._config['timeout']
+
+    @property
+    def keys(self) -> dict:
+        return self._config['keys']
+
+    @property
     def public_key(self) -> rsa.PublicKey:
         return self._config['keys']['public_key']
 
     @property
     def config(self) -> dict:
         return self._config
+
+    @property
+    def handlers(self) -> list:
+        return self._handlers
 
     def _setup_named_endpoint(
         self,
@@ -124,11 +136,7 @@ class Hook(object):
             self.handlers,
             self.platform,
             self.region,
+            self.timeout,
             **kwargs,
         )
-
-
-
-
-
 
