@@ -21,11 +21,17 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-File created: 2023-01-23
+File created: 2023-02-05
 Last updated: 2023-02-05
 """
 
-from gromp.endpoint import *
-from gromp.hook import *
-from gromp.utils import *
+import abc
+from typing import Any
+
+class Handler(abc.ABC):
+    def outgoing_request(self, *args, **kwargs) -> Any:
+        pass
+
+    def incoming_response(self, *args, **kwargs) -> Any:
+        pass
 

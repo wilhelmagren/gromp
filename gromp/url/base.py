@@ -21,54 +21,46 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-File created: 2023-01-23
-Last updated: 2023-02-05
+File created: 2023-02-05
+Last updated: 2023-02-06
 """
 
+import re
+import logging
+logger = logging.getLogger(__name__)
+
 __all__ = (
-    'is_platform',
-    'is_region',
-    'LeaguePlatforms',
-    'LeagueRegions',
-    'PLATFORMS',
-    'REGIONS',
+    'Url',
+    'LeagueUrl',
 )
 
-def is_platform(string: str, game: str) -> bool:
-    """ Return true if the string is a valid platform for the specified game. """
-    return string in vars(getattr(PLATFORMS, game)).values()
+class Url(object):
+    def __init__(self, base: str, game: str, api: str) -> None:
+        self._url = f'https://{base}.api.riotgames.com/{game}{api}'
 
-def is_region(string: str, game: str) -> bool:
-    """ Return true if the string is a valid region for the specified game. """
-    return string in vars(getattr(REGIONS, game)).values()
+    @property
+    def url(self) -> str:
+        return self._url
+    
+    def prepare_request(self, **kwargs) -> tuple:
+        """ Prepare a GET request by validating the url and extracting optional query
+        parameters. """
+        url_params = re.findall('{(\w*)}', self.url)
 
-class LeaguePlatforms:
-    br1 = 'br1'
-    eun1 = 'eun1'
-    euw1 = 'euw1'
-    jp1 = 'jp1'
-    kr = 'kr'
-    la1 = 'la1'
-    la2 = 'la2'
-    na1 = 'na1'
-    oc1 = 'oc1'
-    tr1 = 'tr1'
-    ru = 'ru'
-    ph2 = 'ph2'
-    sg2 = 'sg2'
-    th2 = 'th2'
-    tw2 = 'tw2'
-    vn2 = 'vn2'
+        for required in url_params:
+            if required not in kwargs:
+                raise ValueError(
+                    f'Missing required parameter in url, {required=}.'
+                )
+        
+        query_params = {
+            key: val for key, val in kwargs.items()
+        }
 
-class LeagueRegions:
-    americas = 'americas'
-    asia = 'asia'
-    europe = 'europe'
-    sea = 'sea'
+        request_url = self.url.format(**kwargs)
+        return (request_url, query_params)
 
-class PLATFORMS: 
-    league = LeaguePlatforms
-
-class REGIONS:
-    league = LeagueRegions
+class LeagueUrl(Url):
+    def __init__(self, base: str, api: str) -> None:
+        super().__init__(base, 'lol/', api)
 

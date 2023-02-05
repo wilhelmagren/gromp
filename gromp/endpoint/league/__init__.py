@@ -21,11 +21,15 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-File created: 2023-01-23
+File created: 2023-02-05
 Last updated: 2023-02-05
 """
 
-from gromp.endpoint import *
-from gromp.hook import *
-from gromp.utils import *
 
+from gromp.endpoint.league.Accountv1 import Accountv1
+from gromp.endpoint.league.Leaguev4 import Leaguev4
+from gromp.endpoint.league.LolStatusv4 import LolStatusv4
+from gromp.endpoint.league.Matchv5 import Matchv5
+from gromp.endpoint.league.Spectatorv4 import Spectatorv4
+from gromp.endpoint.league.Summonerv4 import Summonerv4
+from gromp.endpoint.league.TournamentStubv4 import TournamentStubv4
