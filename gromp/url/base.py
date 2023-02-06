@@ -26,8 +26,6 @@ Last updated: 2023-02-06
 """
 
 import re
-import logging
-logger = logging.getLogger(__name__)
 
 __all__ = (
     'Url',

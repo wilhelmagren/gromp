@@ -30,6 +30,10 @@ from rsa import PublicKey, PrivateKey
 from requests import Response, session
 from gromp.url import Url
 
+__all__ = (
+    'NamedEndpoint',
+)
+
 class NamedEndpoint(object):
     def __init__(
         self,
@@ -44,6 +48,7 @@ class NamedEndpoint(object):
 
         assert isinstance(keys['public'], PublicKey), \
             f'Provided rsa public key is not a PublicKey, {keys["public"]}.'
+
         assert isinstance(keys['private'], PrivateKey), \
             f'Provided rsa private key is not a PrivateKey, {keys["private"]}.'
 
@@ -57,10 +62,11 @@ class NamedEndpoint(object):
         self._handlers = handlers
         self._session = session()
 
-    def _encrypt_token(self, token: str, key: PublicKey) -> str:
+    @staticmethod
+    def _encrypt_token(token: str, public_key: PublicKey) -> str:
         return rsa.encrypt(
             token.encode(),
-            key,
+            public_key,
         )
 
     def _decrypt_token(self) -> str:
@@ -69,11 +75,8 @@ class NamedEndpoint(object):
             self._config['keys']['private'],
         )
 
-    def _request_api(
-        self,
-        api: Url,
-        **kwargs
-    ) -> Response:
+    def _request_api(self, api: Url, **kwargs) -> Response:
+        """ Perform a GET request to the provided REST api. """
         request, params = api.prepare_request(
             platform=self._config['platform'],
             region=self._config['region'],
@@ -82,12 +85,36 @@ class NamedEndpoint(object):
 
         extra = {}
         extra['timeout'] = self._config['timeout']
+        
+        for handler in self._handlers:
+            request = handler.outgoing_request(
+                self._config['platform'],
+                self._config['region'],
+                params,
+                self.__class__.__name__,
+                request,
+                **extra,
+            )
+
         response = self._session.get(
             request,
             params=params,
-            headers={'X-Riot-Token': self._decrypt_token()},
+            headers={
+                'Accept-Language': 'en-US,en;q=0.5',
+                'X-Riot-Token': self._decrypt_token()
+            },
             **extra,
         )
+
+        for handler in self._handlers:
+            response = handler.incoming_response(
+                self._config['platform'],
+                self._config['region'],
+                params,
+                self.__class__.__name__,
+                response,
+                **extra,
+            )
 
         return response
 

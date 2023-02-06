@@ -22,10 +22,41 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-01-23
-Last updated: 2023-02-05
+Last updated: 2023-02-06
 """
 
 from gromp.endpoint import *
+from gromp.handler import *
 from gromp.hook import *
+from gromp.url import *
 from gromp.utils import *
+
+# Create logger and set up configuration
+# Levels in decreasing order of verbosity:
+#   - NOTSET         0
+#   - DEBUG         10
+#   - INFO          20
+#   - WARNING       30
+#   - ERROR         40
+#   - CRITICAL      50
+#
+# To change the logging level after having imported the library,
+# use the function set_logging_level with preferred logging level.
+
+import logging
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+
+console_handler = logging.StreamHandler()
+console_handler.setLevel(logging.DEBUG)
+
+formatter = logging.Formatter(
+    '[%(asctime)s] [%(name)s]\t[%(levelname)s] %(message)s'
+)
+
+console_handler.setFormatter(formatter)
+logger.addHandler(console_handler)
+
+def set_logging_level(level: int) -> None:
+    logger.setLevel(level)
 

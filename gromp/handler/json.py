@@ -21,12 +21,43 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-File created: 2023-02-05
-Last updated: 2023-02-05
+File created: 2023-02-06
+Last updated: 2023-02-06
 """
 
-from gromp.endpoint import NamedEndpoint
+from gromp.handler import Handler
+from requests import Response
 
-class Accountv1(NamedEndpoint):
-    pass
+import logging
+logger = logging.getLogger(__name__)
+
+__all__ = (
+    'JsonHandler',
+)
+
+class JsonHandler(Handler):
+    def outgoing_request(
+        self,
+        platform: str,
+        region: str,
+        params: dict,
+        endpoint: str,
+        request: str,
+        **kwargs
+    ) -> str:
+        return request
+
+    def incoming_response(
+        self,
+        platform: str,
+        region: str,
+        params: dict,
+        endpoint: str,
+        response: Response,
+        **kwargs
+    ) -> dict:
+        logger.info(
+            f'Decoding response json from endpoint {endpoint} to dictionary.'
+        )
+        return response.json()
 

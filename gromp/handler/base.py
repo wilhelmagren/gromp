@@ -22,16 +22,16 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-05
-Last updated: 2023-02-05
+Last updated: 2023-02-06
 """
 
 import abc
 from typing import Any
 
-class Handler(abc.ABC):
-    def outgoing_request(self, *args, **kwargs) -> Any:
-        pass
+__all__ = (
+    'Handler',
+)
 
-    def incoming_response(self, *args, **kwargs) -> Any:
-        pass
+class Handler(abc.ABC):
+    pass
 

@@ -21,11 +21,27 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-File created: 2023-02-05
-Last updated: 2023-02-05
+File created: 2023-02-06
+Last updated: 2023-02-06
 """
 
-from gromp.handler.base import Handler
-from gromp.handler.json import JsonHandler
-from gromp.handler.log import LogHandler
+from gromp.url import LeagueUrl
+
+__all__ = (
+    'Leaguev4Url',
+)
+
+class Leaguev4Url(LeagueUrl):
+
+    api = {
+        'challenger_queue': 'challengerleagues/by-queue/{challenger_queue}',
+        'encrypted_summoner_id': 'entries/by-summoner/{encrypted_summoner_id}',
+        'by_queue_tier_division': 'entries/{queue}/{tier}/{division}',
+        'grandmaster_queue': 'grandmasterleagues/by-queue/{queue}',
+        'by_id': 'leagues/{league_id}',
+        'master_queue': 'masterleagues/by-queue/{master_queue}',
+    }
+
+    def __init__(self, key: str) -> None:
+        super().__init__('{platform}', f'league/v4/{self.api[key]}')
 

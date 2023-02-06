@@ -21,11 +21,24 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-File created: 2023-02-05
-Last updated: 2023-02-05
+File created: 2023-02-06
+Last updated: 2023-02-06
 """
 
-from gromp.handler.base import Handler
-from gromp.handler.json import JsonHandler
-from gromp.handler.log import LogHandler
+from gromp.url import LeagueUrl
+
+__all__ = (
+    'Matchv5Url',
+)
+
+class Matchv5Url(LeagueUrl):
+
+    api = {
+        'matchlist_by_puuid': 'by-puuid/{puuid}/ids',
+        'by_id': '{match_id}',
+        'timeline_by_id': '{match_id}/timeline',
+    }
+
+    def __init__(self, key: str) -> None:
+        super().__init__('{region}', f'match/v5/matches/{self.api[key]}')
 

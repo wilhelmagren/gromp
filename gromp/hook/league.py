@@ -28,7 +28,6 @@ Last updated: 2023-02-05
 from gromp.hook import Hook
 from gromp.endpoint import NamedEndpoint
 from gromp.endpoint.league import (
-    Accountv1,
     Leaguev4,
     LolStatusv4,
     Matchv5,
@@ -49,10 +48,6 @@ class League(Hook):
         **kwargs
     ) -> None:
         super().__init__(token, self.__class__.__name__, **kwargs)
-
-    @property
-    def account(self) -> Accountv1:
-        return self._setup_named_endpoint(Accountv1)
 
     @property
     def league(self) -> Leaguev4:

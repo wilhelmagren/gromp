@@ -21,11 +21,23 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-File created: 2023-02-05
-Last updated: 2023-02-05
+File created: 2023-02-06
+Last updated: 2023-02-06
 """
 
-from gromp.handler.base import Handler
-from gromp.handler.json import JsonHandler
-from gromp.handler.log import LogHandler
+from gromp.url import LeagueUrl
+
+__all__ = (
+    'Spectatorv4Url',
+)
+
+class Spectatorv4Url(LeagueUrl):
+
+    api = {
+        'by_summoner': 'active-games/by-summoner/{encrypted_summoner_id}',
+        'featured_games': 'featured-games',
+    }
+
+    def __init__(self, key: str) -> None:
+        super().__init__('{platform}', f'spectator/v4/{self.api[key]}')
 
