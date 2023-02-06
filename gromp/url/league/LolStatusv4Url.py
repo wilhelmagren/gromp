@@ -21,44 +21,17 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-File created: 2023-02-05
+File created: 2023-02-06
 Last updated: 2023-02-06
 """
 
-import re
+from gromp.url import LeagueUrl
 
 __all__ = (
-    'Url',
-    'LeagueUrl',
+    'LolStatusv4Url',
 )
 
-class Url(object):
-    def __init__(self, base: str, game: str, api: str) -> None:
-        self._url = f'https://{base}.api.riotgames.com/{game}{api}'
-
-    @property
-    def url(self) -> str:
-        return self._url
-    
-    def prepare_request(self, **kwargs) -> tuple:
-        """ Prepare a GET request by validating the url and extracting optional query
-        parameters. """
-        url_params = re.findall('{(\w*)}', self.url)
-
-        for required in url_params:
-            if required not in kwargs:
-                raise ValueError(
-                    f'Missing required parameter in url, {required=}.'
-                )
-        
-        query_params = {
-            key: val for key, val in kwargs.items()
-        }
-
-        request_url = self.url.format(**kwargs)
-        return (request_url, query_params)
-
-class LeagueUrl(Url):
-    def __init__(self, base: str, api: str) -> None:
-        super().__init__(base, 'lol/', api)
+class LolStatusv4Url(LeagueUrl):
+    def __init__(self, key: str) -> None:
+        super().__init__('{platform}', f'status/v4/platform-data')
 
