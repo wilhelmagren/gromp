@@ -22,25 +22,49 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-01-23
-Last updated: 2023-02-05
+Last updated: 2023-02-06
 """
 
 __all__ = (
     'is_platform',
     'is_region',
+    'platform_to_region',
     'LeaguePlatforms',
     'LeagueRegions',
-    'PLATFORMS',
-    'REGIONS',
+    'ValorantRegions',
+    'Platforms',
+    'Regions',
 )
 
 def is_platform(string: str, game: str) -> bool:
     """ Return true if the string is a valid platform for the specified game. """
-    return string in vars(getattr(PLATFORMS, game)).values()
+    return string in vars(getattr(Platforms, game)).values()
 
 def is_region(string: str, game: str) -> bool:
     """ Return true if the string is a valid region for the specified game. """
-    return string in vars(getattr(REGIONS, game)).values()
+    return string in vars(getattr(Regions, game)).values()
+
+def platform_to_region(platform: str) -> str:
+    """ Map the provided platform to its related region, return it as a string. """
+    p2r = {
+        'br1': 'americas',
+        'eun1': 'europe',
+        'euw1': 'europe',
+        'jp1': 'asia',
+        'kr': 'asia',
+        'la1': 'americas',
+        'la2': 'americas',
+        'na1': 'americas',
+        'oc1': 'sea',
+        'tr1': 'europe',
+        'ru': 'europe',
+        'ph2': 'asia',
+        'sg2': 'asia',
+        'th2': 'asia',
+        'tw2': 'asia',
+        'vn2': 'asia',
+    }
+    return p2r.get(platform)
 
 class LeaguePlatforms:
     br1 = 'br1'
@@ -66,9 +90,19 @@ class LeagueRegions:
     europe = 'europe'
     sea = 'sea'
 
-class PLATFORMS: 
+class ValorantRegions:
+    AP = 'AP'
+    BR = 'BR'
+    ESPORTS = 'ESPORTS'
+    EU = 'EU'
+    KR = 'KR'
+    LATAM = 'LATAM'
+    NA = 'NA'
+
+class Platforms: 
     league = LeaguePlatforms
 
-class REGIONS:
+class Regions:
     league = LeagueRegions
+    valorant = ValorantRegions
 
