@@ -22,17 +22,18 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-01-23
-Last updated: 2023-02-05
+Last updated: 2023-02-06
 """
 
 import rsa
 from gromp.utils import (
     is_platform,
     is_region,
-    PLATFORMS,
-    REGIONS,
+    Platforms,
+    Regions,
 )
 from gromp.endpoint import NamedEndpoint
+from gromp.handler import LogHandler, JsonHandler 
 
 __all__ = (
     'Hook',
@@ -45,20 +46,23 @@ class Hook(object):
         game: str,
         platform: str,
         region: str,
+        handlers: list = None,
         keylen: int = 512,
         timeout: int = 5,
         **kwargs
     ) -> None:
 
         assert is_platform(platform, game.lower()), \
-            f'User provided platform is not valid, {platform=}. ' \
+            f'User provided platform is not valid, {platform=}.\n' \
             f'Valid platforms are: {vars(getattr(PLATFORMS, game)).values()}.'
+
         assert is_region(region, game.lower()), \
-            f'User provided region is not valid, {region=}. ' \
+            f'User provided region is not valid, {region=}.\n' \
             f'Valid regions are: {vars(getattr(REGIONS, game)).values()}.'
+
         assert timeout > 0, \
-            f'You have provided a timeout value <= 0 which is not valid, ' \
-            f'This is the allowed time to wait for response, defaults to 5 second.'
+            f'You have provided a timeout value <= 0 which is not valid.\n' \
+            f'This sets the allowed time to wait for response, defaults to 5 seconds.'
 
         public_key, private_key = rsa.newkeys(keylen)
         encrypted_token = rsa.encrypt(
@@ -66,10 +70,11 @@ class Hook(object):
             public_key,
         )
 
-        # TODO implement handlers and specify default sequential orders...
-        handler_chain = [
-            '.',
-        ]
+        if handlers is None:
+            handlers = [
+                LogHandler(),
+                JsonHandler(),
+            ]
 
         keys = {}
         keys['public'] = public_key
@@ -83,7 +88,7 @@ class Hook(object):
         config['keys'] = keys
         config['timeout'] = timeout
         self._config = config
-        self._handlers = handler_chain
+        self._handlers = handlers
 
     @property
     def token(self) -> str:
