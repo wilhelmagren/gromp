@@ -22,29 +22,46 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-05
-Last updated: 2023-02-05
+Last updated: 2023-02-06
 """
 
-from requests import Response
 from gromp.endpoint import NamedEndpoint
 from gromp.url.league import Summonerv4Url
 
 class Summonerv4(NamedEndpoint):
-    def by_account(self, encrypted_account_id: str) -> Response:
+    def by_account(self, encrypted_account_id: str):
         """
-        Get a summoner by their encrypted Account ID.
+        Get a summoner by their encrypted account ID.
         """
         return self._request_api(
             Summonerv4Url('encrypted_account_id'),
             encrypted_account_id=encrypted_account_id,
         )
 
-    def by_name(self, summoner_name: str) -> Response:
+    def by_name(self, summoner_name: str):
         """
         Get a summoner by their summoner name.
         """
         return self._request_api(
             Summonerv4Url('summoner_name'),
             summoner_name=summoner_name,
+        )
+
+    def by_puuid(self, encrypted_puuid: str):
+        """
+        Get a summoner by their encrypted puuid.
+        """
+        return self._request_api(
+            Summonerv4Url('encrypted_puuid'),
+            encrypted_puuid=encrypted_puuid,
+        )
+
+    def by_id(self, encrypted_summoner_id: str):
+        """
+        Get a summoner by their encrypted summoner ID.
+        """
+        return self._request_api(
+            Summonerv4Url('encrypted_summoner_id'),
+            encrypted_summoner_id=encrypted_summoner_id,
         )
 
