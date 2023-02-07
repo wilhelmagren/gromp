@@ -84,4 +84,5 @@ for match_id in matches:
 His real name is Lord Grompulus Kevin Ribbiton of Croaksworth, and he likes to eat small insects, mushrooms, and people ([source](https://leagueoflegends.fandom.com/wiki/Gromp)). 
 
 ## :clipboard: License
-All code is to be held under a general MIT license, please see [LICENSE](https://github.com/willeagren/gromp/blob/main/LICENSE) for specific information. Any images used are neither owned nor monetized by me, and retains the specific license it was created with.
+All code is to be held under a general MIT license, please see [LICENSE](https://github.com/willeagren/gromp/blob/main/LICENSE) for specific information.
+
