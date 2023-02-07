@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-01-23
-Last updated: 2023-02-05
+Last updated: 2023-02-07
 """
 
 from gromp.hook import Hook
@@ -47,7 +47,11 @@ class League(Hook):
         token: str,
         **kwargs
     ) -> None:
-        super().__init__(token, self.__class__.__name__, **kwargs)
+        super().__init__(
+            token=token,
+            game=self.__class__.__name__,
+            **kwargs
+        )
 
     @property
     def league(self) -> Leaguev4:

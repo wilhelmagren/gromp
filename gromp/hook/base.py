@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-01-23
-Last updated: 2023-02-06
+Last updated: 2023-02-07
 """
 
 import rsa
@@ -42,10 +42,10 @@ __all__ = (
 class Hook(object):
     def __init__(
         self,
-        token: str,
-        game: str,
-        platform: str,
-        region: str,
+        token: str = None,
+        game: str = None,
+        platform: str = None,
+        region: str = None,
         handlers: list = None,
         keylen: int = 512,
         timeout: int = 5,
