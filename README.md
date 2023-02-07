@@ -17,7 +17,7 @@ git clone https://github.com/willeagren/gromp.git
 cd gromp
 pip install -e .
 ```
-or install the most recent release from the Python Package Index (PyPI)
+or install the most recent release from the Python Package Index (PyPI).
 ```
 pip install gromp
 ```
