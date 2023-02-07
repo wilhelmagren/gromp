@@ -1,4 +1,4 @@
-# Gromp [![PyPi version](https://img.shields.io/pypi/v/gromp.svg)](https://pypi.org/project/gromp/) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+# Gromp [![PyPi version](https://img.shields.io/pypi/v/gromp.svg)](https://pypi.org/project/gromp/) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![codecov](https://codecov.io/gh/willeagren/gromp/branch/main/graph/badge.svg?token=52WSCE8Q09)](https://codecov.io/gh/willeagren/gromp)
 
 Gromp is a minimal wrapper of the public [Riot Games developer API](https://developer.riotgames.com/apis), 
 written in Python. All public methods as of 2023-02-07 are implemented.
@@ -9,7 +9,7 @@ For a full list of all available requests, see each respective endpoint document
 
 ## :lock: Requirements
 
-- A fairly recent version of Python, preferrably 3.7 or greater.
+- A fairly recent version of Python, preferably 3.7 or greater.
 - If installing locally, you need the dependencies found in the [requirements.txt](https://github.com/willeagren/gromp/blob/55a99e52138a7c9f3b5faa446c30bc6b66c9295d/requirements.txt) file.
 - To perform requests you need an API key from Riot Games, get yours [here](https://developer.riotgames.com/).
 
