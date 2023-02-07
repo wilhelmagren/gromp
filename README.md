@@ -1,4 +1,4 @@
-# Gromp [![PyPi version](https://img.shields.io/pypi/v/gromp.svg)](https://pypi.org/project/gromp/) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![codecov](https://codecov.io/gh/willeagren/gromp/branch/main/graph/badge.svg?token=52WSCE8Q09)](https://codecov.io/gh/willeagren/gromp)
+# Gromp [![PyPi version](https://img.shields.io/pypi/v/gromp.svg)](https://pypi.org/project/gromp/) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![codecov](https://codecov.io/gh/willeagren/gromp/branch/main/graph/badge.svg?token=52WSCE8Q09)](https://codecov.io/gh/willeagren/gromp) [![Unit tests](https://github.com/willeagren/gromp/actions/workflows/unittest.yml/badge.svg)](https://github.com/willeagren/gromp/actions)
 
 Gromp is a minimal wrapper of the public [Riot Games developer API](https://developer.riotgames.com/apis), 
 written in Python. All public methods as of 2023-02-07 are implemented.
