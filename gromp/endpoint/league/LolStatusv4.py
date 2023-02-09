@@ -22,11 +22,21 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-05
-Last updated: 2023-02-05
+Last updated: 2023-02-09
 """
 
 from gromp.endpoint import NamedEndpoint
+from gromp.url.league import LolStatusv4Url
+
+__all__ = (
+    'LolStatusv4',
+)
 
 class LolStatusv4(NamedEndpoint):
-    pass
+    def get(self):
+        """
+        """
+        return self._request_api(
+            LolStatusv4Url(),
+        )
 

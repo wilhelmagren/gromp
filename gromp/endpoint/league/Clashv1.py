@@ -21,32 +21,54 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-File created: 2023-02-06
+File created: 2023-02-09
 Last updated: 2023-02-09
 """
 
-from gromp.url import LeagueUrl
+from gromp.endpoint import NamedEndpoint
+from gromp.url.league import Clashv1Url
 
 __all__ = (
-    'TournamentStubv4Url',
+    'Clashv1',
 )
 
-class TournamentStubv4Url(LeagueUrl):
+class Clashv1(NamedEndpoint):
+    def summoner_by_id(self, summoner_id: str):
+        """
+        """
+        return self._request_api(
+            Clashv1Url('summoner_by_id'),
+            summoner_id=summoner_id,
+        )
 
-    api = {
-        'codes':
-        'codes',
+    def team_by_id(self, team_id: str):
+        """
+        """
+        return self._request_api(
+            Clashv1Url('team_by_id'),
+            team_id=team_id,
+        )
 
-        'events_by_code':
-        'lobby-events/by-code/{tournament_code}',
+    def tournaments(self):
+        """
+        """
+        return self._request_api(
+            Clashv1Url('tournaments'),
+        )
 
-        'providers':
-        'providers',
+    def tournament_by_team(self, team_id: str):
+        """
+        """
+        return self._request_api(
+            Clashv1Url('tournament_by_team_id'),
+            team_id=team_id,
+        )
 
-        'tournaments':
-        'tournaments',
-    }
-
-    def __init__(self, key: str) -> None:
-        super().__init__('{platform}', f'tournament-stub/v4/{self.api[key]}')
+    def tournament_by_id(self, tournament_id: str):
+        """
+        """
+        return self._request_api(
+            Clashv1Url('tournament_by_id'),
+            tournament_id=tournament_id,
+        )
 

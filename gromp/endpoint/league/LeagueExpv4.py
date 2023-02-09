@@ -21,32 +21,25 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-File created: 2023-02-06
+File created: 2023-02-09
 Last updated: 2023-02-09
 """
 
-from gromp.url import LeagueUrl
+from gromp.endpoint import NamedEndpoint
+from gromp.url.league import LeagueExpv4Url
 
 __all__ = (
-    'TournamentStubv4Url',
+    'LeagueExpv4',
 )
 
-class TournamentStubv4Url(LeagueUrl):
-
-    api = {
-        'codes':
-        'codes',
-
-        'events_by_code':
-        'lobby-events/by-code/{tournament_code}',
-
-        'providers':
-        'providers',
-
-        'tournaments':
-        'tournaments',
-    }
-
-    def __init__(self, key: str) -> None:
-        super().__init__('{platform}', f'tournament-stub/v4/{self.api[key]}')
+class LeagueExpv4(NamedEndpoint):
+    def by_queue_tier_division(self, queue: str, tier: str, division: str):
+        """
+        """
+        return self._request_api(
+            LeagueExpv4Url('by_queue_tier_division'),
+            queue=queue,
+            tier=tier,
+            division=division,
+        )
 

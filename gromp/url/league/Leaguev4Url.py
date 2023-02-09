@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-06
-Last updated: 2023-02-06
+Last updated: 2023-02-09
 """
 
 from gromp.url import LeagueUrl
@@ -34,10 +34,18 @@ __all__ = (
 class Leaguev4Url(LeagueUrl):
 
     api = {
-        'challenger_queue': 'challengerleagues/by-queue/{challenger_queue}',
-        'encrypted_summoner_id': 'entries/by-summoner/{encrypted_summoner_id}',
-        'by_queue_tier_division': 'entries/{queue}/{tier}/{division}',
-        'grandmaster_queue': 'grandmasterleagues/by-queue/{queue}',
+        'challenger_queue':
+        'challengerleagues/by-queue/{challenger_queue}',
+
+        'encrypted_summoner_id':
+        'entries/by-summoner/{encrypted_summoner_id}',
+
+        'by_queue_tier_division':
+        'entries/{queue}/{tier}/{division}',
+
+        'grandmaster_queue':
+        'grandmasterleagues/by-queue/{grandmaster_queue}',
+
         'by_id': 'leagues/{league_id}',
         'master_queue': 'masterleagues/by-queue/{master_queue}',
     }

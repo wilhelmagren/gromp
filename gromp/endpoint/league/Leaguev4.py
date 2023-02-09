@@ -22,11 +22,65 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-05
-Last updated: 2023-02-05
+Last updated: 2023-02-09
 """
 
 from gromp.endpoint import NamedEndpoint
+from gromp.url.league import Leaguev4Url
+
+__all__ = (
+    'Leaguev4',
+)
 
 class Leaguev4(object):
-    pass
+    def challenger_by_queue(self, queue: str):
+        """
+        """
+        return self._request_api(
+            Leaguev4Url('challenger_queue'),
+            challenger_queue=queue,
+
+        )
+
+    def by_summoner_id(self, summoner_id: str):
+        """
+        """
+        return self._request_api(
+            Leaguev4Url('encrypted_summoner_id'),
+            encrypted_summoner_id=summoner_id,
+        )
+
+    def by_queue_tier_division(self, queue: str, tier: str, divion: str):
+        """
+        """
+        return self._request_api(
+            Leaguev4Url('by_queue_tier_division'),
+            queue=queue,
+            tier=tier,
+            division=division,
+        )
+
+    def grandmaster_by_queue(self, queue: str):
+        """
+        """
+        return self._request_api(
+            Leaguev4Url('grandmaster_queue'),
+            grandmaster_queue=queue,
+        )
+    
+    def by_id(self, league_id: str):
+        """
+        """
+        return self._request_api(
+            Leaguev4Url('by_id'),
+            league_id=league_id,
+        )
+
+    def master_by_queue(self, queue: str):
+        """
+        """
+        return self._request_api(
+            Leaguev4Url('master_queue'),
+            master_queue=master_queue,
+        )
 

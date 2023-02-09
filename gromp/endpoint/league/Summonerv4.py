@@ -22,11 +22,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-05
-Last updated: 2023-02-06
+Last updated: 2023-02-09
 """
 
 from gromp.endpoint import NamedEndpoint
 from gromp.url.league import Summonerv4Url
+
+__all__ = (
+    'Summonerv4',
+)
 
 class Summonerv4(NamedEndpoint):
     def by_account(self, encrypted_account_id: str):
