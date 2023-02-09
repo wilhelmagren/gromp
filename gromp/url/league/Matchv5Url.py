@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-06
-Last updated: 2023-02-06
+Last updated: 2023-02-09
 """
 
 from gromp.url import LeagueUrl
@@ -34,9 +34,14 @@ __all__ = (
 class Matchv5Url(LeagueUrl):
 
     api = {
-        'matchlist_by_puuid': 'by-puuid/{puuid}/ids',
-        'by_id': '{match_id}',
-        'timeline_by_id': '{match_id}/timeline',
+        'matchlist_by_puuid':
+        'by-puuid/{puuid}/ids',
+
+        'by_id':
+        '{match_id}',
+
+        'timeline_by_id':
+        '{match_id}/timeline',
     }
 
     def __init__(self, key: str) -> None:

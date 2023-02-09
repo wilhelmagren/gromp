@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-06
-Last updated: 2023-02-06
+Last updated: 2023-02-09
 """
 
 from gromp.url import LeagueUrl
@@ -32,6 +32,6 @@ __all__ = (
 )
 
 class LolStatusv4Url(LeagueUrl):
-    def __init__(self, key: str) -> None:
+    def __init__(self) -> None:
         super().__init__('{platform}', f'status/v4/platform-data')
 
