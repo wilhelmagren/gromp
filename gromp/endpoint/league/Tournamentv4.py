@@ -21,59 +21,52 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-File created: 2023-02-05
+File created: 2023-02-09
 Last updated: 2023-02-09
 """
 
 from gromp.endpoint import NamedEndpoint
-from gromp.url.league import Matchv5Url
+from gromp.url.league import Tournamentv4Url
 
 __all__ = (
-    'Matchv5',
+    'Tournamentv4',
 )
 
-class Matchv5(NamedEndpoint):
-    def matchlist_by_puuid(
-        self,
-        puuid: str,
-        start_time: int = None,
-        end_time: int = None,
-        queue: int = None,
-        type_: str = None,
-        start: int = None,
-        count: int = None,
-    ):
+class Tournamentv4(NamedEndpoint):
+    def codes(self):
         """
-        Get a matchlist for ranked games played on the account associated with the puuid.
-        Supports filtering on queue, type of game (default ranked game), when in time
-        to consider games for the matchlist, and the number of games to include.
         """
         return self._request_api(
-            Matchv5Url('matchlist_by_puuid'),
-            puuid=puuid,
-            startTime=start_time,
-            endTime=end_time,
-            queue=queue,
-            type=type_,
-            start=start,
-            count=count,
+            Tournamentv4Url('codes'),
         )
 
-    def by_id(self, match_id: str):
+    def dto_by_code(self, tournament_code: str):
         """
-        Get the history of a match by the match ID.
         """
         return self._request_api(
-            Matchv5Url('by_id'),
-            match_id=match_id,
+            Tournamentv4Url('dto_by_code'),
+            tournament_code=tournament_code,
         )
 
-    def timeline_by_id(self, match_id: str):
+    def events_by_code(self, tournament_code: str):
         """
-        Get the timeline of a match by the match ID.
         """
         return self._request_api(
-            Matchv5Url('timeline_by_id'),
-            match_id=match_id,
+            Tournamentv4Url('events_by_code'),
+            tournament_code=tournament_code,
+        )
+
+    def providers(self):
+        """
+        """
+        return self._request_api(
+            Tournamentv4Url('providers'),
+        )
+
+    def tournaments(self):
+        """
+        """
+        return self._request_api(
+            Tournamentv4Url('tournaments'),
         )
 

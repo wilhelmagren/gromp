@@ -21,59 +21,62 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-File created: 2023-02-05
+File created: 2023-02-09
 Last updated: 2023-02-09
 """
 
 from gromp.endpoint import NamedEndpoint
-from gromp.url.league import Matchv5Url
+from gromp.url.league import LolChallengesv1Url
 
 __all__ = (
-    'Matchv5',
+    'LolChallengesv1',
 )
 
-class Matchv5(NamedEndpoint):
-    def matchlist_by_puuid(
-        self,
-        puuid: str,
-        start_time: int = None,
-        end_time: int = None,
-        queue: int = None,
-        type_: str = None,
-        start: int = None,
-        count: int = None,
-    ):
+class LolChallengesv1(NamedEndpoint):
+    def config(self):
         """
-        Get a matchlist for ranked games played on the account associated with the puuid.
-        Supports filtering on queue, type of game (default ranked game), when in time
-        to consider games for the matchlist, and the number of games to include.
         """
         return self._request_api(
-            Matchv5Url('matchlist_by_puuid'),
+            LolChallengesv1Url('config'),
+        )
+
+    def percentiles(self):
+        """
+        """
+        return self._request_api(
+            LolChallengesv1Url('percentiles'),
+        )
+
+    def challenge_config(self, challenge_id: str):
+        """
+        """
+        return self._request_api(
+            LolChallengesv1Url('challenge_config'),
+            challenge_id=challenge_id,
+        )
+
+    def top_players_for_challenge(self, challenge_id: str, level):
+        """
+        """
+        return self._request_api(
+            LolChallengesv1Url('top_players_for_challenge'),
+            challenge_id=challenge_id,
+            level=level,
+        )
+
+    def challenge_percentile(self, challenge_id: str):
+        """
+        """
+        return self._request_api(
+            LolChallengesv1Url('challenge_percentiles'),
+            challenge_id=challenge_id,
+        )
+
+    def player_data_by_puuid(self, puuid: str):
+        """
+        """
+        return self._request_api(
+            LolChallengesv1Url('player_data_by_puuid'),
             puuid=puuid,
-            startTime=start_time,
-            endTime=end_time,
-            queue=queue,
-            type=type_,
-            start=start,
-            count=count,
-        )
-
-    def by_id(self, match_id: str):
-        """
-        Get the history of a match by the match ID.
-        """
-        return self._request_api(
-            Matchv5Url('by_id'),
-            match_id=match_id,
-        )
-
-    def timeline_by_id(self, match_id: str):
-        """
-        Get the timeline of a match by the match ID.
-        """
-        return self._request_api(
-            Matchv5Url('timeline_by_id'),
-            match_id=match_id,
         )
 

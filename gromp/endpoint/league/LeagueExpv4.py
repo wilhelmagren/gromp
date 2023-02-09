@@ -21,22 +21,25 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-File created: 2023-02-05
+File created: 2023-02-09
 Last updated: 2023-02-09
 """
 
 from gromp.endpoint import NamedEndpoint
-from gromp.url.league import LolStatusv4Url
+from gromp.url.league import LeagueExpv4Url
 
 __all__ = (
-    'LolStatusv4',
+    'LeagueExpv4',
 )
 
-class LolStatusv4(NamedEndpoint):
-    def get(self):
+class LeagueExpv4(NamedEndpoint):
+    def by_queue_tier_division(self, queue: str, tier: str, division: str):
         """
         """
         return self._request_api(
-            LolStatusv4Url(),
+            LeagueExpv4Url('by_queue_tier_division'),
+            queue=queue,
+            tier=tier,
+            division=division,
         )
 

@@ -22,11 +22,29 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-05
-Last updated: 2023-02-05
+Last updated: 2023-02-09
 """
 
 from gromp.endpoint import NamedEndpoint
+from gromp.url.league import Spectatorv4Url
+
+__all__ = (
+    'Spectatorv4',
+)
 
 class Spectatorv4(NamedEndpoint):
-    pass
+    def by_summoner_id(self, summoner_id: str):
+        """
+        """
+        return self._request_api(
+            Spectatorv4Url('by_summoner'),
+            encrypted_summoner_id=summoner_id,
+        )
+
+    def featured_games(self):
+        """
+        """
+        return self._request_api(
+            Spectatorv4Url('featured_games'),
+        )
 

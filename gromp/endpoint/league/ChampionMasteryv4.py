@@ -21,59 +21,48 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-File created: 2023-02-05
+File created: 2023-02-09
 Last updated: 2023-02-09
 """
 
 from gromp.endpoint import NamedEndpoint
-from gromp.url.league import Matchv5Url
+from gromp.url.league import ChampionMasteryv4Url
 
 __all__ = (
-    'Matchv5',
+    'ChampionMasterv4',
 )
 
-class Matchv5(NamedEndpoint):
-    def matchlist_by_puuid(
-        self,
-        puuid: str,
-        start_time: int = None,
-        end_time: int = None,
-        queue: int = None,
-        type_: str = None,
-        start: int = None,
-        count: int = None,
-    ):
+class ChampionMasteryv4(NamedEndpoint):
+    def all_for_summoner(self, summoner_id: str):
         """
-        Get a matchlist for ranked games played on the account associated with the puuid.
-        Supports filtering on queue, type of game (default ranked game), when in time
-        to consider games for the matchlist, and the number of games to include.
         """
         return self._request_api(
-            Matchv5Url('matchlist_by_puuid'),
-            puuid=puuid,
-            startTime=start_time,
-            endTime=end_time,
-            queue=queue,
-            type=type_,
-            start=start,
-            count=count,
+            ChampionMasteryv4Url('all_for_summoner'),
+            encrypted_summoner_id=summoner_id,
         )
 
-    def by_id(self, match_id: str):
+    def champion_for_summoner(self, summoner_id: str, champion_id: str):
         """
-        Get the history of a match by the match ID.
         """
         return self._request_api(
-            Matchv5Url('by_id'),
-            match_id=match_id,
+            ChampionMasteryv4Url('champion_for_summoner'),
+            encrypted_summoner_id=summoner_id,
+            champion_id=champion_id,
         )
 
-    def timeline_by_id(self, match_id: str):
+    def top_for_summoner(self, summoner_id: str):
         """
-        Get the timeline of a match by the match ID.
         """
         return self._request_api(
-            Matchv5Url('timeline_by_id'),
-            match_id=match_id,
+            ChampionMasteryv4Url('top_for_summoner'),
+            encrypted_summoner_id=summoner_id,
+        )
+
+    def total_score_for_summoner(self, summoner_id: str):
+        """
+        """
+        return self._request_api(
+            ChampionMasteryv4Url('summoner_total_score'),
+            encrypted_summoner_id=summoner_id,
         )
 
