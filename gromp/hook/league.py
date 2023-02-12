@@ -30,7 +30,7 @@ from gromp.endpoint import NamedEndpoint
 from gromp.endpoint.league import (
     ChampionMasteryv4,
     Championv3,
-    Clashv1
+    Clashv1,
     LeagueExpv4,
     Leaguev4,
     LolChallengesv1,
