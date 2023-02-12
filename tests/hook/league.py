@@ -25,6 +25,7 @@ File created: 2023-02-12
 Last updated: 2023-02-12
 """
 
+import sys
 import logging
 import unittest
 from gromp.hook import League
@@ -64,50 +65,62 @@ class LeagueHookTest(unittest.TestCase):
         )
 
     def testChampionMasteryv4(self):
-        endpoint = self.hook.champion_mastery
-        self.assertEqual(endpoint.__class__, ChampionMasterv4)
+        logger.debug('Testing ChampionMasteryv4 endpoint...')
+        endpoint = self.hook.mastery
+        self.assertEqual(endpoint.__class__, ChampionMasteryv4)
 
     def testChampionv3(self):
+        logger.debug('Testing ChampionMasteryv4 endpoint...')
         endpoint = self.hook.champion
         self.assertEqual(endpoint.__class__, Championv3)
 
     def testClashv1(self):
+        logger.debug('Testing Clashv1 endpoint...')
         endpoint = self.hook.clash
         self.assertEqual(endpoint.__class__, Clashv1)
 
     def testLeagueExpv4(self):
+        logger.debug('Testing LeagueExpv4 endpoint...')
         endpoint = self.hook.league_exp
         self.assertEqual(endpoint.__class__, LeagueExpv4)
 
     def testLeaguev4(self):
+        logger.debug('Testing Leaguev4 endpoint...')
         endpoint = self.hook.league
         self.assertEqual(endpoint.__class__, Leaguev4)
 
     def testLolChallengesv1(self):
+        logger.debug('Testing LolChallengesv1 endpoint...')
         endpoint = self.hook.challenges
         self.assertEqual(endpoint.__class__, LolChallengesv1)
 
     def testLolStatusv4(self):
+        logger.debug('Testing LolStatusv4 endpoint...')
         endpoint = self.hook.status
         self.assertEqual(endpoint.__class__, LolStatusv4)
 
     def testMatchv5(self):
+        logger.debug('Testing Matchv5 endpoint...')
         endpoint = self.hook.match
         self.assertEqual(endpoint.__class__, Matchv5)
 
     def testSpectatorv4(self):
+        logger.debug('Testing Spectatorv4 endpoint...')
         endpoint = self.hook.spectator
         self.assertEqual(endpoint.__class__, Spectatorv4)
 
     def testSummonerv4(self):
+        logger.debug('Testing Summonerv4 endpoint...')
         endpoint = self.hook.summoner
         self.assertEqual(endpoint.__class__, Summonerv4)
 
     def testTournamentStubv4(self):
+        logger.debug('Testing TournamentStubv4 endpoint...')
         endpoint = self.hook.tournament_stub
         self.assertEqual(endpoint.__class__, TournamentStubv4)
 
     def testTournamentv4(self):
+        logger.debug('Testing Tournamentv4 endpoint...')
         endpoint = self.hook.tournament
         self.assertEqual(endpoint.__class__, Tournamentv4)
 
