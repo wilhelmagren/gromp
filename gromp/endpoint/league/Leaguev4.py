@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-05
-Last updated: 2023-02-09
+Last updated: 2023-02-12
 """
 
 from gromp.endpoint import NamedEndpoint
@@ -32,7 +32,7 @@ __all__ = (
     'Leaguev4',
 )
 
-class Leaguev4(object):
+class Leaguev4(NamedEndpoint):
     def challenger_by_queue(self, queue: str):
         """
         """
