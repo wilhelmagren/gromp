@@ -1,0 +1,21 @@
+name: Auto assign PR
+
+on:
+  pull_request:
+    types: [ opened, edited, synchronize, reopened ]
+
+jobs:
+  auto-assign-PR:
+    name: Auto assign PR
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+    - uses: pozil/auto-assign-issue@v1
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        assignees: willeagren
+        numOfAssignee: 1
+        allowNoAssignees: false
+        allowSelfAssign: true
+
