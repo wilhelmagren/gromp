@@ -22,11 +22,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-05
-Last updated: 2023-02-09
+Last updated: 2023-02-12
 """
 
 from gromp.endpoint import NamedEndpoint
-from gromp.url.league import SpectatorStubv4Url
+from gromp.url.league import TournamentStubv4Url
 
 __all__ = (
     'TournamentStubv4',
