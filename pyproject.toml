@@ -4,15 +4,20 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "gromp"
-version = "0.3.0"
+version = "0.4.0"
 authors = [
     { name="Wilhelm Ågren", email="wilhelmagren98@gmail.com" },
 ]
-description = "Holistic python wrapper for the public Riot Games developer API, written in Python."
+description = "Holistic python wrapper for the public Riot Games developer API."
 readme = "README.md"
-requires-python = ">=3.7"
+requires-python = ">=3.6"
 classifiers = [
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
@@ -22,3 +27,4 @@ classifiers = [
 
 [tool.setuptools]
 packages = ["gromp"]
+
