@@ -22,18 +22,24 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-01-23
-Last updated: 2023-02-07
+Last updated: 2023-02-12
 """
 
 from gromp.hook import Hook
 from gromp.endpoint import NamedEndpoint
 from gromp.endpoint.league import (
+    ChampionMasteryv4,
+    Championv3,
+    Clashv1
+    LeagueExpv4,
     Leaguev4,
+    LolChallengesv1,
     LolStatusv4,
     Matchv5,
     Spectatorv4,
     Summonerv4,
     TournamentStubv4,
+    Tournamentv4,
 )
 from gromp.utils import LeaguePlatforms, LeagueRegions
 
@@ -42,23 +48,39 @@ __all__ = (
 )
 
 class League(Hook):
-    def __init__(
-        self,
-        token: str,
-        **kwargs
-    ) -> None:
-        super().__init__(
+    def __init__(self, token: str, **kwargs) -> None:
+        super(League, self).__init__(
             token=token,
             game=self.__class__.__name__,
             **kwargs
         )
+    
+    @property
+    def mastery(self) -> ChampionMasteryv4:
+        return self._setup_named_endpoint(ChampionMasteryv4)
+
+    @property
+    def champion(self) -> Championv3:
+        return self._setup_named_endpoint(Championv3)
+    
+    @property
+    def clash(self) -> Clashv1:
+        return self._setup_named_endpoint(Clashv1)
+    
+    @property
+    def league_exp(self) -> LeagueExpv4:
+        return self._setup_named_endpoint(LeagueExpv4)
 
     @property
     def league(self) -> Leaguev4:
         return self._setup_named_endpoint(Leaguev4)
 
     @property
-    def lol_status(self) -> LolStatusv4:
+    def challenges(self) -> LolChallengesv1:
+        return self._setup_named_endpoint(LolChallengesv1)
+
+    @property
+    def status(self) -> LolStatusv4:
         return self._setup_named_endpoint(LolStatusv4)
 
     @property
@@ -76,4 +98,8 @@ class League(Hook):
     @property
     def tournament_stub(self) -> TournamentStubv4:
         return self._setup_named_endpoint(TournamentStubv4)
+
+    @property
+    def tournament(self) -> Tournamentv4:
+        return self._setup_named_endpoint(Tournamentv4)
 
