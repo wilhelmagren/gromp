@@ -22,9 +22,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-05
-Last updated: 2023-02-13
+Last updated: 2023-02-14
 """
 
+from .base import NamedEndpoint
 from .api import *
 from .league import *
 

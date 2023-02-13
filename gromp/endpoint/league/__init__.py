@@ -22,19 +22,19 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-05
-Last updated: 2023-02-13
+Last updated: 2023-02-14
 """
 
-from gromp.endpoint.league.ChampionMasteryv4 import ChampionMasteryv4
-from gromp.endpoint.league.Championv3 import Championv3
-from gromp.endpoint.league.Clashv1 import Clashv1
-from gromp.endpoint.league.LeagueExpv4 import LeagueExpv4
-from gromp.endpoint.league.LolChallengesv1 import LolChallengesv1
-from gromp.endpoint.league.Leaguev4 import Leaguev4
-from gromp.endpoint.league.LolStatusv4 import LolStatusv4
-from gromp.endpoint.league.Matchv5 import Matchv5
-from gromp.endpoint.league.Spectatorv4 import Spectatorv4
-from gromp.endpoint.league.Summonerv4 import Summonerv4
-from gromp.endpoint.league.TournamentStubv4 import TournamentStubv4
-from gromp.endpoint.league.Tournamentv4 import Tournamentv4
+from .ChampionMasteryv4 import ChampionMasteryv4
+from .Championv3 import Championv3
+from .Clashv1 import Clashv1
+from .LeagueExpv4 import LeagueExpv4
+from .LolChallengesv1 import LolChallengesv1
+from .Leaguev4 import Leaguev4
+from .LolStatusv4 import LolStatusv4
+from .Matchv5 import Matchv5
+from .Spectatorv4 import Spectatorv4
+from .Summonerv4 import Summonerv4
+from .TournamentStubv4 import TournamentStubv4
+from .Tournamentv4 import Tournamentv4
 
