@@ -25,7 +25,7 @@ File created: 2023-01-23
 Last updated: 2023-02-13
 """
 
-from .base import Hook
+from gromp.hook.base import Hook
 from gromp.endpoint import NamedEndpoint
 from gromp.endpoint.league import (
     ChampionMasteryv4,
