@@ -51,7 +51,7 @@ console_handler = logging.StreamHandler()
 console_handler.setLevel(logging.DEBUG)
 
 formatter = logging.Formatter(
-    '[%(asctime)s] [%(name)s]\t[%(levelname)s] %(message)s'
+    '[%(asctime)s] [%(name)s] [%(levelname)s\n] %(message)s'
 )
 
 console_handler.setFormatter(formatter)
