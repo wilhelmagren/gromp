@@ -25,7 +25,6 @@ File created: 2023-02-05
 Last updated: 2023-02-13
 """
 
-from gromp.handler.base import Handler
 from gromp.handler.log import LogHandler
 from gromp.handler.json import JsonHandler
 
