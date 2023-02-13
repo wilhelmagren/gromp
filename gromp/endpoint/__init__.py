@@ -26,6 +26,5 @@ Last updated: 2023-02-14
 """
 
 from .base import NamedEndpoint
-from .api import *
 from .league import *
 

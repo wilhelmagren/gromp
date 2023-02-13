@@ -22,11 +22,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-05
-Last updated: 2023-02-13
+Last updated: 2023-02-14
 """
 
 from gromp.endpoint.base import NamedEndpoint
-from gromp.endpoint.api.league import Spectatorv4Api
+from gromp.api.league import Spectatorv4Api
 
 __all__ = (
     'Spectatorv4',

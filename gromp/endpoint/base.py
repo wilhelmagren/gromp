@@ -28,7 +28,7 @@ Last updated: 2023-02-06
 import rsa
 from rsa import PublicKey, PrivateKey
 from requests import Response, session
-from gromp.endpoint.api.base import Api
+from gromp.api.base import Api
 
 __all__ = (
     'NamedEndpoint',
