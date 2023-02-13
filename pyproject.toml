@@ -4,7 +4,7 @@ build-backend = 'setuptools.build_meta'
 
 [project]
 name = 'gromp'
-version = '0.4.5'
+version = '0.4.6'
 authors = [
     { name='Wilhelm Ågren', email='wilhelmagren98@gmail.com' },
 ]
@@ -28,5 +28,5 @@ classifiers = [
 'Homepage' = 'https://github.com/willeagren/gromp'
 
 [tool.setuptools]
-packages = ['gromp']
+packages = ['gromp', 'gromp.*']
 

@@ -6,10 +6,10 @@ with open('README.md', 'r', encoding='utf-8') as f:
 
 setup(
     name='gromp',
-    version='0.4.5',
+    version='0.4.6',
     author='Wilhelm Ågren',
     author_email='wilhelmagren98@gmail.com',
-    packages=find_packages(),
+    packages=find_packages(include=['gromp', 'gromp.*']),
     url='https://github.com/willeagren/gromp',
     classifiers=[
         'Programming Language :: Python :: 3',
