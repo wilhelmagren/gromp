@@ -21,18 +21,18 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-File created: 2023-02-05
-Last updated: 2023-02-06
+File created: 2023-02-13
+Last updated: 2023-02-13
 """
 
 import re
 
 __all__ = (
-    'Url',
-    'LeagueUrl',
+    'Api',
+    'LeagueApi',
 )
 
-class Url(object):
+class Api(object):
     def __init__(self, base: str, game: str, api: str) -> None:
         self._url = f'https://{base}.api.riotgames.com/{game}{api}'
 
@@ -58,7 +58,7 @@ class Url(object):
         request_url = self.url.format(**kwargs)
         return (request_url, query_params)
 
-class LeagueUrl(Url):
+class LeagueApi(Api):
     def __init__(self, base: str, api: str) -> None:
         super().__init__(base, 'lol/', api)
 

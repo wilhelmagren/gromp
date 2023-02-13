@@ -21,32 +21,10 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-File created: 2023-02-05
-Last updated: 2023-02-09
+File created: 2023-02-13
+Last updated: 2023-02-13
 """
 
-from gromp.url import LeagueUrl
-
-__all__ = (
-    'Summonerv4Url',
-)
-
-class Summonerv4Url(LeagueUrl):
-
-    api = {
-        'encrypted_account_id':
-        'by-account/{encrypted_account_id}',
-
-        'summoner_name':
-        'by-name/{summoner_name}',
-
-        'encrypted_puuid':
-        'by-puuid/{encrypted_puuid}',
-
-        'encrypted_summoner_id':
-        '{encrypted_summoner_id}',
-    }
-
-    def __init__(self, key: str) -> None:
-        super().__init__('{platform}', f'summoner/v4/summoners/{self.api[key]}')
+from .base import Api, LeagueApi
+from . import league
 

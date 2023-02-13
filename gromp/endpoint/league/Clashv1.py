@@ -22,11 +22,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-09
-Last updated: 2023-02-09
+Last updated: 2023-02-13
 """
 
-from gromp.endpoint import NamedEndpoint
-from gromp.url.league import Clashv1Url
+from gromp.endpoint.base import NamedEndpoint
+from gromp.endpoint.api.league import Clashv1Api
 
 __all__ = (
     'Clashv1',
@@ -37,7 +37,7 @@ class Clashv1(NamedEndpoint):
         """
         """
         return self._request_api(
-            Clashv1Url('summoner_by_id'),
+            Clashv1Api('summoner_by_id'),
             summoner_id=summoner_id,
         )
 
@@ -45,7 +45,7 @@ class Clashv1(NamedEndpoint):
         """
         """
         return self._request_api(
-            Clashv1Url('team_by_id'),
+            Clashv1Api('team_by_id'),
             team_id=team_id,
         )
 
@@ -53,14 +53,14 @@ class Clashv1(NamedEndpoint):
         """
         """
         return self._request_api(
-            Clashv1Url('tournaments'),
+            Clashv1Api('tournaments'),
         )
 
     def tournament_by_team(self, team_id: str):
         """
         """
         return self._request_api(
-            Clashv1Url('tournament_by_team_id'),
+            Clashv1Api('tournament_by_team_id'),
             team_id=team_id,
         )
 
@@ -68,7 +68,7 @@ class Clashv1(NamedEndpoint):
         """
         """
         return self._request_api(
-            Clashv1Url('tournament_by_id'),
+            Clashv1Api('tournament_by_id'),
             tournament_id=tournament_id,
         )
 

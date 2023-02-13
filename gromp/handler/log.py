@@ -26,7 +26,7 @@ Last updated: 2023-02-06
 """
 
 from requests import Response
-from gromp.handler.base import Handler
+from .base import Handler
 
 import logging
 logger = logging.getLogger(__name__)

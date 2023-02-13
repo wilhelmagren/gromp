@@ -25,8 +25,8 @@ File created: 2023-02-09
 Last updated: 2023-02-13
 """
 
-from gromp.endpoint import NamedEndpoint
-from gromp.url.league import ChampionMasteryv4Url
+from gromp.endpoint.base import NamedEndpoint
+from gromp.endpoint.api.league import ChampionMasteryv4Api
 
 __all__ = (
     'ChampionMasteryv4',
@@ -37,7 +37,7 @@ class ChampionMasteryv4(NamedEndpoint):
         """
         """
         return self._request_api(
-            ChampionMasteryv4Url('all_for_summoner'),
+            ChampionMasteryv4Api('all_for_summoner'),
             encrypted_summoner_id=summoner_id,
         )
 
@@ -45,7 +45,7 @@ class ChampionMasteryv4(NamedEndpoint):
         """
         """
         return self._request_api(
-            ChampionMasteryv4Url('champion_for_summoner'),
+            ChampionMasteryv4Api('champion_for_summoner'),
             encrypted_summoner_id=summoner_id,
             champion_id=champion_id,
         )
@@ -54,7 +54,7 @@ class ChampionMasteryv4(NamedEndpoint):
         """
         """
         return self._request_api(
-            ChampionMasteryv4Url('top_for_summoner'),
+            ChampionMasteryv4Api('top_for_summoner'),
             encrypted_summoner_id=summoner_id,
         )
 
@@ -62,7 +62,7 @@ class ChampionMasteryv4(NamedEndpoint):
         """
         """
         return self._request_api(
-            ChampionMasteryv4Url('summoner_total_score'),
+            ChampionMasteryv4Api('summoner_total_score'),
             encrypted_summoner_id=summoner_id,
         )
 

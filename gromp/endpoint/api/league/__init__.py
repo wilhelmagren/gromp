@@ -21,17 +21,20 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-File created: 2023-02-06
-Last updated: 2023-02-09
+File created: 2023-02-13
+Last updated: 2023-02-13
 """
 
-from gromp.url import LeagueUrl
-
-__all__ = (
-    'LolStatusv4Url',
-)
-
-class LolStatusv4Url(LeagueUrl):
-    def __init__(self) -> None:
-        super().__init__('{platform}', f'status/v4/platform-data')
+from .ChampionMasteryv4Api import ChampionMasteryv4Api
+from .Championv3Api import Championv3Api
+from .Clashv1Api import Clashv1Api
+from .LeagueExpv4Api import LeagueExpv4Api
+from .Leaguev4Api import Leaguev4Api
+from .LolChallengesv1Api import LolChallengesv1Api
+from .LolStatusv4Api import LolStatusv4Api
+from .Matchv5Api import Matchv5Api
+from .Spectatorv4Api import Spectatorv4Api
+from .Summonerv4Api import Summonerv4Api
+from .TournamentStubv4Api import TournamentStubv4Api
+from .Tournamentv4Api import Tournamentv4Api
 

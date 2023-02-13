@@ -32,7 +32,7 @@ from gromp.utils import (
     Platforms,
     Regions,
 )
-from gromp.endpoint import NamedEndpoint
+from gromp.endpoint.base import NamedEndpoint
 from gromp.handler import LogHandler, JsonHandler 
 
 __all__ = (

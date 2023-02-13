@@ -25,10 +25,9 @@ File created: 2023-01-23
 Last updated: 2023-02-13
 """
 
-from gromp import handler
-from gromp import url
-from gromp import endpoint
-from gromp import hook
+from .handler import *
+from .endpoint import *
+from .hook import *
 from gromp.utils import *
 
 # Create logger and set up configuration
@@ -51,7 +50,7 @@ console_handler = logging.StreamHandler()
 console_handler.setLevel(logging.DEBUG)
 
 formatter = logging.Formatter(
-    '[%(asctime)s] [%(name)s] [%(levelname)s\n] %(message)s'
+    '[%(asctime)s] [%(name)s] [%(levelname)s\t] %(message)s'
 )
 
 console_handler.setFormatter(formatter)
