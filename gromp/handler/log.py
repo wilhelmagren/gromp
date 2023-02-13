@@ -22,11 +22,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-06
-Last updated: 2023-02-06
+Last updated: 2023-02-13
 """
 
 from requests import Response
-from .base import Handler
+from gromp.handler.base import Handler
 
 import logging
 logger = logging.getLogger(__name__)
