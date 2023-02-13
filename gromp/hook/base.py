@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-01-23
-Last updated: 2023-02-07
+Last updated: 2023-02-13
 """
 
 import rsa
@@ -32,7 +32,7 @@ from gromp.utils import (
     Platforms,
     Regions,
 )
-from gromp.endpoint.base import NamedEndpoint
+from gromp.endpoint import NamedEndpoint
 from gromp.handler import LogHandler, JsonHandler 
 
 __all__ = (

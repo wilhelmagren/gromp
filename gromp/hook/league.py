@@ -22,10 +22,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-01-23
-Last updated: 2023-02-12
+Last updated: 2023-02-13
 """
 
-from gromp.hook import Hook
+from .base import Hook
 from gromp.endpoint import NamedEndpoint
 from gromp.endpoint.league import (
     ChampionMasteryv4,
