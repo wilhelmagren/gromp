@@ -25,7 +25,7 @@ File created: 2023-02-05
 Last updated: 2023-02-13
 """
 
-from .base import NamedEndpoint
-from . import api
-from . import league
+from gromp.endpoint.base import NamedEndpoint
+from gromp.endpoint import api
+from gromp.endpoint import league
 

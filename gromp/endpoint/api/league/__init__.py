@@ -25,16 +25,16 @@ File created: 2023-02-13
 Last updated: 2023-02-13
 """
 
-from .ChampionMasteryv4Api import ChampionMasteryv4Api
-from .Championv3Api import Championv3Api
-from .Clashv1Api import Clashv1Api
-from .LeagueExpv4Api import LeagueExpv4Api
-from .Leaguev4Api import Leaguev4Api
-from .LolChallengesv1Api import LolChallengesv1Api
-from .LolStatusv4Api import LolStatusv4Api
-from .Matchv5Api import Matchv5Api
-from .Spectatorv4Api import Spectatorv4Api
-from .Summonerv4Api import Summonerv4Api
-from .TournamentStubv4Api import TournamentStubv4Api
-from .Tournamentv4Api import Tournamentv4Api
+from gromp.endpoint.api.league.ChampionMasteryv4Api import ChampionMasteryv4Api
+from gromp.endpoint.api.league.Championv3Api import Championv3Api
+from gromp.endpoint.api.league.Clashv1Api import Clashv1Api
+from gromp.endpoint.api.league.LeagueExpv4Api import LeagueExpv4Api
+from gromp.endpoint.api.league.Leaguev4Api import Leaguev4Api
+from gromp.endpoint.api.league.LolChallengesv1Api import LolChallengesv1Api
+from gromp.endpoint.api.league.LolStatusv4Api import LolStatusv4Api
+from gromp.endpoint.api.league.Matchv5Api import Matchv5Api
+from gromp.endpoint.api.league.Spectatorv4Api import Spectatorv4Api
+from gromp.endpoint.api.league.Summonerv4Api import Summonerv4Api
+from gromp.endpoint.api.league.TournamentStubv4Api import TournamentStubv4Api
+from gromp.endpoint.api.league.Tournamentv4Api import Tournamentv4Api
 
