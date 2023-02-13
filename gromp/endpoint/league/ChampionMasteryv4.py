@@ -22,14 +22,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-09
-Last updated: 2023-02-09
+Last updated: 2023-02-13
 """
 
 from gromp.endpoint import NamedEndpoint
 from gromp.url.league import ChampionMasteryv4Url
 
 __all__ = (
-    'ChampionMasterv4',
+    'ChampionMasteryv4',
 )
 
 class ChampionMasteryv4(NamedEndpoint):
