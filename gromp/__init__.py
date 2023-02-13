@@ -22,11 +22,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-01-23
-Last updated: 2023-02-13
+Last updated: 2023-02-14
 """
 
-from gromp.handler import *
-from gromp.hook import *
+from gromp import hook
 from gromp.utils import *
 
 # Create logger and set up configuration
