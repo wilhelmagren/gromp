@@ -70,7 +70,7 @@ class LeagueHookTest(unittest.TestCase):
         self.assertEqual(endpoint.__class__, ChampionMasteryv4)
 
     def testChampionv3(self):
-        logger.debug('Testing ChampionMasteryv4 endpoint...')
+        logger.debug('Testing Championv3 endpoint...')
         endpoint = self.hook.champion
         self.assertEqual(endpoint.__class__, Championv3)
 
