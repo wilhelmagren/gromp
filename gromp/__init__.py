@@ -25,8 +25,8 @@ File created: 2023-01-23
 Last updated: 2023-02-13
 """
 
-from .handler import *
-from .hook import *
+from gromp.handler import *
+from gromp.hook import *
 from gromp.utils import *
 
 # Create logger and set up configuration
