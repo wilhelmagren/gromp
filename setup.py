@@ -10,7 +10,6 @@ setup(
     author='Wilhelm Ågren',
     author_email='wilhelmagren98@gmail.com',
     packages=find_packages(),
-    license='MIT',
     url='https://github.com/willeagren/gromp',
     classifiers=[
         'Programming Language :: Python :: 3',
