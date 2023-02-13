@@ -22,25 +22,31 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-13
-Last updated: 2023-02-13
+Last updated: 2023-02-14
 """
 
-from gromp.endpoint.api.base import LeagueApi
+from gromp.api.base import LeagueApi
 
 __all__ = (
-    'Spectatorv4Api',
+    'TournamentStubv4Api',
 )
 
-class Spectatorv4Api(LeagueApi):
+class TournamentStubv4Api(LeagueApi):
 
     api = {
-        'by_summoner':
-        'active-games/by-summoner/{encrypted_summoner_id}',
+        'codes':
+        'codes',
 
-        'featured_games':
-        'featured-games',
+        'events_by_code':
+        'lobby-events/by-code/{tournament_code}',
+
+        'providers':
+        'providers',
+
+        'tournaments':
+        'tournaments',
     }
 
     def __init__(self, key: str) -> None:
-        super().__init__('{platform}', f'spectator/v4/{self.api[key]}')
+        super().__init__('{platform}', f'tournament-stub/v4/{self.api[key]}')
 

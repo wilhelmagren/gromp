@@ -22,16 +22,28 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-13
-Last updated: 2023-02-13
+Last updated: 2023-02-14
 """
 
-from gromp.endpoint.api.base import LeagueApi
+from gromp.api.base import LeagueApi
 
 __all__ = (
-    'Championv3Api',
+    'Matchv5Api',
 )
 
-class Championv3Api(LeagueApi):
-    def __init__(self) -> None:
-        super().__init__('{platform}', f'platform/v3/champion-rotations')
+class Matchv5Api(LeagueApi):
+
+    api = {
+        'matchlist_by_puuid':
+        'by-puuid/{puuid}/ids',
+
+        'by_id':
+        '{match_id}',
+
+        'timeline_by_id':
+        '{match_id}/timeline',
+    }
+
+    def __init__(self, key: str) -> None:
+        super().__init__('{region}', f'match/v5/matches/{self.api[key]}')
 

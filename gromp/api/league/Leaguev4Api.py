@@ -22,34 +22,34 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-13
-Last updated: 2023-02-13
+Last updated: 2023-02-14
 """
 
-from gromp.endpoint.api.base import LeagueApi
+from gromp.api.base import LeagueApi
 
 __all__ = (
-    'Clashv1Api',
+    'Leaguev4Api',
 )
 
-def Clashv1Api(LeagueApi):
+class Leaguev4Api(LeagueApi):
 
     api = {
-        'summoner_by_id':
-        'players/by-summoner/{summoner_id}',
+        'challenger_queue':
+        'challengerleagues/by-queue/{challenger_queue}',
 
-        'team_by_id':
-        'teams/{team_id}',
+        'encrypted_summoner_id':
+        'entries/by-summoner/{encrypted_summoner_id}',
 
-        'tournaments':
-        'tournaments',
+        'by_queue_tier_division':
+        'entries/{queue}/{tier}/{division}',
 
-        'tournament_by_team_id':
-        'tournaments/by-team/{team_id}',
+        'grandmaster_queue':
+        'grandmasterleagues/by-queue/{grandmaster_queue}',
 
-        'tournament_by_id':
-        'tournaments/{tournament_id}',
+        'by_id': 'leagues/{league_id}',
+        'master_queue': 'masterleagues/by-queue/{master_queue}',
     }
 
     def __init__(self, key: str) -> None:
-        super().__init__('{platform}', f'clash/v1/{self.api[key]}')
+        super().__init__('{platform}', f'league/v4/{self.api[key]}')
 

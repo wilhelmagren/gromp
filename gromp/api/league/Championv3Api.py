@@ -22,31 +22,16 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-13
-Last updated: 2023-02-13
+Last updated: 2023-02-14
 """
 
-from gromp.endpoint.api.base import LeagueApi
+from gromp.api.base import LeagueApi
 
 __all__ = (
-    'ChampionMasteryv4Api',
+    'Championv3Api',
 )
 
-class ChampionMasteryv4Api(LeagueApi):
-
-    api = {
-        'all_for_summoner':
-        'champion-masteries/by-summoner/{encrypted_summoner_id}',
-
-        'champion_for_summoner':
-        'champion-masteries/by-summoner/{encrypted_summoner_id}/by-champion/{champion_id}',
-
-        'top_for_summoner':
-        'champion-masteries/by-summoner/{encrypted_summoner_id}/top',
-
-        'summoner_total_score':
-        'scores/by-summoner/{encrypted_summoner_id}',
-    }
-
-    def __init__(self, key: str) -> None:
-        super().__init__('{platform}', f'champion-master/v4/{self.api[key]}')
+class Championv3Api(LeagueApi):
+    def __init__(self) -> None:
+        super().__init__('{platform}', f'platform/v3/champion-rotations')
 

@@ -22,16 +22,34 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-13
-Last updated: 2023-02-13
+Last updated: 2023-02-14
 """
 
-from gromp.endpoint.api.base import LeagueApi
+from gromp.api.base import LeagueApi
 
 __all__ = (
-    'LolStatusv4Api',
+    'Tournamentv4Api',
 )
 
-class LolStatusv4Api(LeagueApi):
-    def __init__(self) -> None:
-        super().__init__('{platform}', f'status/v4/platform-data')
+class Tournamentv4Api(LeagueApi):
+
+    api = {
+        'codes':
+        'codes',
+
+        'dto_by_code':
+        'codes/{tournament_code}',
+        
+        'events_by_code':
+        'lobby-events/by-code/{tournament_code}',
+
+        'providers':
+        'providers',
+
+        'tournaments':
+        'tournaments',
+    }
+
+    def __init__(self, key: str) -> None:
+        super().__init__('{platform}', f'tournament/v4/{self.api[key]}')
 

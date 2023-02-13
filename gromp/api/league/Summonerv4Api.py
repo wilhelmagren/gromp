@@ -22,37 +22,31 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-13
-Last updated: 2023-02-13
+Last updated: 2023-02-14
 """
 
-from gromp.endpoint.api.base import LeagueApi
+from gromp.api.base import LeagueApi
 
 __all__ = (
-    'LolChallengesv1Api',
+    'Summonerv4Api',
 )
 
-class LolChallengesv1Api(LeagueApi):
+class Summonerv4Api(LeagueApi):
 
     api = {
-        'config':
-        'challenges/config',
+        'encrypted_account_id':
+        'by-account/{encrypted_account_id}',
 
-        'percentiles':
-        'challenges/percentiles',
+        'summoner_name':
+        'by-name/{summoner_name}',
 
-        'challenge_config':
-        'challenges/{challenge_id}/config',
+        'encrypted_puuid':
+        'by-puuid/{encrypted_puuid}',
 
-        'top_players_for_challenge':
-        'challenges/{challenge_id}/leaderboards/by-level/{level}',
-
-        'challenge_percentiles':
-        'challenges/{challenge_id}/percentiles',
-
-        'player_data_by_puuid':
-        'player-data/{puuid}',
+        'encrypted_summoner_id':
+        '{encrypted_summoner_id}',
     }
 
     def __init__(self, key: str) -> None:
-        super().__init__('{platform}', f'challenges/v1/{self.api[key]}')
+        super().__init__('{platform}', f'summoner/v4/summoners/{self.api[key]}')
 

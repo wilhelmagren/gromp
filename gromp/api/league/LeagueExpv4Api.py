@@ -22,31 +22,22 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-13
-Last updated: 2023-02-13
+Last updated: 2023-02-14
 """
 
-from gromp.endpoint.api.base import LeagueApi
+from gromp.api.base import LeagueApi
 
 __all__ = (
-    'Summonerv4Api',
+    'LeagueExpv4Api',
 )
 
-class Summonerv4Api(LeagueApi):
+class LeagueExpv4Api(LeagueApi):
 
     api = {
-        'encrypted_account_id':
-        'by-account/{encrypted_account_id}',
-
-        'summoner_name':
-        'by-name/{summoner_name}',
-
-        'encrypted_puuid':
-        'by-puuid/{encrypted_puuid}',
-
-        'encrypted_summoner_id':
-        '{encrypted_summoner_id}',
+        'by_queue_tier_division':
+        'entries/{queue}/{tier}/{division}',
     }
 
     def __init__(self, key: str) -> None:
-        super().__init__('{platform}', f'summoner/v4/summoners/{self.api[key]}')
+        super().__init__('{platform}', f'league-exp/v4/{self.api[key]}')
 
