@@ -4,7 +4,7 @@ build-backend = 'setuptools.build_meta'
 
 [project]
 name = 'gromp'
-version = '0.4.1'
+version = '0.4.2'
 authors = [
     { name='Wilhelm Ågren', email='wilhelmagren98@gmail.com' },
 ]
