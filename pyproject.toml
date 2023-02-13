@@ -28,5 +28,5 @@ classifiers = [
 'Homepage' = 'https://github.com/willeagren/gromp'
 
 [tool.setuptools]
-packages = ['gromp', 'gromp.*']
+packages = ['gromp', 'gromp.handler', 'gromp.hook', 'gromp.endpoint', 'gromp.endpoint.api']
 
