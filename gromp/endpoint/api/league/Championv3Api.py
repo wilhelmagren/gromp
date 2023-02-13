@@ -21,38 +21,17 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-File created: 2023-02-09
-Last updated: 2023-02-09
+File created: 2023-02-13
+Last updated: 2023-02-13
 """
 
-from gromp.url import LeagueUrl
+from gromp.endpoint.api.base import LeagueApi
 
 __all__ = (
-    'LolChallengesv1Url',
+    'Championv3Api',
 )
 
-class LolChallengesv1Url(LeagueUrl):
-
-    api = {
-        'config':
-        'challenges/config',
-
-        'percentiles':
-        'challenges/percentiles',
-
-        'challenge_config':
-        'challenges/{challenge_id}/config',
-
-        'top_players_for_challenge':
-        'challenges/{challenge_id}/leaderboards/by-level/{level}',
-
-        'challenge_percentiles':
-        'challenges/{challenge_id}/percentiles',
-
-        'player_data_by_puuid':
-        'player-data/{puuid}',
-    }
-
-    def __init__(self, key: str) -> None:
-        super().__init__('{platform}', f'challenges/v1/{self.api[key]}')
+class Championv3Api(LeagueApi):
+    def __init__(self) -> None:
+        super().__init__('{platform}', f'platform/v3/champion-rotations')
 

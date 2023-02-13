@@ -21,29 +21,38 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-File created: 2023-02-06
-Last updated: 2023-02-09
+File created: 2023-02-13
+Last updated: 2023-02-13
 """
 
-from gromp.url import LeagueUrl
+from gromp.endpoint.api.base import LeagueApi
 
 __all__ = (
-    'Matchv5Url',
+    'LolChallengesv1Api',
 )
 
-class Matchv5Url(LeagueUrl):
+class LolChallengesv1Api(LeagueApi):
 
     api = {
-        'matchlist_by_puuid':
-        'by-puuid/{puuid}/ids',
+        'config':
+        'challenges/config',
 
-        'by_id':
-        '{match_id}',
+        'percentiles':
+        'challenges/percentiles',
 
-        'timeline_by_id':
-        '{match_id}/timeline',
+        'challenge_config':
+        'challenges/{challenge_id}/config',
+
+        'top_players_for_challenge':
+        'challenges/{challenge_id}/leaderboards/by-level/{level}',
+
+        'challenge_percentiles':
+        'challenges/{challenge_id}/percentiles',
+
+        'player_data_by_puuid':
+        'player-data/{puuid}',
     }
 
     def __init__(self, key: str) -> None:
-        super().__init__('{region}', f'match/v5/matches/{self.api[key]}')
+        super().__init__('{platform}', f'challenges/v1/{self.api[key]}')
 

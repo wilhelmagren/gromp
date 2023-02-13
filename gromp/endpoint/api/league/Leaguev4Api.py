@@ -21,17 +21,17 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-File created: 2023-02-06
-Last updated: 2023-02-09
+File created: 2023-02-13
+Last updated: 2023-02-13
 """
 
-from gromp.url import LeagueUrl
+from gromp.endpoint.api.base import LeagueApi
 
 __all__ = (
-    'Leaguev4Url',
+    'Leaguev4Api',
 )
 
-class Leaguev4Url(LeagueUrl):
+class Leaguev4Api(LeagueApi):
 
     api = {
         'challenger_queue':

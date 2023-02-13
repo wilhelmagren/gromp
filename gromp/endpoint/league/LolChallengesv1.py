@@ -22,11 +22,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-09
-Last updated: 2023-02-09
+Last updated: 2023-02-13
 """
 
-from gromp.endpoint import NamedEndpoint
-from gromp.url.league import LolChallengesv1Url
+from gromp.endpoint.base import NamedEndpoint
+from gromp.endpoint.api.league import LolChallengesv1Api
 
 __all__ = (
     'LolChallengesv1',
@@ -37,21 +37,21 @@ class LolChallengesv1(NamedEndpoint):
         """
         """
         return self._request_api(
-            LolChallengesv1Url('config'),
+            LolChallengesv1Api('config'),
         )
 
     def percentiles(self):
         """
         """
         return self._request_api(
-            LolChallengesv1Url('percentiles'),
+            LolChallengesv1Api('percentiles'),
         )
 
     def challenge_config(self, challenge_id: str):
         """
         """
         return self._request_api(
-            LolChallengesv1Url('challenge_config'),
+            LolChallengesv1Api('challenge_config'),
             challenge_id=challenge_id,
         )
 
@@ -59,7 +59,7 @@ class LolChallengesv1(NamedEndpoint):
         """
         """
         return self._request_api(
-            LolChallengesv1Url('top_players_for_challenge'),
+            LolChallengesv1Api('top_players_for_challenge'),
             challenge_id=challenge_id,
             level=level,
         )
@@ -68,7 +68,7 @@ class LolChallengesv1(NamedEndpoint):
         """
         """
         return self._request_api(
-            LolChallengesv1Url('challenge_percentiles'),
+            LolChallengesv1Api('challenge_percentiles'),
             challenge_id=challenge_id,
         )
 
@@ -76,7 +76,7 @@ class LolChallengesv1(NamedEndpoint):
         """
         """
         return self._request_api(
-            LolChallengesv1Url('player_data_by_puuid'),
+            LolChallengesv1Api('player_data_by_puuid'),
             puuid=puuid,
         )
 

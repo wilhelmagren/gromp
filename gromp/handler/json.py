@@ -25,7 +25,7 @@ File created: 2023-02-06
 Last updated: 2023-02-06
 """
 
-from gromp.handler import Handler
+from .base import Handler
 from requests import Response
 
 import logging

@@ -22,11 +22,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-05
-Last updated: 2023-02-09
+Last updated: 2023-02-13
 """
 
-from gromp.endpoint import NamedEndpoint
-from gromp.url.league import Summonerv4Url
+from gromp.endpoint.base import NamedEndpoint
+from gromp.endpoint.api.league import Summonerv4Api
 
 __all__ = (
     'Summonerv4',
@@ -38,7 +38,7 @@ class Summonerv4(NamedEndpoint):
         Get a summoner by their encrypted account ID.
         """
         return self._request_api(
-            Summonerv4Url('encrypted_account_id'),
+            Summonerv4Api('encrypted_account_id'),
             encrypted_account_id=encrypted_account_id,
         )
 
@@ -47,7 +47,7 @@ class Summonerv4(NamedEndpoint):
         Get a summoner by their summoner name.
         """
         return self._request_api(
-            Summonerv4Url('summoner_name'),
+            Summonerv4Api('summoner_name'),
             summoner_name=summoner_name,
         )
 
@@ -56,7 +56,7 @@ class Summonerv4(NamedEndpoint):
         Get a summoner by their encrypted puuid.
         """
         return self._request_api(
-            Summonerv4Url('encrypted_puuid'),
+            Summonerv4Api('encrypted_puuid'),
             encrypted_puuid=encrypted_puuid,
         )
 
@@ -65,7 +65,7 @@ class Summonerv4(NamedEndpoint):
         Get a summoner by their encrypted summoner ID.
         """
         return self._request_api(
-            Summonerv4Url('encrypted_summoner_id'),
+            Summonerv4Api('encrypted_summoner_id'),
             encrypted_summoner_id=encrypted_summoner_id,
         )
 

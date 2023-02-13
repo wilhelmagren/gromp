@@ -22,11 +22,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-05
-Last updated: 2023-02-12
+Last updated: 2023-02-13
 """
 
-from gromp.endpoint import NamedEndpoint
-from gromp.url.league import TournamentStubv4Url
+from gromp.endpoint.base import NamedEndpoint
+from gromp.endpoint.api.league import TournamentStubv4Api
 
 __all__ = (
     'TournamentStubv4',
@@ -37,14 +37,14 @@ class TournamentStubv4(NamedEndpoint):
         """
         """
         return self._request_api(
-            SpectatorStubv4Url('codes'),
+            SpectatorStubv4Api('codes'),
         )
 
     def events_by_code(self, code: str):
         """
         """
         return self._request_api(
-            SpectatorStubv4Url('events_by_code'),
+            SpectatorStubv4Api('events_by_code'),
             tournament_code=code,
         )
 
@@ -52,13 +52,13 @@ class TournamentStubv4(NamedEndpoint):
         """
         """
         return self._request_api(
-            SpectatorStubv4Url('providers'),
+            SpectatorStubv4Api('providers'),
         )
 
     def tournaments(self):
         """
         """
         return self._request_api(
-            SpectatorStubv4Url('tournaments'),
+            SpectatorStubv4Api('tournaments'),
         )
 

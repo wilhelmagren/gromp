@@ -22,10 +22,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-05
-Last updated: 2023-02-05
+Last updated: 2023-02-13
 """
 
-from gromp.handler.base import Handler
-from gromp.handler.json import JsonHandler
-from gromp.handler.log import LogHandler
+from .base import Handler
+from .log import LogHandler
+from .json import JsonHandler
 

@@ -22,11 +22,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-05
-Last updated: 2023-02-12
+Last updated: 2023-02-13
 """
 
-from gromp.endpoint import NamedEndpoint
-from gromp.url.league import Leaguev4Url
+from gromp.endpoint.base import NamedEndpoint
+from gromp.endpoint.api.league import Leaguev4Api
 
 __all__ = (
     'Leaguev4',
@@ -37,7 +37,7 @@ class Leaguev4(NamedEndpoint):
         """
         """
         return self._request_api(
-            Leaguev4Url('challenger_queue'),
+            Leaguev4Api('challenger_queue'),
             challenger_queue=queue,
 
         )
@@ -46,7 +46,7 @@ class Leaguev4(NamedEndpoint):
         """
         """
         return self._request_api(
-            Leaguev4Url('encrypted_summoner_id'),
+            Leaguev4Api('encrypted_summoner_id'),
             encrypted_summoner_id=summoner_id,
         )
 
@@ -54,7 +54,7 @@ class Leaguev4(NamedEndpoint):
         """
         """
         return self._request_api(
-            Leaguev4Url('by_queue_tier_division'),
+            Leaguev4Api('by_queue_tier_division'),
             queue=queue,
             tier=tier,
             division=division,
@@ -64,7 +64,7 @@ class Leaguev4(NamedEndpoint):
         """
         """
         return self._request_api(
-            Leaguev4Url('grandmaster_queue'),
+            Leaguev4Api('grandmaster_queue'),
             grandmaster_queue=queue,
         )
     
@@ -72,7 +72,7 @@ class Leaguev4(NamedEndpoint):
         """
         """
         return self._request_api(
-            Leaguev4Url('by_id'),
+            Leaguev4Api('by_id'),
             league_id=league_id,
         )
 
@@ -80,7 +80,7 @@ class Leaguev4(NamedEndpoint):
         """
         """
         return self._request_api(
-            Leaguev4Url('master_queue'),
+            Leaguev4Api('master_queue'),
             master_queue=master_queue,
         )
 

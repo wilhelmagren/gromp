@@ -25,6 +25,6 @@ File created: 2023-01-23
 Last updated: 2023-02-13
 """
 
-from gromp.hook.base import Hook
-from gromp.hook.league import League
+from .base import Hook
+from .league import League
 

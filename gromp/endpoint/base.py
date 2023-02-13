@@ -28,7 +28,7 @@ Last updated: 2023-02-06
 import rsa
 from rsa import PublicKey, PrivateKey
 from requests import Response, session
-from gromp.url import Url
+from gromp.endpoint.api import Api
 
 __all__ = (
     'NamedEndpoint',
@@ -75,7 +75,7 @@ class NamedEndpoint(object):
             self._config['keys']['private'],
         )
 
-    def _request_api(self, api: Url, **kwargs) -> Response:
+    def _request_api(self, api: Api, **kwargs) -> Response:
         """ Perform a GET request to the provided REST api. """
         request, params = api.prepare_request(
             platform=self._config['platform'],
