@@ -9,7 +9,7 @@ For a full list of all available requests, see each respective endpoint document
 
 ## :lock: Requirements
 
-- A fairly recent version of Python, preferably 3.7 or greater.
+- A fairly recent version of Python, preferably 3.6 or greater.
 - If installing locally, you need the dependencies found in the [requirements.txt](https://github.com/willeagren/gromp/blob/55a99e52138a7c9f3b5faa446c30bc6b66c9295d/requirements.txt) file.
 - To perform requests you need an API key from Riot Games, get yours [here](https://developer.riotgames.com/).
 
