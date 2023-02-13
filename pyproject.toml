@@ -1,10 +1,10 @@
 [build-system]
-requires = ['setuptools>=61.0']
+requires = [ 'setuptools>=61.0' ]
 build-backend = 'setuptools.build_meta'
 
 [project]
 name = 'gromp'
-version = '0.4.6'
+version = '0.5.0'
 authors = [
     { name='Wilhelm Ågren', email='wilhelmagren98@gmail.com' },
 ]
@@ -26,7 +26,4 @@ classifiers = [
 
 [project.urls]
 'Homepage' = 'https://github.com/willeagren/gromp'
-
-[tool.setuptools]
-packages = ['gromp', 'gromp.handler', 'gromp.hook', 'gromp.endpoint', 'gromp.endpoint.api']
 
