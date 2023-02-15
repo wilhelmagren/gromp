@@ -22,9 +22,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-13
-Last updated: 2023-02-14
+Last updated: 2023-02-15
 """
 
+from __future__ import annotations
+
+import builtins
+String = builtins.str
+
+from typing import NoReturn
 from gromp.api.base import LeagueApi
 
 __all__ = (
@@ -41,6 +47,11 @@ class Spectatorv4Api(LeagueApi):
         'featured-games',
     }
 
-    def __init__(self, key: str) -> None:
-        super().__init__('{platform}', f'spectator/v4/{self.api[key]}')
+    def __init__(
+        self: Spectatorv4Api,
+        key: String,
+    ) -> NoReturn:
+        super(Spectatorv4Api, self).__init__(
+            '{platform}', f'spectator/v4/{self.api[key]}',
+        )
 

@@ -22,8 +22,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-13
-Last updated: 2023-02-14
+Last updated: 2023-02-15
 """
+
+from __future__ import annotations
+
+import builtins
+String = builtins.str
+
+from typing import NoReturn
 
 from gromp.api.base import LeagueApi
 
@@ -47,6 +54,11 @@ class ChampionMasteryv4Api(LeagueApi):
         'scores/by-summoner/{encrypted_summoner_id}',
     }
 
-    def __init__(self, key: str) -> None:
-        super().__init__('{platform}', f'champion-master/v4/{self.api[key]}')
+    def __init__(
+        self: ChampionMasteryv4Api,
+        key: String,
+    ) -> NoReturn:
+        super(ChampionMasteryv4, self).__init__(
+            '{platform}', f'champion-master/v4/{self.api[key]}',
+        )
 

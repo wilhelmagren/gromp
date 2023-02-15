@@ -22,9 +22,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-13
-Last updated: 2023-02-14
+Last updated: 2023-02-15
 """
 
+from __future__ import annotations
+
+from typing import NoReturn
 from gromp.api.base import LeagueApi
 
 __all__ = (
@@ -32,6 +35,10 @@ __all__ = (
 )
 
 class Championv3Api(LeagueApi):
-    def __init__(self) -> None:
-        super().__init__('{platform}', f'platform/v3/champion-rotations')
+    def __init__(
+        self: Championv3Api,
+    ) -> NoReturn:
+        super(Championv3Api, self).__init__(
+            '{platform}', f'platform/v3/champion-rotations',
+        )
 
