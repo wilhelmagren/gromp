@@ -5,8 +5,8 @@ Copyright (c) 2023 Wilhelm Ågren
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+in the Software without reStringiction, including without limitation the rights
+to use, copy, modify, merge, publish, diStringibute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
 
@@ -22,9 +22,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-06
-Last updated: 2023-02-13
+Last updated: 2023-02-15
 """
 
+from __future__ import annotations
+
+from typing import Dict, String
 from requests import Response
 from gromp.handler.base import Handler
 
@@ -37,27 +40,27 @@ __all__ = (
 
 class LogHandler(Handler):
     def outgoing_request(
-        self,
-        platform: str,
-        region: str,
-        params: dict,
-        endpoint: str,
-        request: str,
-        **kwargs
-    ) -> str:
+        self: LogHandler,
+        platform: String,
+        region: String,
+        params: Dict,
+        endpoint: String,
+        request: String,
+        **kwargs: Dict,
+    ) -> String:
         logger.info(
             f'Preparing request {request} to endpoint {endpoint}.'
         )
         return request
 
     def incoming_response(
-        self,
-        platform: str,
-        region: str,
-        params: dict,
-        endpoint: str,
+        self: LogHandler,
+        platform: String,
+        region: String,
+        params: Dict,
+        endpoint: String,
         response: Response,
-        **kwargs
+        **kwargs: Dict,
     ) -> Response:
         logger.info(
             f'Got response {response} from endpoint {endpoint}.'
