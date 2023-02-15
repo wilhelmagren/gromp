@@ -22,8 +22,19 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-13
-Last updated: 2023-02-13
+Last updated: 2023-02-15
 """
+
+from __future__ import annotations
+
+import builtins
+String = builtins.str
+
+from typing import (
+    Dict,
+    Tuple,
+    NoReturn,
+)
 
 import re
 
@@ -33,16 +44,28 @@ __all__ = (
 )
 
 class Api(object):
-    def __init__(self, base: str, game: str, api: str) -> None:
-        self._url = f'https://{base}.api.riotgames.com/{game}{api}'
+    def __init__(
+        self: Api,
+        base: String,
+        game: String,
+        api: String,
+    ) -> NoReturn:
+        self._url = f'https://{base}.api.riotgames.com/{game}/{api}'
 
     @property
-    def url(self) -> str:
+    def url(
+        self: Api,
+    ) -> String:
         return self._url
     
-    def prepare_request(self, **kwargs) -> tuple:
-        """ Prepare a GET request by validating the url and extracting optional query
-        parameters. """
+    def prepare_request(
+        self: Api,
+        **kwargs: Dict,
+    ) -> Tuple:
+        """
+        Prepare a GET request by validating the url and extracting
+        optional query parameters.
+        """
         url_params = re.findall('{(\w*)}', self.url)
 
         for required in url_params:
@@ -59,6 +82,10 @@ class Api(object):
         return (request_url, query_params)
 
 class LeagueApi(Api):
-    def __init__(self, base: str, api: str) -> None:
-        super().__init__(base, 'lol/', api)
+    def __init__(
+        self: LeagueApi,
+        base: String,
+        api: String,
+    ) -> None:
+        super(LeagueApi, self).__init__(base, 'lol', api)
 

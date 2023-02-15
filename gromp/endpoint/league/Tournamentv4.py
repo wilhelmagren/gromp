@@ -22,8 +22,16 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-09
-Last updated: 2023-02-14
+Last updated: 2023-02-15
 """
+
+from __future__ import annotations
+
+import builtins
+String = builtins.str
+
+from typing import Union, Any
+from requests import Response
 
 from gromp.endpoint.base import NamedEndpoint
 from gromp.api.league import Tournamentv4Api
@@ -33,14 +41,19 @@ __all__ = (
 )
 
 class Tournamentv4(NamedEndpoint):
-    def codes(self):
+    def codes(
+        self: Tournamentv4,
+    ) -> Union[Response, Any]:
         """
         """
         return self._request_api(
             Tournamentv4Api('codes'),
         )
 
-    def dto_by_code(self, tournament_code: str):
+    def dto_by_code(
+        self: Tournamentv4,
+        tournament_code: String,
+    ) -> Union[Response, Any]:
         """
         """
         return self._request_api(
@@ -48,7 +61,10 @@ class Tournamentv4(NamedEndpoint):
             tournament_code=tournament_code,
         )
 
-    def events_by_code(self, tournament_code: str):
+    def events_by_code(
+        self: Tournamentv4,
+        tournament_code: String,
+    ) -> Union[Response, Any]:
         """
         """
         return self._request_api(
@@ -56,14 +72,18 @@ class Tournamentv4(NamedEndpoint):
             tournament_code=tournament_code,
         )
 
-    def providers(self):
+    def providers(
+        self: Tournamentv4,
+    ) -> Union[Response, Any]:
         """
         """
         return self._request_api(
             Tournamentv4Api('providers'),
         )
 
-    def tournaments(self):
+    def tournaments(
+        self: Tournamentv4,
+    ) -> Union[Response, Any]:
         """
         """
         return self._request_api(

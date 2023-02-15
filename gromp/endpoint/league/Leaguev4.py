@@ -22,8 +22,16 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-05
-Last updated: 2023-02-14
+Last updated: 2023-02-15
 """
+
+from __future__ import annotations
+
+import builtins
+String = builtins.str
+
+from typing import Union, Any
+from requests import Response
 
 from gromp.endpoint.base import NamedEndpoint
 from gromp.api.league import Leaguev4Api
@@ -33,7 +41,10 @@ __all__ = (
 )
 
 class Leaguev4(NamedEndpoint):
-    def challenger_by_queue(self, queue: str):
+    def challenger_by_queue(
+        self: Leaguev4,
+        queue: String,
+    ) -> Union[Response, Any]:
         """
         """
         return self._request_api(
@@ -42,7 +53,10 @@ class Leaguev4(NamedEndpoint):
 
         )
 
-    def by_summoner_id(self, summoner_id: str):
+    def by_summoner_id(
+        self: Leaguev4,
+        summoner_id: String,
+    ) -> Union[Response, Any]:
         """
         """
         return self._request_api(
@@ -50,7 +64,12 @@ class Leaguev4(NamedEndpoint):
             encrypted_summoner_id=summoner_id,
         )
 
-    def by_queue_tier_division(self, queue: str, tier: str, divion: str):
+    def by_queue_tier_division(
+        self: Leaguev4,
+        queue: String,
+        tier: String,
+        divion: String,
+    ) -> Union[Response, Any]:
         """
         """
         return self._request_api(
@@ -60,7 +79,10 @@ class Leaguev4(NamedEndpoint):
             division=division,
         )
 
-    def grandmaster_by_queue(self, queue: str):
+    def grandmaster_by_queue(
+        self: Leaguev4,
+        queue: String,
+    ) -> Union[Response, Any]:
         """
         """
         return self._request_api(
@@ -68,7 +90,10 @@ class Leaguev4(NamedEndpoint):
             grandmaster_queue=queue,
         )
     
-    def by_id(self, league_id: str):
+    def by_id(
+        self: Leaguev4,
+        league_id: String,
+    ) -> Union[Response, Any]:
         """
         """
         return self._request_api(
@@ -76,7 +101,10 @@ class Leaguev4(NamedEndpoint):
             league_id=league_id,
         )
 
-    def master_by_queue(self, queue: str):
+    def master_by_queue(
+        self: Leaguev4,
+        queue: String,
+    ) -> Union[Response, Any]:
         """
         """
         return self._request_api(

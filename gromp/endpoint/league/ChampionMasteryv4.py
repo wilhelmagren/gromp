@@ -22,8 +22,16 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-09
-Last updated: 2023-02-14
+Last updated: 2023-02-15
 """
+
+from __future__ import annotations
+
+import builtins
+String = builtins.str
+
+from typing import Union, Any
+from requests import Response
 
 from gromp.endpoint.base import NamedEndpoint
 from gromp.api.league import ChampionMasteryv4Api
@@ -33,7 +41,10 @@ __all__ = (
 )
 
 class ChampionMasteryv4(NamedEndpoint):
-    def all_for_summoner(self, summoner_id: str):
+    def all_for_summoner(
+        self: ChampionMasteryv4,
+        summoner_id: String,
+    ) -> Union[Response, Any]:
         """
         """
         return self._request_api(
@@ -41,7 +52,11 @@ class ChampionMasteryv4(NamedEndpoint):
             encrypted_summoner_id=summoner_id,
         )
 
-    def champion_for_summoner(self, summoner_id: str, champion_id: str):
+    def champion_for_summoner(
+        self: ChampionMasteryv4,
+        summoner_id: String,
+        champion_id: String,
+    ) -> Union[Response, Any]:
         """
         """
         return self._request_api(
@@ -50,7 +65,10 @@ class ChampionMasteryv4(NamedEndpoint):
             champion_id=champion_id,
         )
 
-    def top_for_summoner(self, summoner_id: str):
+    def top_for_summoner(
+        self: ChampionMasteryv4,
+        summoner_id: String,
+    ) -> Union[Response, Any]:
         """
         """
         return self._request_api(
@@ -58,7 +76,10 @@ class ChampionMasteryv4(NamedEndpoint):
             encrypted_summoner_id=summoner_id,
         )
 
-    def total_score_for_summoner(self, summoner_id: str):
+    def total_score_for_summoner(
+        self: ChampionMasteryv4,
+        summoner_id: String
+    ) -> Union[Response, Any]:
         """
         """
         return self._request_api(

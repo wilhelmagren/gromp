@@ -22,13 +22,24 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-05
-Last updated: 2023-02-06
+Last updated: 2023-02-15
 """
 
+from __future__ import annotations
+
+import builtins
 import rsa
 from rsa import PublicKey, PrivateKey
 from requests import Response, session
+from typing import (
+    Dict,
+    List,
+    NoReturn,
+)
 from gromp.api.base import Api
+
+String = builtins.str
+Integer = builtins.int
 
 __all__ = (
     'NamedEndpoint',
@@ -36,21 +47,21 @@ __all__ = (
 
 class NamedEndpoint(object):
     def __init__(
-        self,
-        token: str,
-        keys: dict,
-        handlers: list,
-        platform: str,
-        region: str,
-        timeout: int,
-        **kwargs
-    ) -> None:
+        self: NamedEndpoint,
+        token: String,
+        keys: Dict,
+        handlers: List,
+        platform: String,
+        region: String,
+        timeout: Integer,
+        **kwargs: Dict,
+    ) -> NoReturn:
 
         assert isinstance(keys['public'], PublicKey), \
             f'Provided rsa public key is not a PublicKey, {keys["public"]}.'
 
         assert isinstance(keys['private'], PrivateKey), \
-            f'Provided rsa private key is not a PrivateKey, {keys["private"]}.'
+            f'Provided rsa private key is not a PrivateKey.'
 
         config = {}
         config['token'] = self._encrypt_token(token, keys['public'])
@@ -63,19 +74,19 @@ class NamedEndpoint(object):
         self._session = session()
 
     @staticmethod
-    def _encrypt_token(token: str, public_key: PublicKey) -> str:
+    def _encrypt_token(token: String, public_key: PublicKey) -> String:
         return rsa.encrypt(
             token.encode(),
             public_key,
         )
 
-    def _decrypt_token(self) -> str:
+    def _decrypt_token(self) -> String:
         return rsa.decrypt(
             self._config['token'],
             self._config['keys']['private'],
         )
 
-    def _request_api(self, api: Api, **kwargs) -> Response:
+    def _request_api(self, api: Api, **kwargs: Dict) -> Response:
         """ Perform a GET request to the provided REST api. """
         request, params = api.prepare_request(
             platform=self._config['platform'],
@@ -87,7 +98,7 @@ class NamedEndpoint(object):
         extra['timeout'] = self._config['timeout']
         
         for handler in self._handlers:
-            request = handler.outgoing_request(
+            handler_result = handler.outgoing_request(
                 self._config['platform'],
                 self._config['region'],
                 params,
@@ -96,12 +107,15 @@ class NamedEndpoint(object):
                 **extra,
             )
 
+            if isinstance(handler_result, str):
+                request = handler_result
+
         response = self._session.get(
             request,
             params=params,
             headers={
                 'Accept-Language': 'en-US,en;q=0.5',
-                'X-Riot-Token': self._decrypt_token()
+                'X-Riot-Token': self._decrypt_token(),
             },
             **extra,
         )

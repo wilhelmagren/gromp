@@ -22,8 +22,16 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-05
-Last updated: 2023-02-14
+Last updated: 2023-02-15
 """
+
+from __future__ import annotations
+
+import builtins
+String = builtins.str
+
+from typing import Union, Any
+from requests import Response
 
 from gromp.endpoint.base import NamedEndpoint
 from gromp.api.league import Summonerv4Api
@@ -33,7 +41,10 @@ __all__ = (
 )
 
 class Summonerv4(NamedEndpoint):
-    def by_account(self, encrypted_account_id: str):
+    def by_account(
+        self: Summonerv4,
+        encrypted_account_id: String,
+    ) -> Union[Response, Any]:
         """
         Get a summoner by their encrypted account ID.
         """
@@ -42,7 +53,10 @@ class Summonerv4(NamedEndpoint):
             encrypted_account_id=encrypted_account_id,
         )
 
-    def by_name(self, summoner_name: str):
+    def by_name(
+        self: Summonerv4,
+        summoner_name: String,
+    ) -> Union[Response, Any]:
         """
         Get a summoner by their summoner name.
         """
@@ -51,7 +65,10 @@ class Summonerv4(NamedEndpoint):
             summoner_name=summoner_name,
         )
 
-    def by_puuid(self, encrypted_puuid: str):
+    def by_puuid(
+        self: Summonerv4,
+        encrypted_puuid: String,
+    ) -> Union[Response, Any]:
         """
         Get a summoner by their encrypted puuid.
         """
@@ -60,9 +77,15 @@ class Summonerv4(NamedEndpoint):
             encrypted_puuid=encrypted_puuid,
         )
 
-    def by_id(self, encrypted_summoner_id: str):
+    def by_id(
+        self: Summonerv4,
+        encrypted_summoner_id: String,
+    ) -> Union[Response, Any]:
         """
         Get a summoner by their encrypted summoner ID.
+
+        `Consistently looking up summoner ids that don't
+            exist will result in a blacklist.`
         """
         return self._request_api(
             Summonerv4Api('encrypted_summoner_id'),

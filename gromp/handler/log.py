@@ -22,9 +22,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-06
-Last updated: 2023-02-13
+Last updated: 2023-02-15
 """
 
+from __future__ import annotations
+
+import builtins
+String = builtins.str
+
+from typing import Dict
 from requests import Response
 from gromp.handler.base import Handler
 
@@ -37,27 +43,27 @@ __all__ = (
 
 class LogHandler(Handler):
     def outgoing_request(
-        self,
-        platform: str,
-        region: str,
-        params: dict,
-        endpoint: str,
-        request: str,
-        **kwargs
-    ) -> str:
+        self: LogHandler,
+        platform: String,
+        region: String,
+        params: Dict,
+        endpoint: String,
+        request: String,
+        **kwargs: Dict,
+    ) -> String:
         logger.info(
             f'Preparing request {request} to endpoint {endpoint}.'
         )
         return request
 
     def incoming_response(
-        self,
-        platform: str,
-        region: str,
-        params: dict,
-        endpoint: str,
+        self: LogHandler,
+        platform: String,
+        region: String,
+        params: Dict,
+        endpoint: String,
         response: Response,
-        **kwargs
+        **kwargs: Dict,
     ) -> Response:
         logger.info(
             f'Got response {response} from endpoint {endpoint}.'

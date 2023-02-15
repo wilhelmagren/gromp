@@ -22,8 +22,16 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-09
-Last updated: 2023-02-14
+Last updated: 2023-02-15
 """
+
+from __future__ import annotations
+
+import builtins
+String = builtins.str
+
+from typing import Union, Any, Optional
+from requests import Response
 
 from gromp.endpoint.base import NamedEndpoint
 from gromp.api.league import LolChallengesv1Api
@@ -33,21 +41,28 @@ __all__ = (
 )
 
 class LolChallengesv1(NamedEndpoint):
-    def config(self):
+    def config(
+        self: LolChallengesv1,
+    ) -> Union[Response, Any]:
         """
         """
         return self._request_api(
             LolChallengesv1Api('config'),
         )
 
-    def percentiles(self):
+    def percentiles(
+        self: LolChallengesv1,
+    ) -> Union[Response, Any]:
         """
         """
         return self._request_api(
             LolChallengesv1Api('percentiles'),
         )
 
-    def challenge_config(self, challenge_id: str):
+    def challenge_config(
+        self: LolChallengesv1,
+        challenge_id: String,
+    ) -> Union[Response, Any]:
         """
         """
         return self._request_api(
@@ -55,16 +70,25 @@ class LolChallengesv1(NamedEndpoint):
             challenge_id=challenge_id,
         )
 
-    def top_players_for_challenge(self, challenge_id: str, level):
+    def top_players_for_challenge(
+        self: LolChallengesv1,
+        challenge_id: String,
+        level: String,
+        limit: Optional[String] = None,
+    ) -> Union[Response, Any]:
         """
         """
         return self._request_api(
             LolChallengesv1Api('top_players_for_challenge'),
             challenge_id=challenge_id,
             level=level,
+            limit=limit,
         )
 
-    def challenge_percentile(self, challenge_id: str):
+    def challenge_percentile(
+        self: LolChallengesv1,
+        challenge_id: String,
+    ) -> Union[Response, Any]:
         """
         """
         return self._request_api(
@@ -72,7 +96,10 @@ class LolChallengesv1(NamedEndpoint):
             challenge_id=challenge_id,
         )
 
-    def player_data_by_puuid(self, puuid: str):
+    def player_data_by_puuid(
+        self: LolChallengesv1,
+        puuid: String,
+    ) -> Union[Response, Any]:
         """
         """
         return self._request_api(

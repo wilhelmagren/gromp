@@ -22,9 +22,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-01-23
-Last updated: 2023-02-14
+Last updated: 2023-02-15
 """
 
+from __future__ import annotations
+
+import builtins
+String = builtins.str
+
+from typing import NoReturn, Dict
 from gromp.hook.base import Hook
 from gromp.endpoint.base import NamedEndpoint
 from gromp.endpoint.league import (
@@ -48,58 +54,62 @@ __all__ = (
 )
 
 class League(Hook):
-    def __init__(self, token: str, **kwargs) -> None:
+    def __init__(
+        self: League,
+        token: String, 
+        **kwargs: Dict,
+    ) -> NoReturn:
         super(League, self).__init__(
             token=token,
             game=self.__class__.__name__,
-            **kwargs
+            **kwargs,
         )
     
     @property
-    def mastery(self) -> ChampionMasteryv4:
+    def mastery(self: League) -> ChampionMasteryv4:
         return self._setup_named_endpoint(ChampionMasteryv4)
 
     @property
-    def champion(self) -> Championv3:
+    def champion(self: League) -> Championv3:
         return self._setup_named_endpoint(Championv3)
     
     @property
-    def clash(self) -> Clashv1:
+    def clash(self: League) -> Clashv1:
         return self._setup_named_endpoint(Clashv1)
     
     @property
-    def league_exp(self) -> LeagueExpv4:
+    def league_exp(self: League) -> LeagueExpv4:
         return self._setup_named_endpoint(LeagueExpv4)
 
     @property
-    def league(self) -> Leaguev4:
+    def league(self: League) -> Leaguev4:
         return self._setup_named_endpoint(Leaguev4)
 
     @property
-    def challenges(self) -> LolChallengesv1:
+    def challenges(self: League) -> LolChallengesv1:
         return self._setup_named_endpoint(LolChallengesv1)
 
     @property
-    def status(self) -> LolStatusv4:
+    def status(self: League) -> LolStatusv4:
         return self._setup_named_endpoint(LolStatusv4)
 
     @property
-    def match(self) -> Matchv5:
+    def match(self: League) -> Matchv5:
         return self._setup_named_endpoint(Matchv5)
 
     @property
-    def spectator(self) -> Spectatorv4:
+    def spectator(self: League) -> Spectatorv4:
         return self._setup_named_endpoint(Spectatorv4)
 
     @property
-    def summoner(self) -> Summonerv4:
+    def summoner(self: League) -> Summonerv4:
         return self._setup_named_endpoint(Summonerv4)
 
     @property
-    def tournament_stub(self) -> TournamentStubv4:
+    def tournament_stub(self: League) -> TournamentStubv4:
         return self._setup_named_endpoint(TournamentStubv4)
 
     @property
-    def tournament(self) -> Tournamentv4:
+    def tournament(self: League) -> Tournamentv4:
         return self._setup_named_endpoint(Tournamentv4)
 

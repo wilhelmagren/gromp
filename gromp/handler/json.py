@@ -22,42 +22,31 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-06
-Last updated: 2023-02-13
+Last updated: 2023-02-15
 """
+
+from __future__ import annotations
 
 from gromp.handler.base import Handler
 from requests import Response
+from typing import Dict
 
-import logging
-logger = logging.getLogger(__name__)
+import builtins
+String = builtins.str
 
 __all__ = (
     'JsonHandler',
 )
 
 class JsonHandler(Handler):
-    def outgoing_request(
-        self,
-        platform: str,
-        region: str,
-        params: dict,
-        endpoint: str,
-        request: str,
-        **kwargs
-    ) -> str:
-        return request
-
     def incoming_response(
-        self,
-        platform: str,
-        region: str,
-        params: dict,
-        endpoint: str,
+        self: JsonHandler,
+        platform: String,
+        region: String,
+        params: Dict,
+        endpoint: String,
         response: Response,
-        **kwargs
-    ) -> dict:
-        logger.info(
-            f'Decoding response json from endpoint {endpoint} to dictionary.'
-        )
+        **kwargs: Dict,
+    ) -> Dict:
         return response.json()
 
