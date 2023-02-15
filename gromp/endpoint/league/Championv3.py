@@ -22,8 +22,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-09
-Last updated: 2023-02-14
+Last updated: 2023-02-15
 """
+
+from __future__ import annotations
+
+from typing import Union, Any
+from requests import Response
 
 from gromp.endpoint.base import NamedEndpoint
 from gromp.api.league import Championv3Api
@@ -33,7 +38,9 @@ __all__ = (
 )
 
 class Championv3(NamedEndpoint):
-    def rotations(self):
+    def rotations(
+        self: Championv3,
+    ) -> Union[Response, Any]:
         return self._request_api(
             Championv3Api(),
         )

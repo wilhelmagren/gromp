@@ -5,8 +5,8 @@ Copyright (c) 2023 Wilhelm Ågren
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+in the Software without reStringiction, including without limitation the rights
+to use, copy, modify, merge, publish, diStringibute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
 
@@ -22,8 +22,17 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-05
-Last updated: 2023-02-14
+Last updated: 2023-02-15
 """
+
+from __future__ import annotations
+
+import builtins
+String = builtins.str
+Integer = builtins.int
+
+from typing import Union, Optional, Any
+from requests import Response
 
 from gromp.endpoint.base import NamedEndpoint
 from gromp.api.league import Matchv5Api
@@ -34,15 +43,15 @@ __all__ = (
 
 class Matchv5(NamedEndpoint):
     def matchlist_by_puuid(
-        self,
-        puuid: str,
-        start_time: int = None,
-        end_time: int = None,
-        queue: int = None,
-        type_: str = None,
-        start: int = None,
-        count: int = None,
-    ):
+        self: Matchv5,
+        puuid: String,
+        queue: Optional[Integer] = None,
+        type_: Optional[String] = None,
+        start: Optional[Integer] = None,
+        count: Optional[Integer] = None,
+        start_time: Optional[Integer] = None,
+        end_time: Optional[Integer] = None,
+    ) -> Union[Response, Any]:
         """
         Get a matchlist for ranked games played on the account associated with the puuid.
         Supports filtering on queue, type of game (default ranked game), when in time
@@ -59,7 +68,10 @@ class Matchv5(NamedEndpoint):
             count=count,
         )
 
-    def by_id(self, match_id: str):
+    def by_id(
+        self: Matchv5,
+        match_id: String,
+    ) -> Union[Response, Any]:
         """
         Get the history of a match by the match ID.
         """
@@ -68,7 +80,10 @@ class Matchv5(NamedEndpoint):
             match_id=match_id,
         )
 
-    def timeline_by_id(self, match_id: str):
+    def timeline_by_id(
+        self: Matchv5,
+        match_id: String,
+    ) -> Union[Response, Any]:
         """
         Get the timeline of a match by the match ID.
         """
