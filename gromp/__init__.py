@@ -22,11 +22,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-01-23
-Last updated: 2023-02-14
+Last updated: 2023-02-15
 """
 
 from gromp import api
 from gromp import endpoint
+from gromp import handler
 from gromp import hook
 from gromp.utils import *
 
@@ -56,6 +57,11 @@ formatter = logging.Formatter(
 console_handler.setFormatter(formatter)
 logger.addHandler(console_handler)
 
-def set_logging_level(level: int) -> None:
+from typing import NoReturn
+import builtins
+
+Integer = builtins.int
+
+def set_logging_level(level: Integer) -> NoReturn:
     logger.setLevel(level)
 
