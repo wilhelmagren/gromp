@@ -22,16 +22,29 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-05
-Last updated: 2023-02-06
+Last updated: 2023-02-15
 """
 
+from __future__ import annotations
+from typing import Tuple, Dict, Any
 import abc
-from typing import Any
 
 __all__ = (
     'Handler',
 )
 
 class Handler(abc.ABC):
-    pass
+    def outgoing_request(
+        self: Handler,
+        *args: Tuple,
+        **kwargs: Dict,
+    ) -> Any:
+        pass
+
+    def incoming_response(
+        self: Handler,
+        *args: Tuple,
+        **kwargs: Dict,
+    ) -> Any:
+        pass
 
