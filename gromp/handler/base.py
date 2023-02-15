@@ -26,6 +26,7 @@ Last updated: 2023-02-15
 """
 
 from __future__ import annotations
+
 from typing import Tuple, Dict, Any
 import abc
 
