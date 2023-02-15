@@ -27,7 +27,10 @@ Last updated: 2023-02-15
 
 from __future__ import annotations
 
-from typing import Dict, String
+import builtins
+String = builtins.str
+
+from typing import Dict
 from requests import Response
 from gromp.handler.base import Handler
 
