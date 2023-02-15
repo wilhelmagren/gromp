@@ -22,8 +22,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-01-23
-Last updated: 2023-02-06
+Last updated: 2023-02-15
 """
+
+import builtins
+String = builtins.str
+Boolean = builtins.bool
+
+from typing import Optional
 
 __all__ = (
     'is_platform',
@@ -36,15 +42,15 @@ __all__ = (
     'Regions',
 )
 
-def is_platform(string: str, game: str) -> bool:
+def is_platform(string: String, game: String) -> Boolean:
     """ Return true if the string is a valid platform for the specified game. """
     return string in vars(getattr(Platforms, game)).values()
 
-def is_region(string: str, game: str) -> bool:
+def is_region(string: String, game: String) -> Boolean:
     """ Return true if the string is a valid region for the specified game. """
     return string in vars(getattr(Regions, game)).values()
 
-def platform_to_region(platform: str) -> str:
+def platform_to_region(platform: String) -> Optional[String]:
     """ Map the provided platform to its related region, return it as a string. """
     p2r = {
         'br1': 'americas',
@@ -64,7 +70,7 @@ def platform_to_region(platform: str) -> str:
         'tw2': 'asia',
         'vn2': 'asia',
     }
-    return p2r.get(platform)
+    return p2r.get(platform, None)
 
 class LeaguePlatforms:
     br1 = 'br1'
