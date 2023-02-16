@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-01-23
-Last updated: 2023-02-15
+Last updated: 2023-02-16
 """
 
 from __future__ import annotations
@@ -68,21 +68,28 @@ class Hook(object):
         **kwargs: Dict,
     ) -> NoReturn:
 
-        if region is None:
+        game_ = game.lower()
+
+        if platform is None:
             assert game in ('Valorant'), \
-                f'No region was specified, only games `Valorant` support only using ' \
-                f'platform string for API requests. Here are the regions for your ' \
-                f'specified game: {vars(getattr(REGIONS, game)).values()}.'
+                f'No platform was specified, only games `Valorant` support only using ' \
+                f'region string for API requests. Here are the platforms for your ' \
+                f'specified game: {vars(getattr(Platforms, game_)).values()}.'
 
         if game not in ('Valorant'):
-            assert is_region(region, game.lower()), \
-                f'User provided region is not valid, {region=}.\n' \
-                f'Valid regions are: {vars(getattr(REGIONS, game)).values()}.'
+            assert is_platform(platform, game_), \
+                f'User provided platform is not valid, {platform=}.\n' \
+                f'Valid platforms are: {vars(getattr(Platforms, game_)).values()}.'
 
-        assert is_platform(platform, game.lower()), \
-            f'User provided platform is not valid, {platform=}.\n' \
-            f'Valid platforms are: {vars(getattr(PLATFORMS, game)).values()}.'
 
+        assert not region is None, \
+            f'No region was provided. All games require a region to be specified.\n' \
+            f'Valid regions for your game are: {vars(getattr(Regions, game_)).values()}.'
+            
+        assert is_region(region, game_), \
+            f'User provided region is not valid, {region=}.\n' \
+            f'Valid regions are: {vars(getattr(Regions, game_)).values()}.'
+        
         assert timeout > 0, \
             f'You have provided a timeout value <= 0 which is not valid.\n' \
             f'This sets the allowed time to wait for response, defaults to 5 seconds.'
@@ -146,7 +153,7 @@ class Hook(object):
 
     @property
     def public_key(self) -> rsa.PublicKey:
-        return self._config['keys']['public_key']
+        return self._config['keys']['public']
 
     @property
     def config(self) -> Dict:
