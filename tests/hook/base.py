@@ -75,14 +75,15 @@ class HookTest(unittest.TestCase):
         self.assertTrue(isinstance(hook, Hook))
         self.assertTrue(isinstance(handlers, list))
 
-    def testNoPlatformLeague(self):
-        logger.debug('no platform for League..')
+    def testNoPlatformNoRegionLeague(self):
+        logger.debug('no platform no region for League..')
         self.assertRaises(
             AssertionError,
             Hook,
             '<fake-RGAPI-token>',
             'League',
             platform=None,
+            region=None,
         )
 
     def testNoRegionValorant(self):
@@ -94,7 +95,7 @@ class HookTest(unittest.TestCase):
         )
 
     def testNoRegionLeague(self):
-        logger.debug('no platform for League..')
+        logger.debug('no region for League..')
         self.assertRaises(
             AssertionError,
             Hook,
@@ -123,16 +124,5 @@ class HookTest(unittest.TestCase):
             'Valorant',
             region=ValorantRegions.NA,
             timeout=-10,
-        )
-
-    def testNoRegionLeague(self):
-        logger.debug('no region for League..')
-        self.assertRaises(
-            AssertionError,
-            Hook,
-            '<fake-RGAPI-token>',
-            'League',
-            region=None,
-            platform=LeaguePlatforms.euw1,
         )
 
