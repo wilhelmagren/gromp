@@ -47,7 +47,7 @@ class TournamentStubv4(NamedEndpoint):
         """
         """
         return self._request_api(
-            SpectatorStubv4Api('codes'),
+            TournamentStubv4Api('codes'),
         )
 
     def events_by_code(
@@ -57,7 +57,7 @@ class TournamentStubv4(NamedEndpoint):
         """
         """
         return self._request_api(
-            SpectatorStubv4Api('events_by_code'),
+            TournamentStubv4Api('events_by_code'),
             tournament_code=code,
         )
 
@@ -67,7 +67,7 @@ class TournamentStubv4(NamedEndpoint):
         """
         """
         return self._request_api(
-            SpectatorStubv4Api('providers'),
+            TournamentStubv4Api('providers'),
         )
 
     def tournaments(
@@ -76,6 +76,6 @@ class TournamentStubv4(NamedEndpoint):
         """
         """
         return self._request_api(
-            SpectatorStubv4Api('tournaments'),
+            TournamentStubv4Api('tournaments'),
         )
 

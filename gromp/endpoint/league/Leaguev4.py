@@ -68,7 +68,7 @@ class Leaguev4(NamedEndpoint):
         self: Leaguev4,
         queue: String,
         tier: String,
-        divion: String,
+        division: String,
     ) -> Union[Response, Any]:
         """
         """
