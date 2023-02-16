@@ -60,10 +60,10 @@ class LolChallengesv1Api(LeagueApi):
     }
 
     def __init__(
-        self: LolChallengesv4Api,
+        self: LolChallengesv1Api,
         key: String,
     ) -> NoReturn:
-        super(LolChallengesv4Api, self).__init__(
+        super(LolChallengesv1Api, self).__init__(
             '{platform}', f'challenges/v1/{self.api[key]}',
         )
 
