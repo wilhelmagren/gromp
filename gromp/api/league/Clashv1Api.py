@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-13
-Last updated: 2023-02-15
+Last updated: 2023-02-16
 """
 
 from __future__ import annotations
@@ -37,7 +37,7 @@ __all__ = (
     'Clashv1Api',
 )
 
-def Clashv1Api(LeagueApi):
+class Clashv1Api(LeagueApi):
 
     api = {
         'summoner_by_id':
