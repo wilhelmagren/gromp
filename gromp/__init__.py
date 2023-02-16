@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-01-23
-Last updated: 2023-02-15
+Last updated: 2023-02-16
 """
 
 from gromp import api
@@ -30,6 +30,7 @@ from gromp import endpoint
 from gromp import handler
 from gromp import hook
 from gromp.utils import *
+from __version__ import __version__
 
 # Create logger and set up configuration
 # Levels in decreasing order of verbosity:
