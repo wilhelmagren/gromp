@@ -30,7 +30,7 @@ from gromp import endpoint
 from gromp import handler
 from gromp import hook
 from gromp.utils import *
-from __version__ import __version__
+from .__version__ import __version__
 
 # Create logger and set up configuration
 # Levels in decreasing order of verbosity:
