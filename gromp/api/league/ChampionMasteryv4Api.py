@@ -58,7 +58,7 @@ class ChampionMasteryv4Api(LeagueApi):
         self: ChampionMasteryv4Api,
         key: String,
     ) -> NoReturn:
-        super(ChampionMasteryv4, self).__init__(
+        super(ChampionMasteryv4Api, self).__init__(
             '{platform}', f'champion-master/v4/{self.api[key]}',
         )
 
