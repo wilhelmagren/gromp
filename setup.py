@@ -6,7 +6,7 @@ with open('README.md', 'r', encoding='utf-8') as f:
 
 setup(
     name='gromp',
-    version='0.5.0',
+    version='0.6.0',
     author='Wilhelm Ågren',
     author_email='wilhelmagren98@gmail.com',
     packages=find_packages(),
