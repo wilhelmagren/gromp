@@ -29,6 +29,7 @@ import sys
 import logging
 import unittest
 
+from requests import Session
 from unittest.mock import patch
 from gromp.hook import League
 from gromp.endpoint.league import (
@@ -83,7 +84,7 @@ class LeagueHookTest(unittest.TestCase):
         endpoint = self.hook.mastery
         self.assertEqual(endpoint.__class__, ChampionMasteryv4)
     
-    @patch('gromp.endpoint.NamedEndpoint._request_api')
+    @patch.object(Session, 'get')
     def testChampionMasteryv4Responses(self, mock_get):
         _testEndpointRequests(
             self,
@@ -114,7 +115,7 @@ class LeagueHookTest(unittest.TestCase):
         endpoint = self.hook.champion
         self.assertEqual(endpoint.__class__, Championv3)
 
-    @patch('gromp.endpoint.NamedEndpoint._request_api')
+    @patch.object(Session, 'get')
     def testChampionv3Responses(self, mock_get):
         _testEndpointRequests(
             self,
@@ -132,7 +133,7 @@ class LeagueHookTest(unittest.TestCase):
         endpoint = self.hook.clash
         self.assertEqual(endpoint.__class__, Clashv1)
 
-    @patch('gromp.endpoint.NamedEndpoint._request_api')
+    @patch.object(Session, 'get')
     def testClashv1Responses(self, mock_get):
         _testEndpointRequests(
             self,
@@ -166,7 +167,7 @@ class LeagueHookTest(unittest.TestCase):
         endpoint = self.hook.league_exp
         self.assertEqual(endpoint.__class__, LeagueExpv4)
 
-    @patch('gromp.endpoint.NamedEndpoint._request_api')
+    @patch.object(Session, 'get')
     def testLeagueExpv4Responses(self, mock_get):
         _testEndpointRequests(
             self,
@@ -197,7 +198,7 @@ class LeagueHookTest(unittest.TestCase):
         endpoint = self.hook.league
         self.assertEqual(endpoint.__class__, Leaguev4)
 
-    @patch('gromp.endpoint.NamedEndpoint._request_api')
+    @patch.object(Session, 'get')
     def testLeaguev4Responses(self, mock_get):
         _testEndpointRequests(
             self,
@@ -233,7 +234,7 @@ class LeagueHookTest(unittest.TestCase):
         endpoint = self.hook.challenges
         self.assertEqual(endpoint.__class__, LolChallengesv1)
 
-    @patch('gromp.endpoint.NamedEndpoint._request_api')
+    @patch.object(Session, 'get')
     def testLolChallengesv1Responses(self, mock_get):
         _testEndpointRequests(
             self,
@@ -273,7 +274,7 @@ class LeagueHookTest(unittest.TestCase):
         endpoint = self.hook.status
         self.assertEqual(endpoint.__class__, LolStatusv4)
 
-    @patch('gromp.endpoint.NamedEndpoint._request_api')
+    @patch.object(Session, 'get')
     def testLolStatusv4Respones(self, mock_get):
         _testEndpointRequests(
             self,
@@ -289,7 +290,7 @@ class LeagueHookTest(unittest.TestCase):
         endpoint = self.hook.match
         self.assertEqual(endpoint.__class__, Matchv5)
 
-    @patch('gromp.endpoint.NamedEndpoint._request_api')
+    @patch.object(Session, 'get')
     def testMatchv5Responses(self, mock_get):
         _testEndpointRequests(
             self,
@@ -320,7 +321,7 @@ class LeagueHookTest(unittest.TestCase):
         endpoint = self.hook.spectator
         self.assertEqual(endpoint.__class__, Spectatorv4)
 
-    @patch('gromp.endpoint.NamedEndpoint._request_api')
+    @patch.object(Session, 'get')
     def testSpectatorv4Respones(self, mock_get):
         _testEndpointRequests(
             self,
@@ -345,7 +346,7 @@ class LeagueHookTest(unittest.TestCase):
         endpoint = self.hook.summoner
         self.assertEqual(endpoint.__class__, Summonerv4)
 
-    @patch('gromp.endpoint.NamedEndpoint._request_api')
+    @patch.object(Session, 'get')
     def testSummonerv4Responses(self, mock_get):
         _testEndpointRequests(
             self,
@@ -376,7 +377,7 @@ class LeagueHookTest(unittest.TestCase):
         endpoint = self.hook.tournament_stub
         self.assertEqual(endpoint.__class__, TournamentStubv4)
 
-    @patch('gromp.endpoint.NamedEndpoint._request_api')
+    @patch.object(Session, 'get')
     def testTournamentStubv4Responses(self, mock_get):
         _testEndpointRequests(
             self,
@@ -407,7 +408,7 @@ class LeagueHookTest(unittest.TestCase):
         endpoint = self.hook.tournament
         self.assertEqual(endpoint.__class__, Tournamentv4)
 
-    @patch('gromp.endpoint.NamedEndpoint._request_api')
+    @patch.object(Session, 'get')
     def testTournamentv4Responses(self, mock_get):
         _testEndpointRequests(
             self,
