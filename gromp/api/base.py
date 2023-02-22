@@ -41,6 +41,7 @@ import re
 __all__ = (
     'Api',
     'LeagueApi',
+    'ValorantApi',
 )
 
 class Api(object):
@@ -86,6 +87,14 @@ class LeagueApi(Api):
         self: LeagueApi,
         base: String,
         api: String,
-    ) -> None:
+    ) -> NoReturn:
         super(LeagueApi, self).__init__(base, 'lol', api)
+
+class ValorantApi(Api):
+    def __init__(
+        self,
+        base: String,
+        api: String,
+    ) -> NoReturn:
+        super(ValorantApi, self).__init__(base, 'val', api)
 

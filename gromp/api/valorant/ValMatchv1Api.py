@@ -21,11 +21,39 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-File created: 2023-01-23
-Last updated: 2023-02-22
+File created: 2023-02-23
+Last updated: 2023-02-23
 """
 
-from .base import Hook
-from .league import League
-from .valorant import Valorant
+from __future__ import annotations
+
+import builtins
+String = builtins.str
+
+from typing import NoReturn
+from gromp.api.base import ValorantApi
+
+__all__ = (
+    'ValMatchv1Api',
+)
+
+class ValMatchv1Api(ValorantApi):
+
+    api = {
+
+        'by_id':
+        'matches/{match_id}',
+
+        'matchlist_by_puuid':
+        'matchlists/by-puuid/{puuid}',
+
+        'recent_by_queue':
+        'recent-matches/by-queue/{queue}',
+
+    }
+
+    def __init__(self, key: String) -> NoReturn:
+        super(ValMatchv1Api, self).__init__(
+            '{region}', f'match/v1/{self.api[key]}',
+        )
 

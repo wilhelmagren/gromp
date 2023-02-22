@@ -21,11 +21,12 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-File created: 2023-01-23
+File created: 2023-02-22
 Last updated: 2023-02-22
 """
 
-from .base import Hook
-from .league import League
-from .valorant import Valorant
+from .ValContentv1Api import ValContentv1Api
+from .ValMatchv1Api import ValMatchv1Api
+from .ValRankedv1Api import ValRankedv1Api
+from .ValStatusv1Api import ValStatusv1Api
 

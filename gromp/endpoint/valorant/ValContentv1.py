@@ -21,11 +21,25 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-File created: 2023-01-23
+File created: 2023-02-22
 Last updated: 2023-02-22
 """
 
-from .base import Hook
-from .league import League
-from .valorant import Valorant
+from __future__ import annotations
+
+from typing import Any, Union
+from requests import Response
+
+from gromp.endpoint.base import NamedEndpoint
+from gromp.api.valorant import ValContentv1Api
+
+__all__ = (
+    'ValContentv1',
+)
+
+class ValContentv1(NamedEndpoint):
+    def get(self) -> Union[Response, Any]:
+        return self._request_api(
+            ValContentv1Api(),
+        )
 
