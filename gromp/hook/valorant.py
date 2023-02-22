@@ -22,15 +22,53 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-12
-Last updated: 2023-02-12
+Last updated: 2023-02-22
 """
 
-from gromp.hook import Hook
+from __future__ import annotations
+
+import builtins
+String = builtins.str
+
+from typing import NoReturn, Dict
+from gromp.hook.base import Hook
+from gromp.endpoint.valorant import (
+    ValContentv1,
+    ValMatchv1,
+    ValRankedv1,
+    ValStatusv1,
+)
+from gromp.utils import ValorantRegions
 
 __all__ = (
     'Valorant',
 )
 
 class Valorant(Hook):
-    pass
+    def __init__(
+        self: Valorant,
+        token: String,
+        **kwargs: Dict,
+    ) -> NoReturn:
+        super(Valorant, self).__init__(
+            token=token,
+            game=self.__class__.__name__,
+            **kwargs,
+        )
+
+    @property
+    def content(self) -> ValContentv1:
+        return self._setup_named_endpoint(ValContentv1)
+
+    @property
+    def match(self) -> ValMatchv1:
+        return self._setup_named_endpoint(ValMatchv1)
+
+    @property
+    def ranked(self) -> ValRankedv1:
+        return self._setup_named_endpoint(ValRankedv1)
+
+    @property
+    def status(self) -> ValStatusv1:
+        return self._setup_named_endpoint(ValStatusv1)
 
