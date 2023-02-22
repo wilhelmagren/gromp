@@ -40,6 +40,6 @@ __all__ = (
 class ValContentv1(NamedEndpoint):
     def get(self) -> Union[Response, Any]:
         return self._request_api(
-            ValContentv1Api,
+            ValContentv1Api(),
         )
 
