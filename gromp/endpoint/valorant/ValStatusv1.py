@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-22
-Last updated: 2023-02-22
+Last updated: 2023-02-23
 """
 
 from __future__ import annotations
@@ -40,6 +40,6 @@ __all__ = (
 class ValStatusv1(NamedEndpoint):
     def get(self) -> Union[Response, Any]:
         return self._request_api(
-            ValStatusv1Api,
+            ValStatusv1Api(),
         )
 
