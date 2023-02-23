@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-13
-Last updated: 2023-02-15
+Last updated: 2023-02-23
 """
 
 from __future__ import annotations
@@ -40,6 +40,7 @@ import re
 
 __all__ = (
     'Api',
+    'AccountsApi',
     'LeagueApi',
     'ValorantApi',
 )
@@ -81,6 +82,14 @@ class Api(object):
 
         request_url = self.url.format(**kwargs)
         return (request_url, query_params)
+
+class AccountsApi(Api):
+    def __init__(
+        self,
+        base: String,
+        api: String,
+    ) -> NoReturn:
+        super(AccountsApi, self).__init__(base, 'lol', api)
 
 class LeagueApi(Api):
     def __init__(

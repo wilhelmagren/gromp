@@ -21,12 +21,34 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-File created: 2023-01-23
+File created: 2023-02-23
 Last updated: 2023-02-23
 """
 
-from .base import Hook
-from .accounts import Accounts
-from .league import League
-from .valorant import Valorant
+from __future__ import annotations
+
+import builtins
+String = builtins.str
+
+from typing import NoReturn, Dict
+from gromp.hook.base import Hook
+from gromp.endpoint.base import NamedEndpoint
+from gromp.endpoint.accounts import Accountv1
+from gromp.utils import AccountsRegions
+
+__all__ = (
+    'Accounts',
+)
+
+class Accounts(Hook):
+    def __init__(self, token: String, **kwargs: Dict) -> NoReturn:
+        super(Accounts, self).__init__(
+            token=token,
+            game=self.__class__.__name__,
+            **kwargs,
+        )
+
+    @property
+    def account(self) -> Accountv1:
+        return self._setup_named_endpoint(Accountv1)
 

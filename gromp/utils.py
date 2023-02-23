@@ -38,6 +38,7 @@ __all__ = (
     'LeaguePlatforms',
     'LeagueRegions',
     'ValorantRegions',
+    'AccountsRegions',
     'Platforms',
     'Regions',
 )
@@ -105,10 +106,17 @@ class ValorantRegions:
     LATAM = 'LATAM'
     NA = 'NA'
 
+class AccountsRegions:
+    AMERICAS = 'AMERICAS'
+    ASIA = 'ASIA'
+    ESPORTS = 'ESPORTS'
+    EUROPE = 'EUROPE'
+
 class Platforms: 
     league = LeaguePlatforms
 
 class Regions:
     league = LeagueRegions
     valorant = ValorantRegions
+    accounts = AccountsRegions
 

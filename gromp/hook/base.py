@@ -71,12 +71,12 @@ class Hook(object):
         game_ = game.lower()
 
         if platform is None:
-            assert game in ('Valorant'), \
+            assert game in ('Valorant', 'Accounts'), \
                 f'No platform was specified, only games `Valorant` support only using ' \
                 f'region string for API requests. Here are the platforms for your ' \
                 f'specified game: {vars(getattr(Platforms, game_)).values()}.'
 
-        if game not in ('Valorant'):
+        if game not in ('Valorant', 'Accounts'):
             assert is_platform(platform, game_), \
                 f'User provided platform is not valid, {platform=}.\n' \
                 f'Valid platforms are: {vars(getattr(Platforms, game_)).values()}.'
