@@ -22,10 +22,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-01-23
-Last updated: 2023-02-22
+Last updated: 2023-02-23
 """
 
 from .base import Hook
+from .accounts import Accounts
 from .league import League
 from .valorant import Valorant
 
