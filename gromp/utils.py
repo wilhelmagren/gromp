@@ -41,6 +41,7 @@ __all__ = (
     'AccountsRegions',
     'TftPlatforms',
     'TftRegions',
+    'RuneterraRegions',
     'Platforms',
     'Regions',
 )
@@ -138,6 +139,12 @@ class TftRegions:
     EUROPE = 'EUROPE'
     SEA = 'SEA'
 
+class LorRegions:
+    AMERICAS = 'AMERICAS'
+    APAC = 'APAC'
+    EUROPE = 'EUROPE'
+    SEA = 'SEA'
+
 class Platforms: 
     league = LeaguePlatforms
     tft = TftPlatforms
@@ -147,4 +154,5 @@ class Regions:
     valorant = ValorantRegions
     accounts = AccountsRegions
     tft = TftRegions
+    lor = LorRegions
 

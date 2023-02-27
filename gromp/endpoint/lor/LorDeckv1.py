@@ -21,14 +21,34 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-File created: 2023-02-05
+File created: 2023-02-27
 Last updated: 2023-02-27
 """
 
-from .base import NamedEndpoint
-from .accounts import *
-from .tft import *
-from .league import *
-from .lor import *
-from .valorant import *
+from __future__ import annotations
+
+import builtins
+String = builtins.str
+
+from typing import Union, Any
+from requests import Response
+
+from gromp.endpoint.base import NamedEndpoint
+from gromp.api.lor import LorDeckv1Api
+
+__all__ = (
+    'LorDeckv1',
+)
+
+class LorDeckv1(NamedEndpoint):
+    def my_decks(self) -> Union[Response, Any]:
+        return self._request_api(
+            LorDeckv1Api(),
+        )
+
+    def create_deck(self, deck: String) -> Union[Response, Any]:
+        return self._request_api(
+            LorDeckv1Api(),
+            deck=deck,
+        )
 
