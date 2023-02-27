@@ -27,10 +27,7 @@ Last updated: 2023-02-27
 
 from __future__ import annotations
 
-import builtins
-String = builtins.str
-
-from typing import Union, Any
+from typing import Union, Any, Dict
 from requests import Response
 
 from gromp.endpoint.base import NamedEndpoint
@@ -46,7 +43,7 @@ class LorDeckv1(NamedEndpoint):
             LorDeckv1Api(),
         )
 
-    def create_deck(self, deck: String) -> Union[Response, Any]:
+    def create_deck(self, deck: Dict) -> Union[Response, Any]:
         return self._request_api(
             LorDeckv1Api(),
             deck=deck,
