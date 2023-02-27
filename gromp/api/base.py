@@ -43,6 +43,7 @@ __all__ = (
     'AccountsApi',
     'TftApi',
     'LeagueApi',
+    'LorApi',
     'ValorantApi',
 )
 
@@ -115,4 +116,12 @@ class TftApi(Api):
         api: String,
     ) -> NoReturn:
         super(TftApi, self).__init__(base, 'tft', api)
+
+class LorApi(Api):
+    def __init__(
+        self,
+        base: String,
+        api: String,
+    ) -> NoReturn:
+        super(LorApi, self).__init__(base, 'lor', api)
 
