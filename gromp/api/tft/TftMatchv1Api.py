@@ -21,13 +21,33 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-File created: 2023-02-13
+File created: 2023-02-27
 Last updated: 2023-02-27
 """
 
-from .base import *
-from .accounts import *
-from .tft import *
-from .league import *
-from .valorant import *
+from __future__ import annotations
+
+import builtins
+String = builtins.str
+
+from typing import NoReturn
+from gromp.api.base import TftApi
+
+__all__ = (
+    'TftMatchv1Api',
+)
+
+class TftMatchv1Api(TftApi):
+    api = {
+        'matchlist_by_puuid':
+        'by-puuid/{puuid}/ids',
+
+        'by_id':
+        '{match_id}',
+    }
+
+    def __init__(self, key: String) -> NoReturn:
+        super(TftMatchv1Api, self).__init__(
+            '{region}', f'match/v1/matches/{self.api[key]}',
+        )
 
