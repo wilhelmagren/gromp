@@ -55,7 +55,7 @@ class TftSummonerv1(NamedEndpoint):
 
     def by_puuid(self, puuid: String) -> Union[Response, Any]:
         return self._request_api(
-            TftSummmonerv1Api('by_puuid'),
+            TftSummonerv1Api('by_puuid'),
             puuid=puuid,
         )
 

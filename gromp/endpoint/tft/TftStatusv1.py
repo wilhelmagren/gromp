@@ -40,6 +40,6 @@ __all__ = (
 class TftStatusv1(NamedEndpoint):
     def get(self) -> Union[Response, Any]:
         return self._request_api(
-            TftStatusv1(),
+            TftStatusv1Api(),
         )
 
