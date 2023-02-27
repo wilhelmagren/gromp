@@ -21,13 +21,25 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-File created: 2023-02-05
+File created: 2023-02-27
 Last updated: 2023-02-27
 """
 
-from .base import NamedEndpoint
-from .accounts import *
-from .tft import *
-from .league import *
-from .valorant import *
+from __future__ import annotations
+
+from typing import Union, Any
+from requests import Response
+
+from gromp.endpoint.base import NamedEndpoint
+from gromp.api.tft import TftStatusv1Api
+
+__all__ = (
+    'TftStatusv1',
+)
+
+class TftStatusv1(NamedEndpoint):
+    def get(self) -> Union[Response, Any]:
+        return self._request_api(
+            TftStatusv1(),
+        )
 
