@@ -22,11 +22,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-05
-Last updated: 2023-02-23
+Last updated: 2023-02-27
 """
 
 from .base import NamedEndpoint
 from .accounts import *
+from .tft import *
 from .league import *
 from .valorant import *
 

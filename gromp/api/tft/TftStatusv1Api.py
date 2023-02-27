@@ -21,13 +21,22 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-File created: 2023-01-23
+File created: 2023-02-27
 Last updated: 2023-02-27
 """
 
-from .base import Hook
-from .accounts import Accounts
-from .tft import Tft
-from .league import League
-from .valorant import Valorant
+from __future__ import annotations
+
+from typing import NoReturn
+from gromp.api.base import TftApi
+
+__all__ = (
+    'TftStatusv1Api',
+)
+
+class TftStatusv1Api(TftApi):
+    def __init__(self) -> NoReturn:
+        super(TftStatusv1Api, self).__init__(
+            '{platform}', f'status/v1/platform-data',
+        )
 

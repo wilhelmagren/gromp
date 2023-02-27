@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-13
-Last updated: 2023-02-23
+Last updated: 2023-02-27
 """
 
 from __future__ import annotations
@@ -41,6 +41,7 @@ import re
 __all__ = (
     'Api',
     'AccountsApi',
+    'TftApi',
     'LeagueApi',
     'ValorantApi',
 )
@@ -106,4 +107,12 @@ class ValorantApi(Api):
         api: String,
     ) -> NoReturn:
         super(ValorantApi, self).__init__(base, 'val', api)
+
+class TftApi(Api):
+    def __init__(
+        self,
+        base: String,
+        api: String,
+    ) -> NoReturn:
+        super(TftApi, self).__init__(base, 'tft', api)
 

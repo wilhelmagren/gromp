@@ -21,13 +21,12 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-File created: 2023-01-23
+File created: 2023-02-27
 Last updated: 2023-02-27
 """
 
-from .base import Hook
-from .accounts import Accounts
-from .tft import Tft
-from .league import League
-from .valorant import Valorant
+from .TftLeaguev1 import TftLeaguev1
+from .TftMatchv1 import TftMatchv1
+from .TftStatusv1 import TftStatusv1
+from .TftSummonerv1 import TftSummonerv1
 

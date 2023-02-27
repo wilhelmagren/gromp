@@ -45,7 +45,7 @@ class HookTest(unittest.TestCase):
             '<fake-RGAPI-token>',
             'League',
             LeaguePlatforms.euw1,
-            LeagueRegions.europe,
+            LeagueRegions.EUROPE,
             keylen=1024,
             timeout=10,
         )

@@ -73,7 +73,7 @@ class LeagueHookTest(unittest.TestCase):
         self.hook = League(
             '<fake-RGAPI-token>',
             platform=LeaguePlatforms.na1,
-            region=LeagueRegions.americas,
+            region=LeagueRegions.AMERICAS,
             handlers=[],
             keylen=1024,
             timeout=10,
