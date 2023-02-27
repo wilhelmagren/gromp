@@ -33,7 +33,7 @@ String = builtins.str
 from typing import NoReturn, Dict
 from gromp.hook.base import Hook
 from gromp.endpoint.base import NamedEndpoint
-from gromp.endpoint.runeterra import (
+from gromp.endpoint.lor import (
     LorDeckv1,
     LorInventoryv1,
     LorMatchv1,
@@ -46,7 +46,7 @@ from gromp.utils import LorRegions
 class Lor(Hook):
     def __init__(self, token: String, **kwargs: Dict) -> NoReturn:
         super(Lor, self).__init__(
-            token=token
+            token=token,
             game=self.__class__.__name__,
             **kwargs,
         )

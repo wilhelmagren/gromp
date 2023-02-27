@@ -41,7 +41,7 @@ __all__ = (
     'AccountsRegions',
     'TftPlatforms',
     'TftRegions',
-    'RuneterraRegions',
+    'LorRegions',
     'Platforms',
     'Regions',
 )

@@ -34,10 +34,10 @@ from gromp.endpoint.base import NamedEndpoint
 from gromp.api.lor import LorRankedv1Api
 
 __all__ = (
-    'LorRankedv1Api',
+    'LorRankedv1',
 )
 
-class LorRankedv1Api(NamedEndpoint):
+class LorRankedv1(NamedEndpoint):
     def get(self) -> Union[Response, Any]:
         return self._request_api(
             LorRankedv1Api(),
