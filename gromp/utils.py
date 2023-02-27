@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-01-23
-Last updated: 2023-02-15
+Last updated: 2023-02-27
 """
 
 import builtins
@@ -39,6 +39,8 @@ __all__ = (
     'LeagueRegions',
     'ValorantRegions',
     'AccountsRegions',
+    'TftPlatforms',
+    'TftRegions',
     'Platforms',
     'Regions',
 )
@@ -92,10 +94,10 @@ class LeaguePlatforms:
     vn2 = 'vn2'
 
 class LeagueRegions:
-    americas = 'americas'
-    asia = 'asia'
-    europe = 'europe'
-    sea = 'sea'
+    AMERICAS = 'AMERICAS'
+    ASIA = 'ASIA'
+    EUROPE = 'EUROPE'
+    SEA = 'SEA'
 
 class ValorantRegions:
     AP = 'AP'
@@ -112,11 +114,37 @@ class AccountsRegions:
     ESPORTS = 'ESPORTS'
     EUROPE = 'EUROPE'
 
+class TftPlatforms:
+    br1 = 'br1'
+    eun1 = 'eun1'
+    euw1 = 'euw1'
+    jp1 = 'jp1'
+    kr = 'kr'
+    la1 = 'la1'
+    la2 = 'la2'
+    na1 = 'na1'
+    oc1 = 'oc1'
+    tr1 = 'tr1'
+    ru = 'ru'
+    ph2 = 'ph2'
+    sg2 = 'sg2'
+    th2 = 'th2'
+    tw2 = 'tw2'
+    vn2 = 'vn2'
+
+class TftRegions:
+    AMERICAS = 'AMERICAS'
+    ASIA = 'ASIA'
+    EUROPE = 'EUROPE'
+    SEA = 'SEA'
+
 class Platforms: 
     league = LeaguePlatforms
+    tft = TftPlatforms
 
 class Regions:
     league = LeagueRegions
     valorant = ValorantRegions
     accounts = AccountsRegions
+    tft = TftRegions
 
