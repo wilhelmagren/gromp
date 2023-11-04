@@ -39,5 +39,5 @@ class Championv3Api(LeagueApi):
     ) -> NoReturn:
         super(Championv3Api, self).__init__(
             "{platform}",
-            f"platform/v3/champion-rotations",
+            "platform/v3/champion-rotations",
         )

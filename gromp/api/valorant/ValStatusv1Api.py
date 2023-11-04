@@ -37,5 +37,5 @@ class ValStatusv1Api(ValorantApi):
     def __init__(self) -> NoReturn:
         super(ValStatusv1Api, self).__init__(
             "{region}",
-            f"status/v1/platform-data",
+            "status/v1/platform-data",
         )

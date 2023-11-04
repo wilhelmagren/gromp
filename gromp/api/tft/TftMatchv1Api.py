@@ -22,17 +22,17 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-27
-Last updated: 2023-02-27
+Last updated: 2023-11-04
 """
 
 from __future__ import annotations
 
+from typing import NoReturn
+from gromp.api.base import TftApi
+
 import builtins
 
 String = builtins.str
-
-from typing import NoReturn
-from gromp.api.base import TftApi
 
 __all__ = ("TftMatchv1Api",)
 

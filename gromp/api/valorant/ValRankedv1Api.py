@@ -22,18 +22,17 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-23
-Last updated: 2023-02-23
+Last updated: 2023-11-04
 """
 
 from __future__ import annotations
 
+from typing import NoReturn
+from gromp.api.base import ValorantApi
+
 import builtins
 
 String = builtins.str
-
-from typing import NoReturn
-
-from gromp.api.base import ValorantApi
 
 __all__ = ("ValRankedv1Api",)
 

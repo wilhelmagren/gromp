@@ -22,20 +22,20 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-05
-Last updated: 2023-02-15
+Last updated: 2023-11-04
 """
 
 from __future__ import annotations
-
-import builtins
-
-String = builtins.str
 
 from typing import Union, Any
 from requests import Response
 
 from gromp.endpoint.base import NamedEndpoint
 from gromp.api.league import Leaguev4Api
+
+import builtins
+
+String = builtins.str
 
 __all__ = ("Leaguev4",)
 
@@ -102,5 +102,5 @@ class Leaguev4(NamedEndpoint):
         """ """
         return self._request_api(
             Leaguev4Api("master_queue"),
-            master_queue=master_queue,
+            master_queue=queue,
         )

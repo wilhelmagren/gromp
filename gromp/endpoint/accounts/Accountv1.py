@@ -22,20 +22,20 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-23
-Last updated: 2023-02-23
+Last updated: 2023-11-04
 """
 
 from __future__ import annotations
-
-import builtins
-
-String = builtins.str
 
 from typing import Union, Any
 from requests import Response
 
 from gromp.endpoint.base import NamedEndpoint
 from gromp.api.accounts import Accountv1Api
+
+import builtins
+
+String = builtins.str
 
 __all__ = ("Accountv1",)
 

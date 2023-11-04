@@ -27,17 +27,14 @@ Last updated: 2023-11-04
 
 from __future__ import annotations
 
-import builtins
-
-String = builtins.str
-
 from typing import (
     Dict,
     Tuple,
     NoReturn,
 )
-
 import re
+import builtins
+String = builtins.str
 
 __all__ = (
     "Api",

@@ -22,21 +22,21 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-05
-Last updated: 2023-02-15
+Last updated: 2023-11-04
 """
 
 from __future__ import annotations
-
-import builtins
-
-String = builtins.str
-Integer = builtins.int
 
 from typing import Union, Optional, Any
 from requests import Response
 
 from gromp.endpoint.base import NamedEndpoint
 from gromp.api.league import Matchv5Api
+
+import builtins
+
+String = builtins.str
+Integer = builtins.int
 
 __all__ = ("Matchv5",)
 

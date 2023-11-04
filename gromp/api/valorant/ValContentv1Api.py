@@ -37,5 +37,5 @@ class ValContentv1Api(ValorantApi):
     def __init__(self) -> NoReturn:
         super(ValContentv1Api, self).__init__(
             "{region}",
-            f"content/v1/contents",
+            "content/v1/contents",
         )

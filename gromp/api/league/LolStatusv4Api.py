@@ -39,5 +39,5 @@ class LolStatusv4Api(LeagueApi):
     ) -> NoReturn:
         super(LolStatusv4Api, self).__init__(
             "{platform}",
-            f"status/v4/platform-data",
+            "status/v4/platform-data",
         )

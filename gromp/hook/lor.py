@@ -22,18 +22,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-27
-Last updated: 2023-02-27
+Last updated: 2023-11-04
 """
 
 from __future__ import annotations
 
-import builtins
-
-String = builtins.str
-
 from typing import NoReturn, Dict
 from gromp.hook.base import Hook
-from gromp.endpoint.base import NamedEndpoint
 from gromp.endpoint.lor import (
     LorDeckv1,
     LorInventoryv1,
@@ -42,7 +37,9 @@ from gromp.endpoint.lor import (
     LorStatusv1,
 )
 
-from gromp.utils import LorRegions
+import builtins
+
+String = builtins.str
 
 
 class Lor(Hook):

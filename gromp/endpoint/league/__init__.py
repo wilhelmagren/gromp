@@ -22,18 +22,18 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-05
-Last updated: 2023-02-14
+Last updated: 2023-11-04
 """
 
-from .ChampionMasteryv4 import ChampionMasteryv4
-from .Championv3 import Championv3
-from .Clashv1 import Clashv1
-from .LeagueExpv4 import LeagueExpv4
-from .LolChallengesv1 import LolChallengesv1
-from .Leaguev4 import Leaguev4
-from .LolStatusv4 import LolStatusv4
-from .Matchv5 import Matchv5
-from .Spectatorv4 import Spectatorv4
-from .Summonerv4 import Summonerv4
-from .TournamentStubv4 import TournamentStubv4
-from .Tournamentv4 import Tournamentv4
+from .ChampionMasteryv4 import ChampionMasteryv4  # noqa
+from .Championv3 import Championv3  # noqa
+from .Clashv1 import Clashv1  # noqa
+from .LeagueExpv4 import LeagueExpv4  # noqa
+from .LolChallengesv1 import LolChallengesv1  # noqa
+from .Leaguev4 import Leaguev4  # noqa
+from .LolStatusv4 import LolStatusv4  # noqa
+from .Matchv5 import Matchv5  # noqa
+from .Spectatorv4 import Spectatorv4  # noqa
+from .Summonerv4 import Summonerv4  # noqa
+from .TournamentStubv4 import TournamentStubv4  # noqa
+from .Tournamentv4 import Tournamentv4  # noqa

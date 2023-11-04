@@ -22,18 +22,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-01-23
-Last updated: 2023-02-15
+Last updated: 2023-11-04
 """
 
 from __future__ import annotations
 
-import builtins
-
-String = builtins.str
-
 from typing import NoReturn, Dict
 from gromp.hook.base import Hook
-from gromp.endpoint.base import NamedEndpoint
 from gromp.endpoint.league import (
     ChampionMasteryv4,
     Championv3,
@@ -48,7 +43,10 @@ from gromp.endpoint.league import (
     TournamentStubv4,
     Tournamentv4,
 )
-from gromp.utils import LeaguePlatforms, LeagueRegions
+
+import builtins
+
+String = builtins.str
 
 __all__ = ("League",)
 

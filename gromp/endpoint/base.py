@@ -61,7 +61,7 @@ class NamedEndpoint(object):
 
         assert isinstance(
             keys["private"], PrivateKey
-        ), f"Provided rsa private key is not a PrivateKey."
+        ), "Provided rsa private key is not a PrivateKey."
 
         config = {}
         config["token"] = self._encrypt_token(token, keys["public"])

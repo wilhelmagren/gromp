@@ -37,5 +37,5 @@ class TftStatusv1Api(TftApi):
     def __init__(self) -> NoReturn:
         super(TftStatusv1Api, self).__init__(
             "{platform}",
-            f"status/v1/platform-data",
+            "status/v1/platform-data",
         )

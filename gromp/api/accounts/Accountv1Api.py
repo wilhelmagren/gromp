@@ -27,13 +27,12 @@ Last updated: 2023-11-04
 
 from __future__ import annotations
 
+from typing import NoReturn
+from gromp.api.base import AccountsApi
+
 import builtins
 
 String = builtins.str
-
-from typing import NoReturn
-
-from gromp.api.base import AccountsApi
 
 __all__ = ("Accountv1Api",)
 

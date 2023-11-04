@@ -25,12 +25,12 @@ File created: 2023-01-23
 Last updated: 2023-11-04
 """
 
+from typing import Optional
+
 import builtins
 
 String = builtins.str
 Boolean = builtins.bool
-
-from typing import Optional
 
 __all__ = (
     "is_platform",

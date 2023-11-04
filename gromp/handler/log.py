@@ -22,20 +22,20 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-06
-Last updated: 2023-02-15
+Last updated: 2023-11-04
 """
 
 from __future__ import annotations
+
+import logging
+from typing import Dict
+from requests import Response
+from gromp.handler.base import Handler
 
 import builtins
 
 String = builtins.str
 
-from typing import Dict
-from requests import Response
-from gromp.handler.base import Handler
-
-import logging
 
 logger = logging.getLogger(__name__)
 

@@ -22,14 +22,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-12
-Last updated: 2023-02-22
+Last updated: 2023-11-04
 """
 
 from __future__ import annotations
-
-import builtins
-
-String = builtins.str
 
 from typing import NoReturn, Dict
 from gromp.hook.base import Hook
@@ -39,7 +35,10 @@ from gromp.endpoint.valorant import (
     ValRankedv1,
     ValStatusv1,
 )
-from gromp.utils import ValorantRegions
+
+import builtins
+
+String = builtins.str
 
 __all__ = ("Valorant",)
 

@@ -22,10 +22,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-27
-Last updated: 2023-02-27
+Last updated: 2023-11-04
 """
 
-from .TftLeaguev1Api import TftLeaguev1Api
-from .TftMatchv1Api import TftMatchv1Api
-from .TftStatusv1Api import TftStatusv1Api
-from .TftSummonerv1Api import TftSummonerv1Api
+from .TftLeaguev1Api import TftLeaguev1Api  # noqa
+from .TftMatchv1Api import TftMatchv1Api  # noqa
+from .TftStatusv1Api import TftStatusv1Api  # noqa
+from .TftSummonerv1Api import TftSummonerv1Api  # noqa

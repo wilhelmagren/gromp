@@ -22,23 +22,17 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-01-23
-Last updated: 2023-02-16
+Last updated: 2023-11-04
 """
 
 from __future__ import annotations
 
 import rsa
-import builtins
-
-String = builtins.str
-Integer = builtins.int
 
 from typing import (
     List,
     Dict,
     Optional,
-    Union,
-    Any,
     NoReturn,
 )
 
@@ -51,6 +45,11 @@ from gromp.utils import (
 from gromp.endpoint.base import NamedEndpoint
 from gromp.handler.log import LogHandler
 from gromp.handler.json import JsonHandler
+
+import builtins
+
+String = builtins.str
+Integer = builtins.int
 
 __all__ = ("Hook",)
 
@@ -82,7 +81,7 @@ class Hook(object):
                 f"Valid platforms are: {vars(getattr(Platforms, game_)).values()}."
             )
 
-        assert not region is None, (
+        assert region is not None, (
             f"No region was provided. All games require a region to be specified.\n"
             f"Valid regions for your game are: {vars(getattr(Regions, game_)).values()}."
         )
@@ -93,13 +92,13 @@ class Hook(object):
         )
 
         assert timeout > 0, (
-            f"You have provided a timeout value <= 0 which is not valid.\n"
-            f"This sets the allowed time to wait for response, defaults to 5 seconds."
+            "You have provided a timeout value <= 0 which is not valid.\n"
+            "This sets the allowed time to wait for response, defaults to 5 seconds."
         )
 
         assert keylen > 0, (
-            f"You have provided a key length value <= 0 which is not valid. "
-            f"Please specify a larger value for the RSA algorithm to work properly."
+            "You have provided a key length value <= 0 which is not valid. "
+            "Please specify a larger value for the RSA algorithm to work properly."
         )
 
         public_key, private_key = rsa.newkeys(keylen)
