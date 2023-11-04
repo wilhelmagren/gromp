@@ -1,28 +1,67 @@
-[build-system]
-requires = [ 'setuptools>=61.0' ]
-build-backend = 'setuptools.build_meta'
-
-[project]
-name = 'gromp'
-version = '0.8.0'
+[tool.poetry]
+name = "gromp"
+version = "1.0.0"
+description = "Holistic python wrapper for the public Riot Games developer API."
 authors = [
-    { name='Wilhelm Ågren', email='wilhelmagren98@gmail.com' },
+    "Wilhelm Ågren <wilhelmagren98@gmail.com>",
 ]
-description = 'Holistic python wrapper for the public Riot Games developer API.'
-readme = 'README.md'
-requires-python = '>=3.6'
+license = "MIT"
+readme = "README.md"
+
+packages = [{ include = "gromp" }]
+homepage = "https://github.com/wilhelmagren/gromp"
+repository = "https://github.com/wilhelmagren/gromp"
+keywords = [
+    "python",
+    "api",
+    "league-of-legends",
+    "api-wrapper",
+    "riot",
+    "riot-games-api",
+    "teamfight-tactics",
+    "legends-of-runeterra",
+    "valorant",
+]
 classifiers = [
-    'Programming Language :: Python :: 3.6',
-    'Programming Language :: Python :: 3.7',
-    'Programming Language :: Python :: 3.8',
-    'Programming Language :: Python :: 3.9',
-    'Programming Language :: Python :: 3.10',
-    'Programming Language :: Python :: 3.11',
-    'License :: OSI Approved :: MIT License',
-    'Operating System :: OS Independent',
-    'Intended Audience :: Developers',
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Developers",
 ]
 
-[project.urls]
-'Homepage' = 'https://github.com/willeagren/gromp'
+[tool.poetry.urls]
+"Homepage" = "https://github.com/wilhelmagren/gromp"
+"Bug tracker" = "https://github.com/wilhelmagren/gromp/issues"
 
+[tool.poetry.dependencies]
+python = ">=3.8,<3.13"
+requests = "^2.31.0"
+rsa = "^4.9"
+
+[tool.poetry.group.dev]
+optional = true
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.10.1"
+pytest = "^7.4.3"
+coverage = "^7.3.2"
+ruff = "^0.1.4"
+pre-commit = "^3.5.0"
+pyclean = "^2.7.5"
+
+
+[build-system]
+requires = [ "poetry-core" ]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+target-version = "py310"
+line-length = 89
+
+[tool.black]
+target-version = [ "py310" ]
+line-length = 89
