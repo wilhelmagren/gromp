@@ -28,29 +28,21 @@ Last updated: 2023-02-15
 from __future__ import annotations
 
 import builtins
+
 String = builtins.str
 
 from typing import NoReturn
 from gromp.api.base import LeagueApi
 
-__all__ = (
-    'TournamentStubv4Api',
-)
+__all__ = ("TournamentStubv4Api",)
+
 
 class TournamentStubv4Api(LeagueApi):
-
     api = {
-        'codes':
-        'codes',
-
-        'events_by_code':
-        'lobby-events/by-code/{tournament_code}',
-
-        'providers':
-        'providers',
-
-        'tournaments':
-        'tournaments',
+        "codes": "codes",
+        "events_by_code": "lobby-events/by-code/{tournament_code}",
+        "providers": "providers",
+        "tournaments": "tournaments",
     }
 
     def __init__(
@@ -58,6 +50,6 @@ class TournamentStubv4Api(LeagueApi):
         key: String,
     ) -> NoReturn:
         super(TournamentStubv4Api, self).__init__(
-            '{platform}', f'tournament-stub/v4/{self.api[key]}',
+            "{platform}",
+            f"tournament-stub/v4/{self.api[key]}",
         )
-

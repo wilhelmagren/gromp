@@ -28,6 +28,7 @@ Last updated: 2023-02-15
 from __future__ import annotations
 
 import builtins
+
 String = builtins.str
 
 from typing import NoReturn, Dict
@@ -49,14 +50,13 @@ from gromp.endpoint.league import (
 )
 from gromp.utils import LeaguePlatforms, LeagueRegions
 
-__all__ = (
-    'League',
-)
+__all__ = ("League",)
+
 
 class League(Hook):
     def __init__(
         self: League,
-        token: String, 
+        token: String,
         **kwargs: Dict,
     ) -> NoReturn:
         super(League, self).__init__(
@@ -64,7 +64,7 @@ class League(Hook):
             game=self.__class__.__name__,
             **kwargs,
         )
-    
+
     @property
     def mastery(self: League) -> ChampionMasteryv4:
         return self._setup_named_endpoint(ChampionMasteryv4)
@@ -72,11 +72,11 @@ class League(Hook):
     @property
     def champion(self: League) -> Championv3:
         return self._setup_named_endpoint(Championv3)
-    
+
     @property
     def clash(self: League) -> Clashv1:
         return self._setup_named_endpoint(Clashv1)
-    
+
     @property
     def league_exp(self: League) -> LeagueExpv4:
         return self._setup_named_endpoint(LeagueExpv4)
@@ -112,4 +112,3 @@ class League(Hook):
     @property
     def tournament(self: League) -> Tournamentv4:
         return self._setup_named_endpoint(Tournamentv4)
-

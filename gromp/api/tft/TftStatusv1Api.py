@@ -30,13 +30,12 @@ from __future__ import annotations
 from typing import NoReturn
 from gromp.api.base import TftApi
 
-__all__ = (
-    'TftStatusv1Api',
-)
+__all__ = ("TftStatusv1Api",)
+
 
 class TftStatusv1Api(TftApi):
     def __init__(self) -> NoReturn:
         super(TftStatusv1Api, self).__init__(
-            '{platform}', f'status/v1/platform-data',
+            "{platform}",
+            f"status/v1/platform-data",
         )
-

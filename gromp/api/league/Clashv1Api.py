@@ -28,32 +28,22 @@ Last updated: 2023-02-16
 from __future__ import annotations
 
 import builtins
+
 String = builtins.str
 
 from typing import NoReturn
 from gromp.api.base import LeagueApi
 
-__all__ = (
-    'Clashv1Api',
-)
+__all__ = ("Clashv1Api",)
+
 
 class Clashv1Api(LeagueApi):
-
     api = {
-        'summoner_by_id':
-        'players/by-summoner/{summoner_id}',
-
-        'team_by_id':
-        'teams/{team_id}',
-
-        'tournaments':
-        'tournaments',
-
-        'tournament_by_team_id':
-        'tournaments/by-team/{team_id}',
-
-        'tournament_by_id':
-        'tournaments/{tournament_id}',
+        "summoner_by_id": "players/by-summoner/{summoner_id}",
+        "team_by_id": "teams/{team_id}",
+        "tournaments": "tournaments",
+        "tournament_by_team_id": "tournaments/by-team/{team_id}",
+        "tournament_by_id": "tournaments/{tournament_id}",
     }
 
     def __init__(
@@ -61,6 +51,6 @@ class Clashv1Api(LeagueApi):
         key: String,
     ) -> NoReturn:
         super(Clashv1Api, self).__init__(
-            '{platform}', f'clash/v1/{self.api[key]}',
+            "{platform}",
+            f"clash/v1/{self.api[key]}",
         )
-

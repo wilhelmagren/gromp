@@ -30,14 +30,16 @@ from __future__ import annotations
 from typing import NoReturn
 from gromp.api.base import LorApi
 
+
 class LorStatusv1Api(LorApi):
     """
-    The AMERICAS routing value serves the AMERICAS shard. 
-    The EUROPE routing value serves the EUROPE shard. 
+    The AMERICAS routing value serves the AMERICAS shard.
+    The EUROPE routing value serves the EUROPE shard.
     The SEA routing value serves the APAC shard (previously was ASIA and SEA).
     """
+
     def __init__(self) -> NoReturn:
         super(LorStatusv1Api, self).__init__(
-            '{region}', 'status/v1/platform-data',
+            "{region}",
+            "status/v1/platform-data",
         )
-

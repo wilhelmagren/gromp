@@ -37,4 +37,3 @@ from .Spectatorv4Api import Spectatorv4Api
 from .Summonerv4Api import Summonerv4Api
 from .TournamentStubv4Api import TournamentStubv4Api
 from .Tournamentv4Api import Tournamentv4Api
-

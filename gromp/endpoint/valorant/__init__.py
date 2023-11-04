@@ -29,4 +29,3 @@ from .ValContentv1 import ValContentv1
 from .ValMatchv1 import ValMatchv1
 from .ValRankedv1 import ValRankedv1
 from .ValStatusv1 import ValStatusv1
-

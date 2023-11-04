@@ -33,9 +33,8 @@ from requests import Response
 from gromp.endpoint.base import NamedEndpoint
 from gromp.api.lor import LorDeckv1Api
 
-__all__ = (
-    'LorDeckv1',
-)
+__all__ = ("LorDeckv1",)
+
 
 class LorDeckv1(NamedEndpoint):
     def my_decks(self) -> Union[Response, Any]:
@@ -48,4 +47,3 @@ class LorDeckv1(NamedEndpoint):
             LorDeckv1Api(),
             deck=deck,
         )
-

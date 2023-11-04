@@ -29,6 +29,7 @@ from __future__ import annotations
 
 import rsa
 import builtins
+
 String = builtins.str
 Integer = builtins.int
 
@@ -51,9 +52,8 @@ from gromp.endpoint.base import NamedEndpoint
 from gromp.handler.log import LogHandler
 from gromp.handler.json import JsonHandler
 
-__all__ = (
-    'Hook',
-)
+__all__ = ("Hook",)
+
 
 class Hook(object):
     def __init__(
@@ -67,36 +67,40 @@ class Hook(object):
         timeout: Optional[Integer] = 5,
         **kwargs: Dict,
     ) -> NoReturn:
-
         game_ = game.lower()
 
         if platform is None:
-            assert game in ('Valorant', 'Accounts', 'Lor'), \
-                f'No platform was specified, only games `Valorant` support only using ' \
-                f'region string for API requests. Here are the platforms for your ' \
-                f'specified game: {vars(getattr(Platforms, game_)).values()}.'
+            assert game in ("Valorant", "Accounts", "Lor"), (
+                f"No platform was specified, only games `Valorant` support only using "
+                f"region string for API requests. Here are the platforms for your "
+                f"specified game: {vars(getattr(Platforms, game_)).values()}."
+            )
 
-        if game not in ('Valorant', 'Accounts', 'Lor'):
-            assert is_platform(platform, game_), \
-                f'User provided platform is not valid, {platform=}.\n' \
-                f'Valid platforms are: {vars(getattr(Platforms, game_)).values()}.'
+        if game not in ("Valorant", "Accounts", "Lor"):
+            assert is_platform(platform, game_), (
+                f"User provided platform is not valid, {platform=}.\n"
+                f"Valid platforms are: {vars(getattr(Platforms, game_)).values()}."
+            )
 
+        assert not region is None, (
+            f"No region was provided. All games require a region to be specified.\n"
+            f"Valid regions for your game are: {vars(getattr(Regions, game_)).values()}."
+        )
 
-        assert not region is None, \
-            f'No region was provided. All games require a region to be specified.\n' \
-            f'Valid regions for your game are: {vars(getattr(Regions, game_)).values()}.'
-            
-        assert is_region(region, game_), \
-            f'User provided region is not valid, {region=}.\n' \
-            f'Valid regions are: {vars(getattr(Regions, game_)).values()}.'
-        
-        assert timeout > 0, \
-            f'You have provided a timeout value <= 0 which is not valid.\n' \
-            f'This sets the allowed time to wait for response, defaults to 5 seconds.'
+        assert is_region(region, game_), (
+            f"User provided region is not valid, {region=}.\n"
+            f"Valid regions are: {vars(getattr(Regions, game_)).values()}."
+        )
 
-        assert keylen > 0, \
-            f'You have provided a key length value <= 0 which is not valid. ' \
-            f'Please specify a larger value for the RSA algorithm to work properly.'
+        assert timeout > 0, (
+            f"You have provided a timeout value <= 0 which is not valid.\n"
+            f"This sets the allowed time to wait for response, defaults to 5 seconds."
+        )
+
+        assert keylen > 0, (
+            f"You have provided a key length value <= 0 which is not valid. "
+            f"Please specify a larger value for the RSA algorithm to work properly."
+        )
 
         public_key, private_key = rsa.newkeys(keylen)
         encrypted_token = rsa.encrypt(
@@ -111,49 +115,49 @@ class Hook(object):
             ]
 
         keys = {}
-        keys['public'] = public_key
-        keys['private'] = private_key
+        keys["public"] = public_key
+        keys["private"] = private_key
 
         config = {}
-        config['token'] = encrypted_token
-        config['game'] = game
-        config['platform'] = platform
-        config['region'] = region
-        config['keys'] = keys
-        config['timeout'] = timeout
+        config["token"] = encrypted_token
+        config["game"] = game
+        config["platform"] = platform
+        config["region"] = region
+        config["keys"] = keys
+        config["timeout"] = timeout
         self._config = config
         self._handlers = handlers
 
     @property
     def token(self) -> String:
         return rsa.decrypt(
-            self._config['token'],
-            self._config['keys']['private'],
+            self._config["token"],
+            self._config["keys"]["private"],
         ).decode()
 
     @property
     def game(self) -> String:
-        return self._config['game']
+        return self._config["game"]
 
     @property
     def platform(self) -> String:
-        return self._config['platform']
-    
+        return self._config["platform"]
+
     @property
     def region(self) -> String:
-        return self._config['region']
+        return self._config["region"]
 
     @property
     def timeout(self) -> Integer:
-        return self._config['timeout']
+        return self._config["timeout"]
 
     @property
     def keys(self) -> Dict:
-        return self._config['keys']
+        return self._config["keys"]
 
     @property
     def public_key(self) -> rsa.PublicKey:
-        return self._config['keys']['public']
+        return self._config["keys"]["public"]
 
     @property
     def config(self) -> Dict:
@@ -163,11 +167,7 @@ class Hook(object):
     def handlers(self) -> List:
         return self._handlers
 
-    def _setup_named_endpoint(
-        self,
-        endpoint: NamedEndpoint,
-        **kwargs
-    ) -> NamedEndpoint:
+    def _setup_named_endpoint(self, endpoint: NamedEndpoint, **kwargs) -> NamedEndpoint:
         """ """
         return endpoint(
             self.token,
@@ -178,4 +178,3 @@ class Hook(object):
             self.timeout,
             **kwargs,
         )
-

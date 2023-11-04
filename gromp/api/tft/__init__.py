@@ -29,4 +29,3 @@ from .TftLeaguev1Api import TftLeaguev1Api
 from .TftMatchv1Api import TftMatchv1Api
 from .TftStatusv1Api import TftStatusv1Api
 from .TftSummonerv1Api import TftSummonerv1Api
-

@@ -45,15 +45,14 @@ from .__version__ import __version__
 # use the function set_logging_level with preferred logging level.
 
 import logging
+
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
 console_handler = logging.StreamHandler()
 console_handler.setLevel(logging.DEBUG)
 
-formatter = logging.Formatter(
-    '[%(asctime)s] [%(name)s] [%(levelname)s\t] %(message)s'
-)
+formatter = logging.Formatter("[%(asctime)s] [%(name)s] [%(levelname)s\t] %(message)s")
 
 console_handler.setFormatter(formatter)
 logger.addHandler(console_handler)
@@ -63,6 +62,6 @@ import builtins
 
 Integer = builtins.int
 
+
 def set_logging_level(level: Integer) -> NoReturn:
     logger.setLevel(level)
-

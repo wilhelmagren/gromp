@@ -28,6 +28,7 @@ Last updated: 2023-02-15
 from __future__ import annotations
 
 import builtins
+
 String = builtins.str
 
 from typing import Union, Any
@@ -36,19 +37,17 @@ from requests import Response
 from gromp.endpoint.base import NamedEndpoint
 from gromp.api.league import ChampionMasteryv4Api
 
-__all__ = (
-    'ChampionMasteryv4',
-)
+__all__ = ("ChampionMasteryv4",)
+
 
 class ChampionMasteryv4(NamedEndpoint):
     def all_for_summoner(
         self: ChampionMasteryv4,
         summoner_id: String,
     ) -> Union[Response, Any]:
-        """
-        """
+        """ """
         return self._request_api(
-            ChampionMasteryv4Api('all_for_summoner'),
+            ChampionMasteryv4Api("all_for_summoner"),
             encrypted_summoner_id=summoner_id,
         )
 
@@ -57,10 +56,9 @@ class ChampionMasteryv4(NamedEndpoint):
         summoner_id: String,
         champion_id: String,
     ) -> Union[Response, Any]:
-        """
-        """
+        """ """
         return self._request_api(
-            ChampionMasteryv4Api('champion_for_summoner'),
+            ChampionMasteryv4Api("champion_for_summoner"),
             encrypted_summoner_id=summoner_id,
             champion_id=champion_id,
         )
@@ -69,21 +67,17 @@ class ChampionMasteryv4(NamedEndpoint):
         self: ChampionMasteryv4,
         summoner_id: String,
     ) -> Union[Response, Any]:
-        """
-        """
+        """ """
         return self._request_api(
-            ChampionMasteryv4Api('top_for_summoner'),
+            ChampionMasteryv4Api("top_for_summoner"),
             encrypted_summoner_id=summoner_id,
         )
 
     def total_score_for_summoner(
-        self: ChampionMasteryv4,
-        summoner_id: String
+        self: ChampionMasteryv4, summoner_id: String
     ) -> Union[Response, Any]:
-        """
-        """
+        """ """
         return self._request_api(
-            ChampionMasteryv4Api('summoner_total_score'),
+            ChampionMasteryv4Api("summoner_total_score"),
             encrypted_summoner_id=summoner_id,
         )
-

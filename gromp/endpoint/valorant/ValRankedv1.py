@@ -28,6 +28,7 @@ Last updated: 2023-02-23
 from __future__ import annotations
 
 import builtins
+
 String = builtins.str
 
 from typing import Union, Any
@@ -36,14 +37,12 @@ from requests import Response
 from gromp.endpoint.base import NamedEndpoint
 from gromp.api.valorant import ValRankedv1Api
 
-__all__ = (
-    'ValRankedv1',
-)
+__all__ = ("ValRankedv1",)
+
 
 class ValRankedv1(NamedEndpoint):
     def by_act(self, act_id: String) -> Union[Response, Any]:
         return self._request_api(
-            ValRankedv1Api('by_act'),
+            ValRankedv1Api("by_act"),
             act_id=act_id,
         )
-

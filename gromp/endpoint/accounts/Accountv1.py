@@ -28,6 +28,7 @@ Last updated: 2023-02-23
 from __future__ import annotations
 
 import builtins
+
 String = builtins.str
 
 from typing import Union, Any
@@ -36,41 +37,39 @@ from requests import Response
 from gromp.endpoint.base import NamedEndpoint
 from gromp.api.accounts import Accountv1Api
 
-__all__ = (
-    'Accountv1',
-)
+__all__ = ("Accountv1",)
+
 
 class Accountv1(NamedEndpoint):
     """
     There are three routing values for account-v1;
-    americas, asia, and europe. 
+    americas, asia, and europe.
 
-    You can query for any account in any region. 
+    You can query for any account in any region.
     We recommend using the nearest cluster.
     """
 
     def by_puuid(self, puuid: String) -> Union[Response, Any]:
         return self._request_api(
-            Accountv1Api('by_puuid'),
+            Accountv1Api("by_puuid"),
             puuid=puuid,
         )
 
     def by_riot_id(self, game_name: String, tag_line: String) -> Union[Response, Any]:
         return self._request_api(
-            Accountv1Api('by_riot_id'),
+            Accountv1Api("by_riot_id"),
             game_name=game_name,
             tag_line=tag_line,
         )
 
     def me(self) -> Union[Response, Any]:
         return self._request_api(
-            Accountv1Api('me'),
+            Accountv1Api("me"),
         )
 
     def active_shard(self, game: String, puuid: String) -> Union[Response, Any]:
         return self._request_api(
-            Accountv1Api('active_shard'),
+            Accountv1Api("active_shard"),
             game=game,
             puuid=puuid,
         )
-

@@ -28,35 +28,23 @@ Last updated: 2023-02-15
 from __future__ import annotations
 
 import builtins
+
 String = builtins.str
 
 from typing import NoReturn
 from gromp.api.base import LeagueApi
 
-__all__ = (
-    'LolChallengesv1Api',
-)
+__all__ = ("LolChallengesv1Api",)
+
 
 class LolChallengesv1Api(LeagueApi):
-
     api = {
-        'config':
-        'challenges/config',
-
-        'percentiles':
-        'challenges/percentiles',
-
-        'challenge_config':
-        'challenges/{challenge_id}/config',
-
-        'top_players_for_challenge':
-        'challenges/{challenge_id}/leaderboards/by-level/{level}',
-
-        'challenge_percentiles':
-        'challenges/{challenge_id}/percentiles',
-
-        'player_data_by_puuid':
-        'player-data/{puuid}',
+        "config": "challenges/config",
+        "percentiles": "challenges/percentiles",
+        "challenge_config": "challenges/{challenge_id}/config",
+        "top_players_for_challenge": "challenges/{challenge_id}/leaderboards/by-level/{level}",
+        "challenge_percentiles": "challenges/{challenge_id}/percentiles",
+        "player_data_by_puuid": "player-data/{puuid}",
     }
 
     def __init__(
@@ -64,6 +52,6 @@ class LolChallengesv1Api(LeagueApi):
         key: String,
     ) -> NoReturn:
         super(LolChallengesv1Api, self).__init__(
-            '{platform}', f'challenges/v1/{self.api[key]}',
+            "{platform}",
+            f"challenges/v1/{self.api[key]}",
         )
-

@@ -33,17 +33,14 @@ from requests import Response
 from gromp.endpoint.base import NamedEndpoint
 from gromp.api.league import LolStatusv4Api
 
-__all__ = (
-    'LolStatusv4',
-)
+__all__ = ("LolStatusv4",)
+
 
 class LolStatusv4(NamedEndpoint):
     def get(
         self: LolStatusv4,
     ) -> Union[Response, Any]:
-        """
-        """
+        """ """
         return self._request_api(
             LolStatusv4Api(),
         )
-

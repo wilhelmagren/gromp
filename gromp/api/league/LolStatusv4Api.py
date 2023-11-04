@@ -30,15 +30,14 @@ from __future__ import annotations
 from typing import NoReturn
 from gromp.api.base import LeagueApi
 
-__all__ = (
-    'LolStatusv4Api',
-)
+__all__ = ("LolStatusv4Api",)
+
 
 class LolStatusv4Api(LeagueApi):
     def __init__(
         self: LolStatusv4Api,
     ) -> NoReturn:
         super(LolStatusv4Api, self).__init__(
-            '{platform}', f'status/v4/platform-data',
+            "{platform}",
+            f"status/v4/platform-data",
         )
-

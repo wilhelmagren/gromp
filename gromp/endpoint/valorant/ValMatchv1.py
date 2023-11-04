@@ -28,6 +28,7 @@ Last updated: 2023-02-23
 from __future__ import annotations
 
 import builtins
+
 String = builtins.str
 
 from typing import Union, Any
@@ -36,26 +37,24 @@ from requests import Response
 from gromp.endpoint.base import NamedEndpoint
 from gromp.api.valorant import ValMatchv1Api
 
-__all__ = (
-    'ValMatchv1',
-)
+__all__ = ("ValMatchv1",)
+
 
 class ValMatchv1(NamedEndpoint):
     def by_id(self, match_id: String) -> Union[Response, Any]:
         return self._request_api(
-            ValMatchv1Api('by_id'),
+            ValMatchv1Api("by_id"),
             match_id=match_id,
         )
 
     def matchlist_by_puuid(self, puuid: String) -> Union[Response, Any]:
         return self._request_api(
-            ValMatchv1Api('matchlist_by_puuid'),
+            ValMatchv1Api("matchlist_by_puuid"),
             puuid=puuid,
         )
 
     def recent_by_queue(self, queue: String) -> Union[Response, Any]:
         return self._request_api(
-            ValMatchv1Api('recent_by_queue'),
+            ValMatchv1Api("recent_by_queue"),
             queue=queue,
         )
-

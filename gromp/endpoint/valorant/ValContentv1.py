@@ -33,13 +33,11 @@ from requests import Response
 from gromp.endpoint.base import NamedEndpoint
 from gromp.api.valorant import ValContentv1Api
 
-__all__ = (
-    'ValContentv1',
-)
+__all__ = ("ValContentv1",)
+
 
 class ValContentv1(NamedEndpoint):
     def get(self) -> Union[Response, Any]:
         return self._request_api(
             ValContentv1Api(),
         )
-

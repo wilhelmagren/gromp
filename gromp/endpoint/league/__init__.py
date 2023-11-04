@@ -37,4 +37,3 @@ from .Spectatorv4 import Spectatorv4
 from .Summonerv4 import Summonerv4
 from .TournamentStubv4 import TournamentStubv4
 from .Tournamentv4 import Tournamentv4
-

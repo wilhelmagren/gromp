@@ -28,6 +28,7 @@ Last updated: 2023-02-15
 from __future__ import annotations
 
 import builtins
+
 String = builtins.str
 
 from typing import Union, Any
@@ -36,31 +37,27 @@ from requests import Response
 from gromp.endpoint.base import NamedEndpoint
 from gromp.api.league import Leaguev4Api
 
-__all__ = (
-    'Leaguev4',
-)
+__all__ = ("Leaguev4",)
+
 
 class Leaguev4(NamedEndpoint):
     def challenger_by_queue(
         self: Leaguev4,
         queue: String,
     ) -> Union[Response, Any]:
-        """
-        """
+        """ """
         return self._request_api(
-            Leaguev4Api('challenger_queue'),
+            Leaguev4Api("challenger_queue"),
             challenger_queue=queue,
-
         )
 
     def by_summoner_id(
         self: Leaguev4,
         summoner_id: String,
     ) -> Union[Response, Any]:
-        """
-        """
+        """ """
         return self._request_api(
-            Leaguev4Api('encrypted_summoner_id'),
+            Leaguev4Api("encrypted_summoner_id"),
             encrypted_summoner_id=summoner_id,
         )
 
@@ -70,10 +67,9 @@ class Leaguev4(NamedEndpoint):
         tier: String,
         division: String,
     ) -> Union[Response, Any]:
-        """
-        """
+        """ """
         return self._request_api(
-            Leaguev4Api('by_queue_tier_division'),
+            Leaguev4Api("by_queue_tier_division"),
             queue=queue,
             tier=tier,
             division=division,
@@ -83,21 +79,19 @@ class Leaguev4(NamedEndpoint):
         self: Leaguev4,
         queue: String,
     ) -> Union[Response, Any]:
-        """
-        """
+        """ """
         return self._request_api(
-            Leaguev4Api('grandmaster_queue'),
+            Leaguev4Api("grandmaster_queue"),
             grandmaster_queue=queue,
         )
-    
+
     def by_id(
         self: Leaguev4,
         league_id: String,
     ) -> Union[Response, Any]:
-        """
-        """
+        """ """
         return self._request_api(
-            Leaguev4Api('by_id'),
+            Leaguev4Api("by_id"),
             league_id=league_id,
         )
 
@@ -105,10 +99,8 @@ class Leaguev4(NamedEndpoint):
         self: Leaguev4,
         queue: String,
     ) -> Union[Response, Any]:
-        """
-        """
+        """ """
         return self._request_api(
-            Leaguev4Api('master_queue'),
+            Leaguev4Api("master_queue"),
             master_queue=master_queue,
         )
-

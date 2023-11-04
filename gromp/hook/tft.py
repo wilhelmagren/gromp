@@ -28,6 +28,7 @@ Last updated: 2023-02-27
 from __future__ import annotations
 
 import builtins
+
 String = builtins.str
 
 from typing import NoReturn, Dict
@@ -42,9 +43,8 @@ from gromp.endpoint.tft import (
 
 from gromp.utils import TftPlatforms, TftRegions
 
-__all__ = (
-    'Tft',
-)
+__all__ = ("Tft",)
+
 
 class Tft(Hook):
     def __init__(self, token: String, **kwargs: Dict) -> NoReturn:
@@ -69,4 +69,3 @@ class Tft(Hook):
     @property
     def summoner(self) -> TftSummonerv1:
         return self._setup_named_endpoint(TftSummonerv1)
-

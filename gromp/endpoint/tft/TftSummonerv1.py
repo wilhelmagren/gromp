@@ -28,6 +28,7 @@ Last updated: 2023-02-27
 from __future__ import annotations
 
 import builtins
+
 String = builtins.str
 
 from typing import Union, Any
@@ -36,37 +37,35 @@ from requests import Response
 from gromp.endpoint.base import NamedEndpoint
 from gromp.api.tft import TftSummonerv1Api
 
-__all__ = (
-    'TftSummonerv1',
-)
+__all__ = ("TftSummonerv1",)
+
 
 class TftSummonerv1(NamedEndpoint):
     def by_account_id(self, account_id: String) -> Union[Response, Any]:
         return self._request_api(
-            TftSummonerv1Api('by_account_id'),
+            TftSummonerv1Api("by_account_id"),
             account_id=account_id,
         )
 
     def by_summoner_name(self, name: String) -> Union[Response, Any]:
         return self._request_api(
-            TftSummonerv1Api('by_summoner_name'),
+            TftSummonerv1Api("by_summoner_name"),
             name=name,
         )
 
     def by_puuid(self, puuid: String) -> Union[Response, Any]:
         return self._request_api(
-            TftSummonerv1Api('by_puuid'),
+            TftSummonerv1Api("by_puuid"),
             puuid=puuid,
         )
 
     def me(self) -> Union[Response, Any]:
         return self._request_api(
-            TftSummonerv1Api('me'),
+            TftSummonerv1Api("me"),
         )
 
     def by_summoner_id(self, summoner_id: String) -> Union[Response, Any]:
         return self._request_api(
-            TftSummonerv1Api('by_summoner_id'),
+            TftSummonerv1Api("by_summoner_id"),
             summoner_id=summoner_id,
         )
-

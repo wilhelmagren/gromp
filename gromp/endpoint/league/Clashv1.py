@@ -28,6 +28,7 @@ Last updated: 2023-02-15
 from __future__ import annotations
 
 import builtins
+
 String = builtins.str
 
 from typing import Any, Union
@@ -35,19 +36,17 @@ from typing import Any, Union
 from gromp.endpoint.base import NamedEndpoint
 from gromp.api.league import Clashv1Api
 
-__all__ = (
-    'Clashv1',
-)
+__all__ = ("Clashv1",)
+
 
 class Clashv1(NamedEndpoint):
     def summoner_by_id(
         self: Clashv1,
         summoner_id: String,
     ) -> Union[Response, Any]:
-        """
-        """
+        """ """
         return self._request_api(
-            Clashv1Api('summoner_by_id'),
+            Clashv1Api("summoner_by_id"),
             summoner_id=summoner_id,
         )
 
@@ -55,30 +54,27 @@ class Clashv1(NamedEndpoint):
         self: Clashv1,
         team_id: String,
     ) -> Union[Response, Any]:
-        """
-        """
+        """ """
         return self._request_api(
-            Clashv1Api('team_by_id'),
+            Clashv1Api("team_by_id"),
             team_id=team_id,
         )
 
     def tournaments(
         self: Clashv1,
     ) -> Union[Response, Any]:
-        """
-        """
+        """ """
         return self._request_api(
-            Clashv1Api('tournaments'),
+            Clashv1Api("tournaments"),
         )
 
     def tournament_by_team(
         self: Clashv1,
         team_id: String,
     ) -> Union[Response, Any]:
-        """
-        """
+        """ """
         return self._request_api(
-            Clashv1Api('tournament_by_team_id'),
+            Clashv1Api("tournament_by_team_id"),
             team_id=team_id,
         )
 
@@ -86,10 +82,8 @@ class Clashv1(NamedEndpoint):
         self: Clashv1,
         tournament_id: String,
     ) -> Union[Response, Any]:
-        """
-        """
+        """ """
         return self._request_api(
-            Clashv1Api('tournament_by_id'),
+            Clashv1Api("tournament_by_id"),
             tournament_id=tournament_id,
         )
-

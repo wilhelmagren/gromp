@@ -28,6 +28,7 @@ Last updated: 2023-02-15
 from __future__ import annotations
 
 import builtins
+
 String = builtins.str
 Integer = builtins.int
 
@@ -37,9 +38,8 @@ from requests import Response
 from gromp.endpoint.base import NamedEndpoint
 from gromp.api.league import Matchv5Api
 
-__all__ = (
-    'Matchv5',
-)
+__all__ = ("Matchv5",)
+
 
 class Matchv5(NamedEndpoint):
     def matchlist_by_puuid(
@@ -58,7 +58,7 @@ class Matchv5(NamedEndpoint):
         to consider games for the matchlist, and the number of games to include.
         """
         return self._request_api(
-            Matchv5Api('matchlist_by_puuid'),
+            Matchv5Api("matchlist_by_puuid"),
             puuid=puuid,
             startTime=start_time,
             endTime=end_time,
@@ -76,7 +76,7 @@ class Matchv5(NamedEndpoint):
         Get the history of a match by the match ID.
         """
         return self._request_api(
-            Matchv5Api('by_id'),
+            Matchv5Api("by_id"),
             match_id=match_id,
         )
 
@@ -88,7 +88,6 @@ class Matchv5(NamedEndpoint):
         Get the timeline of a match by the match ID.
         """
         return self._request_api(
-            Matchv5Api('timeline_by_id'),
+            Matchv5Api("timeline_by_id"),
             match_id=match_id,
         )
-

@@ -28,20 +28,18 @@ Last updated: 2023-02-15
 from __future__ import annotations
 
 import builtins
+
 String = builtins.str
 
 from typing import NoReturn
 from gromp.api.base import LeagueApi
 
-__all__ = (
-    'LeagueExpv4Api',
-)
+__all__ = ("LeagueExpv4Api",)
+
 
 class LeagueExpv4Api(LeagueApi):
-
     api = {
-        'by_queue_tier_division':
-        'entries/{queue}/{tier}/{division}',
+        "by_queue_tier_division": "entries/{queue}/{tier}/{division}",
     }
 
     def __init__(
@@ -49,6 +47,6 @@ class LeagueExpv4Api(LeagueApi):
         key: String,
     ) -> NoReturn:
         super(LeagueExpv4Api, self).__init__(
-            '{platform}', f'league-exp/v4/{self.api[key]}',
+            "{platform}",
+            f"league-exp/v4/{self.api[key]}",
         )
-

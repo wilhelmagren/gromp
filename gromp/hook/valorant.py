@@ -28,6 +28,7 @@ Last updated: 2023-02-22
 from __future__ import annotations
 
 import builtins
+
 String = builtins.str
 
 from typing import NoReturn, Dict
@@ -40,9 +41,8 @@ from gromp.endpoint.valorant import (
 )
 from gromp.utils import ValorantRegions
 
-__all__ = (
-    'Valorant',
-)
+__all__ = ("Valorant",)
+
 
 class Valorant(Hook):
     def __init__(
@@ -71,4 +71,3 @@ class Valorant(Hook):
     @property
     def status(self) -> ValStatusv1:
         return self._setup_named_endpoint(ValStatusv1)
-

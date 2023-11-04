@@ -28,6 +28,7 @@ Last updated: 2023-02-27
 from __future__ import annotations
 
 import builtins
+
 String = builtins.str
 
 from typing import NoReturn, Dict
@@ -42,6 +43,7 @@ from gromp.endpoint.lor import (
 )
 
 from gromp.utils import LorRegions
+
 
 class Lor(Hook):
     def __init__(self, token: String, **kwargs: Dict) -> NoReturn:
@@ -70,4 +72,3 @@ class Lor(Hook):
     @property
     def status(self) -> LorStatusv1:
         return self._setup_named_endpoint(LorStatusv1)
-

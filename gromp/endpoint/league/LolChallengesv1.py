@@ -28,6 +28,7 @@ Last updated: 2023-02-15
 from __future__ import annotations
 
 import builtins
+
 String = builtins.str
 
 from typing import Union, Any, Optional
@@ -36,37 +37,33 @@ from requests import Response
 from gromp.endpoint.base import NamedEndpoint
 from gromp.api.league import LolChallengesv1Api
 
-__all__ = (
-    'LolChallengesv1',
-)
+__all__ = ("LolChallengesv1",)
+
 
 class LolChallengesv1(NamedEndpoint):
     def config(
         self: LolChallengesv1,
     ) -> Union[Response, Any]:
-        """
-        """
+        """ """
         return self._request_api(
-            LolChallengesv1Api('config'),
+            LolChallengesv1Api("config"),
         )
 
     def percentiles(
         self: LolChallengesv1,
     ) -> Union[Response, Any]:
-        """
-        """
+        """ """
         return self._request_api(
-            LolChallengesv1Api('percentiles'),
+            LolChallengesv1Api("percentiles"),
         )
 
     def challenge_config(
         self: LolChallengesv1,
         challenge_id: String,
     ) -> Union[Response, Any]:
-        """
-        """
+        """ """
         return self._request_api(
-            LolChallengesv1Api('challenge_config'),
+            LolChallengesv1Api("challenge_config"),
             challenge_id=challenge_id,
         )
 
@@ -76,10 +73,9 @@ class LolChallengesv1(NamedEndpoint):
         level: String,
         limit: Optional[String] = None,
     ) -> Union[Response, Any]:
-        """
-        """
+        """ """
         return self._request_api(
-            LolChallengesv1Api('top_players_for_challenge'),
+            LolChallengesv1Api("top_players_for_challenge"),
             challenge_id=challenge_id,
             level=level,
             limit=limit,
@@ -89,10 +85,9 @@ class LolChallengesv1(NamedEndpoint):
         self: LolChallengesv1,
         challenge_id: String,
     ) -> Union[Response, Any]:
-        """
-        """
+        """ """
         return self._request_api(
-            LolChallengesv1Api('challenge_percentiles'),
+            LolChallengesv1Api("challenge_percentiles"),
             challenge_id=challenge_id,
         )
 
@@ -100,10 +95,8 @@ class LolChallengesv1(NamedEndpoint):
         self: LolChallengesv1,
         puuid: String,
     ) -> Union[Response, Any]:
-        """
-        """
+        """ """
         return self._request_api(
-            LolChallengesv1Api('player_data_by_puuid'),
+            LolChallengesv1Api("player_data_by_puuid"),
             puuid=puuid,
         )
-

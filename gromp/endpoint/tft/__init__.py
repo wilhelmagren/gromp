@@ -29,4 +29,3 @@ from .TftLeaguev1 import TftLeaguev1
 from .TftMatchv1 import TftMatchv1
 from .TftStatusv1 import TftStatusv1
 from .TftSummonerv1 import TftSummonerv1
-

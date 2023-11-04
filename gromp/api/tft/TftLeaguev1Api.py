@@ -28,41 +28,28 @@ Last updated: 2023-02-27
 from __future__ import annotations
 
 import builtins
+
 String = builtins.str
 
 from typing import NoReturn
 from gromp.api.base import TftApi
 
-__all__ = (
-    'TftLeaguev1Api',
-)
+__all__ = ("TftLeaguev1Api",)
+
 
 class TftLeaguev1Api(TftApi):
     api = {
-        'challenger':
-        'challenger',
-
-        'by_summoner_id':
-        'entries/by-summoner/{summoner_id}',
-
-        'by_tier_division':
-        'entries/{tier}/{division}',
-
-        'grandmaster':
-        'grandmaster',
-
-        'from_id':
-        'leagues/{league_id}',
-
-        'master':
-        'master',
-
-        'top_for_queue':
-        'rated-ladders/{queue}/top',
+        "challenger": "challenger",
+        "by_summoner_id": "entries/by-summoner/{summoner_id}",
+        "by_tier_division": "entries/{tier}/{division}",
+        "grandmaster": "grandmaster",
+        "from_id": "leagues/{league_id}",
+        "master": "master",
+        "top_for_queue": "rated-ladders/{queue}/top",
     }
 
     def __init__(self, key: String) -> NoReturn:
         super(TftLeaguev1Api, self).__init__(
-            '{platform}', f'league/v1/{self.api[key]}',
+            "{platform}",
+            f"league/v1/{self.api[key]}",
         )
-

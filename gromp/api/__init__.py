@@ -30,4 +30,3 @@ from .accounts import *
 from .tft import *
 from .league import *
 from .valorant import *
-
