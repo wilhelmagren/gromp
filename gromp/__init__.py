@@ -29,7 +29,7 @@ from gromp.utils import *  # noqa
 from .__version__ import (
     __version__,  # noqa
     __author__,  # noqa
-    __title__,  #noqa
+    __title__,  # noqa
 )
 
 # Create logger and set up configuration
