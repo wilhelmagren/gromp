@@ -50,15 +50,6 @@ class HookTest(unittest.TestCase):
             timeout=10,
         )
 
-        platform = hook.platform
-        region = hook.region
-        timeout = hook.timeout
-        keys = hook.keys
-        game = hook.game
-        token = hook.token
-        pubkey = hook.public_key
-        config = hook.config
-
         self.assertTrue(isinstance(hook, Hook))
 
     def testNoPlatformValorant(self):
