@@ -50,16 +50,19 @@ pip install gromp
 Any HTTP errors that are returned by the requested API are propagated and, as of writing this, not handled.
 ```python
 import gromp
-from gromp.utils import LeaguePlatforms, LeagueRegions
+from gromp import (
+    LeaguePlatforms,
+    LeagueRegions,
+)
 
 platform = LeaguePlatforms.euw1
-region = LeagueRegions.europe
+region = LeagueRegions.EUROPE
 token = '<api-key>'
 
 # Here we setup a hook for League of Legends. We specify platform and region
 # to perform all REST requests to, the length of the RSA keys used to encrypt
-# out token, and the number of seconds to wait before a timeout.
-hook = gromp.League(
+# our token, and the number of seconds to wait before a timeout.
+hook = gromp.hook.League(
     token,
     platform=platform,
     region=region,
@@ -69,7 +72,7 @@ hook = gromp.League(
 
 # One of the default handlers parses the HTTP response as a JSON
 # dictionary, see all available attributes for the object at the
-# Riot Games API documentation, https://developer.riotgames.com/apis
+# Riot Games API documentation https://developer.riotgames.com/apis
 summoner = hook.summoner.by_name('1 900 976 JUICE')
 
 # We can also get the summoner if we know the encrypted
@@ -86,7 +89,7 @@ matches = hook.match.matchlist_by_puuid(
     count=5,
 )
 
-asssert len(matches) == 5
+assert len(matches) == 5
 
 # Now we can request the match data for all the match id's which we
 # got from the previous request. This is unfortunately the only 
