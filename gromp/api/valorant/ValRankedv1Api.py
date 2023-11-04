@@ -22,33 +22,26 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-23
-Last updated: 2023-02-23
+Last updated: 2023-11-04
 """
 
 from __future__ import annotations
 
-import builtins
-String = builtins.str
-
 from typing import NoReturn
-
 from gromp.api.base import ValorantApi
 
-__all__ = (
-    'ValRankedv1Api',
-)
+import builtins
+
+String = builtins.str
+
+__all__ = ("ValRankedv1Api",)
+
 
 class ValRankedv1Api(ValorantApi):
-
-    api = {
-
-        'by_act':
-        '{act_id}'
-
-    }
+    api = {"by_act": "{act_id}"}
 
     def __init__(self, key: String) -> NoReturn:
         super(ValRankedv1Api, self).__init__(
-            '{region}', f'ranked/v1/leaderboards/by-act/{self.api[key]}',
+            "{region}",
+            f"ranked/v1/leaderboards/by-act/{self.api[key]}",
         )
-

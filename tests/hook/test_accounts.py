@@ -22,10 +22,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-23
-Last updated: 2023-02-23
+Last updated: 2023-11-04
 """
 
-import sys
 import logging
 import unittest
 
@@ -35,22 +34,22 @@ from gromp.hook import Accounts
 from gromp.endpoint.accounts import Accountv1
 from gromp.api.accounts import Accountv1Api
 from gromp.utils import AccountsRegions
-from gromp.handler import JsonHandler
 
 logger = logging.getLogger(__name__)
 
+
 def _testEndpointRequests(ctx, mock, endpoint, funcs, args, return_values):
     for func, arg_, value in zip(funcs, args, return_values):
-        logger.debug(f'{endpoint.__class__.__name__} {func} GET request...')
+        logger.debug(f"{endpoint.__class__.__name__} {func} GET request...")
         mock.return_value.status_code = value
         response = getattr(endpoint, func)(*arg_)
         ctx.assertEqual(response.status_code, value)
 
-class AccountsHookTest(unittest.TestCase):
 
+class AccountsHookTest(unittest.TestCase):
     def setUp(self):
         self.hook = Accounts(
-            '<fake-RGAPI-token>',
+            "<fake-RGAPI-token>",
             region=AccountsRegions.ESPORTS,
             handlers=[],
             keylen=1278,
@@ -58,44 +57,52 @@ class AccountsHookTest(unittest.TestCase):
         )
 
     def testAccountv1Property(self):
-        logger.debug('Accountv1 property...')
+        logger.debug("Accountv1 property...")
         endpoint = self.hook.account
         self.assertEqual(endpoint.__class__, Accountv1)
 
     def testAccountv1PrepareRequestValueError(self):
-        logger.debug('Accountv1 PrepareRequest ValueError...')
-        api = Accountv1Api('active_shard')
+        logger.debug("Accountv1 PrepareRequest ValueError...")
+        api = Accountv1Api("active_shard")
         self.assertRaises(
-            ValueError, 
+            ValueError,
             api.prepare_request,
             platform=None,
             region=AccountsRegions.EUROPE,
-            game='val',
+            game="val",
         )
 
-    @patch.object(Session, 'get')
+    @patch.object(Session, "get")
     def testAccountv1Responses(self, mock_get):
         _testEndpointRequests(
             self,
             mock_get,
             self.hook.account,
             [
-                'by_puuid', 'by_puuid',
-                'by_riot_id', 'by_riot_id',
-                'me',
-                'active_shard', 'active_shard',
+                "by_puuid",
+                "by_puuid",
+                "by_riot_id",
+                "by_riot_id",
+                "me",
+                "active_shard",
+                "active_shard",
             ],
             [
-                ['178238127'], ['this is my puuid'],
-                ['Phreak', 'Tons of damage'], ['thisisme', 'my cool tag line'],
+                ["178238127"],
+                ["this is my puuid"],
+                ["Phreak", "Tons of damage"],
+                ["thisisme", "my cool tag line"],
                 [],
-                ['val', '128378'], ['league', 'mypuuidsecret'],
+                ["val", "128378"],
+                ["league", "mypuuidsecret"],
             ],
             [
-                200, 404,
-                200, 404,
                 200,
-                200, 404,
+                404,
+                200,
+                404,
+                200,
+                200,
+                404,
             ],
         )
-

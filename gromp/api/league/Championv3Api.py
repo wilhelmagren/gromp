@@ -30,15 +30,14 @@ from __future__ import annotations
 from typing import NoReturn
 from gromp.api.base import LeagueApi
 
-__all__ = (
-    'Championv3Api',
-)
+__all__ = ("Championv3Api",)
+
 
 class Championv3Api(LeagueApi):
     def __init__(
         self: Championv3Api,
     ) -> NoReturn:
         super(Championv3Api, self).__init__(
-            '{platform}', f'platform/v3/champion-rotations',
+            "{platform}",
+            "platform/v3/champion-rotations",
         )
-

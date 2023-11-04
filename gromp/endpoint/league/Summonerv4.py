@@ -22,13 +22,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-05
-Last updated: 2023-02-15
+Last updated: 2023-11-04
 """
 
 from __future__ import annotations
-
-import builtins
-String = builtins.str
 
 from typing import Union, Any
 from requests import Response
@@ -36,9 +33,12 @@ from requests import Response
 from gromp.endpoint.base import NamedEndpoint
 from gromp.api.league import Summonerv4Api
 
-__all__ = (
-    'Summonerv4',
-)
+import builtins
+
+String = builtins.str
+
+__all__ = ("Summonerv4",)
+
 
 class Summonerv4(NamedEndpoint):
     def by_account(
@@ -49,7 +49,7 @@ class Summonerv4(NamedEndpoint):
         Get a summoner by their encrypted account ID.
         """
         return self._request_api(
-            Summonerv4Api('encrypted_account_id'),
+            Summonerv4Api("encrypted_account_id"),
             encrypted_account_id=encrypted_account_id,
         )
 
@@ -61,7 +61,7 @@ class Summonerv4(NamedEndpoint):
         Get a summoner by their summoner name.
         """
         return self._request_api(
-            Summonerv4Api('summoner_name'),
+            Summonerv4Api("summoner_name"),
             summoner_name=summoner_name,
         )
 
@@ -73,7 +73,7 @@ class Summonerv4(NamedEndpoint):
         Get a summoner by their encrypted puuid.
         """
         return self._request_api(
-            Summonerv4Api('encrypted_puuid'),
+            Summonerv4Api("encrypted_puuid"),
             encrypted_puuid=encrypted_puuid,
         )
 
@@ -88,7 +88,6 @@ class Summonerv4(NamedEndpoint):
             exist will result in a blacklist.`
         """
         return self._request_api(
-            Summonerv4Api('encrypted_summoner_id'),
+            Summonerv4Api("encrypted_summoner_id"),
             encrypted_summoner_id=encrypted_summoner_id,
         )
-

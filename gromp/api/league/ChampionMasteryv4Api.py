@@ -22,36 +22,27 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-13
-Last updated: 2023-02-15
+Last updated: 2023-11-04
 """
 
 from __future__ import annotations
 
-import builtins
-String = builtins.str
-
 from typing import NoReturn
-
 from gromp.api.base import LeagueApi
 
-__all__ = (
-    'ChampionMasteryv4Api',
-)
+import builtins
+
+String = builtins.str
+
+__all__ = ("ChampionMasteryv4Api",)
+
 
 class ChampionMasteryv4Api(LeagueApi):
-
     api = {
-        'all_for_summoner':
-        'champion-masteries/by-summoner/{encrypted_summoner_id}',
-
-        'champion_for_summoner':
-        'champion-masteries/by-summoner/{encrypted_summoner_id}/by-champion/{champion_id}',
-
-        'top_for_summoner':
-        'champion-masteries/by-summoner/{encrypted_summoner_id}/top',
-
-        'summoner_total_score':
-        'scores/by-summoner/{encrypted_summoner_id}',
+        "all_for_summoner": "champion-masteries/by-summoner/{encrypted_summoner_id}",
+        "champion_for_summoner": "champion-masteries/by-summoner/{encrypted_summoner_id}/by-champion/{champion_id}",
+        "top_for_summoner": "champion-masteries/by-summoner/{encrypted_summoner_id}/top",
+        "summoner_total_score": "scores/by-summoner/{encrypted_summoner_id}",
     }
 
     def __init__(
@@ -59,6 +50,6 @@ class ChampionMasteryv4Api(LeagueApi):
         key: String,
     ) -> NoReturn:
         super(ChampionMasteryv4Api, self).__init__(
-            '{platform}', f'champion-master/v4/{self.api[key]}',
+            "{platform}",
+            f"champion-master/v4/{self.api[key]}",
         )
-

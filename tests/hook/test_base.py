@@ -22,12 +22,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-16
-Last updated: 2023-02-16
+Last updated: 2023-11-04
 """
 
 import logging
 import unittest
+import rsa
 
+from gromp import set_logging_level
 from gromp.hook import Hook
 from gromp.utils import (
     LeagueRegions,
@@ -37,35 +39,38 @@ from gromp.utils import (
 
 logger = logging.getLogger(__name__)
 
+
 class HookTest(unittest.TestCase):
-    
     def testValidConstructor(self):
-        logger.debug('Hook properties...')
+        logger.debug("Hook properties...")
         hook = Hook(
-            '<fake-RGAPI-token>',
-            'League',
+            "<fake-RGAPI-token>",
+            "League",
             LeaguePlatforms.euw1,
             LeagueRegions.EUROPE,
             keylen=1024,
             timeout=10,
         )
 
-        platform = hook.platform
-        region = hook.region
-        timeout = hook.timeout
-        keys = hook.keys
-        game = hook.game
-        token = hook.token
-        pubkey = hook.public_key
-        config = hook.config
+        set_logging_level(logging.WARNING)
 
         self.assertTrue(isinstance(hook, Hook))
 
+        game = hook.game
+        pkey = hook.public_key
+        config = hook.config
+
+        self.assertTrue(isinstance(game, str))
+        self.assertTrue(isinstance(pkey, rsa.PublicKey))
+        self.assertTrue(isinstance(config, dict))
+        self.assertEqual(game, config["game"])
+        self.assertEqual(pkey, config["keys"]["public"])
+
     def testNoPlatformValorant(self):
-        logger.debug('no platform for Valorant..')
+        logger.debug("no platform for Valorant..")
         hook = Hook(
-            '<fake-RGAPI-token>',
-            'Valorant',
+            "<fake-RGAPI-token>",
+            "Valorant",
             platform=None,
             region=ValorantRegions.EU,
         )
@@ -76,12 +81,12 @@ class HookTest(unittest.TestCase):
         self.assertTrue(isinstance(handlers, list))
 
     def testNoPlatformNoRegionLeague(self):
-        logger.debug('no platform no region for League..')
+        logger.debug("no platform no region for League..")
         self.assertRaises(
             AssertionError,
             Hook,
-            '<fake-RGAPI-token>',
-            'League',
+            "<fake-RGAPI-token>",
+            "League",
             platform=None,
             region=None,
         )
@@ -90,39 +95,38 @@ class HookTest(unittest.TestCase):
         self.assertRaises(
             AssertionError,
             Hook,
-            '<fake-RGAPI-token>',
-            'Valorant',
+            "<fake-RGAPI-token>",
+            "Valorant",
         )
 
     def testNoRegionLeague(self):
-        logger.debug('no region for League..')
+        logger.debug("no region for League..")
         self.assertRaises(
             AssertionError,
             Hook,
-            '<fake-RGAPI-token>',
-            'League',
-            platform=LeaguePlatforms.na1
+            "<fake-RGAPI-token>",
+            "League",
+            platform=LeaguePlatforms.na1,
         )
 
     def testInvalidKeylen(self):
-        logger.debug('invalid RSA key length..')
+        logger.debug("invalid RSA key length..")
         self.assertRaises(
             AssertionError,
             Hook,
-            '<fake-RGAPI-token>',
-            'Valorant',
+            "<fake-RGAPI-token>",
+            "Valorant",
             region=ValorantRegions.KR,
             keylen=-256,
         )
 
     def testInvalidTimeout(self):
-        logger.debug('invalid requests timeout param..')
+        logger.debug("invalid requests timeout param..")
         self.assertRaises(
             AssertionError,
             Hook,
-            '<fake-RGAPI-token>',
-            'Valorant',
+            "<fake-RGAPI-token>",
+            "Valorant",
             region=ValorantRegions.NA,
             timeout=-10,
         )
-

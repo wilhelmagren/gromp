@@ -22,17 +22,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-27
-Last updated: 2023-02-27
+Last updated: 2023-11-04
 """
 
 from __future__ import annotations
 
-import builtins
-String = builtins.str
-
 from typing import NoReturn, Dict
 from gromp.hook.base import Hook
-from gromp.endpoint.base import NamedEndpoint
 from gromp.endpoint.tft import (
     TftLeaguev1,
     TftMatchv1,
@@ -40,11 +36,12 @@ from gromp.endpoint.tft import (
     TftSummonerv1,
 )
 
-from gromp.utils import TftPlatforms, TftRegions
+import builtins
 
-__all__ = (
-    'Tft',
-)
+String = builtins.str
+
+__all__ = ("Tft",)
+
 
 class Tft(Hook):
     def __init__(self, token: String, **kwargs: Dict) -> NoReturn:
@@ -69,4 +66,3 @@ class Tft(Hook):
     @property
     def summoner(self) -> TftSummonerv1:
         return self._setup_named_endpoint(TftSummonerv1)
-

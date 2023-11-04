@@ -22,13 +22,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-27
-Last updated: 2023-02-27
+Last updated: 2023-11-04
 """
 
 from __future__ import annotations
-
-import builtins
-String = builtins.str
 
 from typing import Union, Any
 from requests import Response
@@ -36,48 +33,50 @@ from requests import Response
 from gromp.endpoint.base import NamedEndpoint
 from gromp.api.tft import TftLeaguev1Api
 
-__all__ = (
-    'TftLeaguev1',
-)
+import builtins
+
+String = builtins.str
+
+__all__ = ("TftLeaguev1",)
+
 
 class TftLeaguev1(NamedEndpoint):
     def challenger(self) -> Union[Response, Any]:
         return self._request_api(
-            TftLeaguev1Api('challenger'),
+            TftLeaguev1Api("challenger"),
         )
 
     def by_summoner_id(self, summoner_id: String) -> Union[Response, Any]:
         return self._request_api(
-            TftLeaguev1Api('by_summoner_id'),
+            TftLeaguev1Api("by_summoner_id"),
             summoner_id=summoner_id,
         )
 
     def by_tier_division(self, tier: String, division: String) -> Union[Response, Any]:
         return self._request_api(
-            TftLeaguev1Api('by_tier_division'),
+            TftLeaguev1Api("by_tier_division"),
             tier=tier,
             division=division,
         )
 
     def grandmaster(self) -> Union[Response, Any]:
         return self._request_api(
-            TftLeaguev1Api('grandmaster'),
+            TftLeaguev1Api("grandmaster"),
         )
 
     def from_id(self, league_id: String) -> Union[Response, Any]:
         return self._request_api(
-            TftLeaguev1Api('from_id'),
+            TftLeaguev1Api("from_id"),
             league_id=league_id,
         )
 
     def master(self) -> Union[Response, Any]:
         return self._request_api(
-            TftLeaguev1Api('master'),
+            TftLeaguev1Api("master"),
         )
 
     def top_for_queue(self, queue: String) -> Union[Response, Any]:
         return self._request_api(
-            TftLeaguev1Api('top_for_queue'),
+            TftLeaguev1Api("top_for_queue"),
             queue=queue,
         )
-

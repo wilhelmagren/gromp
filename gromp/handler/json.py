@@ -32,11 +32,11 @@ from requests import Response
 from typing import Dict
 
 import builtins
+
 String = builtins.str
 
-__all__ = (
-    'JsonHandler',
-)
+__all__ = ("JsonHandler",)
+
 
 class JsonHandler(Handler):
     def incoming_response(
@@ -49,4 +49,3 @@ class JsonHandler(Handler):
         **kwargs: Dict,
     ) -> Dict:
         return response.json()
-

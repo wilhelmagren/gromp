@@ -22,41 +22,31 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-23
-Last updated: 2023-02-23
+Last updated: 2023-11-04
 """
 
 from __future__ import annotations
 
-import builtins
-String = builtins.str
-
 from typing import NoReturn
-
 from gromp.api.base import AccountsApi
 
-__all__ = (
-    'Accountv1Api',
-)
+import builtins
+
+String = builtins.str
+
+__all__ = ("Accountv1Api",)
+
 
 class Accountv1Api(AccountsApi):
-
     api = {
-
-        'by_puuid':
-        'accounts/by-puuid/{puuid}',
-
-        'by_riot_id':
-        'accounts/by-riot-id/{game_name}/{tag_line}',
-
-        'me':
-        'accounts/me',
-
-        'active_shard':
-        'active-shards/by-game/{game}/by-puuid/{puuid}',
+        "by_puuid": "accounts/by-puuid/{puuid}",
+        "by_riot_id": "accounts/by-riot-id/{game_name}/{tag_line}",
+        "me": "accounts/me",
+        "active_shard": "active-shards/by-game/{game}/by-puuid/{puuid}",
     }
 
     def __init__(self, key: String) -> NoReturn:
         super(Accountv1Api, self).__init__(
-            '{region}', f'account/v1/{self.api[key]}',
+            "{region}",
+            f"account/v1/{self.api[key]}",
         )
-

@@ -30,13 +30,12 @@ from __future__ import annotations
 from typing import NoReturn
 from gromp.api.base import ValorantApi
 
-__all__ = (
-    'ValContentv1Api',
-)
+__all__ = ("ValContentv1Api",)
+
 
 class ValContentv1Api(ValorantApi):
     def __init__(self) -> NoReturn:
         super(ValContentv1Api, self).__init__(
-            '{region}', f'content/v1/contents',
+            "{region}",
+            "content/v1/contents",
         )
-

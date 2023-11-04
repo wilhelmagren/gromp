@@ -22,32 +22,29 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-27
-Last updated: 2023-02-27
+Last updated: 2023-11-04
 """
 
 from __future__ import annotations
 
-import builtins
-String = builtins.str
-
 from typing import NoReturn
 from gromp.api.base import LorApi
 
-__all__ = (
-    'LorMatchv1Api',
-)
+import builtins
+
+String = builtins.str
+
+__all__ = ("LorMatchv1Api",)
+
 
 class LorMatchv1Api(LorApi):
     api = {
-        'matchlist_by_puuid':
-        'by-puuid/{puuid}/ids',
-
-        'by_id':
-        '{match_id}',
+        "matchlist_by_puuid": "by-puuid/{puuid}/ids",
+        "by_id": "{match_id}",
     }
 
     def __init__(self, key: String) -> NoReturn:
         super(LorMatchv1Api, self).__init__(
-            '{region}', f'match/v1/matches/',
+            "{region}",
+            "match/v1/matches/",
         )
-

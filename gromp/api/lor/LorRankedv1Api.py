@@ -30,13 +30,12 @@ from __future__ import annotations
 from typing import NoReturn
 from gromp.api.base import LorApi
 
-__all__ = (
-    'LorRankedv1Api',
-)
+__all__ = ("LorRankedv1Api",)
+
 
 class LorRankedv1Api(LorApi):
     def __init__(self) -> NoReturn:
         super(LorRankedv1Api, self).__init__(
-            '{region}', 'ranked/v1/leaderboards',
+            "{region}",
+            "ranked/v1/leaderboards",
         )
-

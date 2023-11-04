@@ -22,116 +22,117 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-27
-Last updated: 2023-02-27
+Last updated: 2023-11-04
 """
 
-import sys
 import logging
 import unittest
 
 from requests import Session
 from unittest.mock import patch
-from gromp.hook import Lor 
-from gromp.endpoint.lor import (
-    LorStatusv1,
-    LorMatchv1,
-    LorInventoryv1,
-    LorDeckv1,
-    LorRankedv1,
-)
+from gromp.hook import Lor
 
-from gromp.utils import LorRegions 
+from gromp.utils import LorRegions
 
 logger = logging.getLogger(__name__)
 
 
 def _testEndpointRequests(ctx, mock, endpoint, funcs, args, return_values):
     for func, arg_, value in zip(funcs, args, return_values):
-        logger.debug(f'{endpoint.__class__.__name__} {func} GET request...')
-        mock.return_value.status_code = value 
+        logger.debug(f"{endpoint.__class__.__name__} {func} GET request...")
+        mock.return_value.status_code = value
         response = getattr(endpoint, func)(*arg_)
         ctx.assertEqual(response.status_code, value)
+
 
 class LorHookTest(unittest.TestCase):
     def setUp(self):
         self.hook = Lor(
-            '<fake-RGAPI-token>',
+            "<fake-RGAPI-token>",
             region=LorRegions.EUROPE,
             handlers=[],
             keylen=2048,
             timeout=19,
         )
 
-    @patch.object(Session, 'get')
+    @patch.object(Session, "get")
     def testStatusv1Responses(self, mock_get):
         _testEndpointRequests(
             self,
             mock_get,
             self.hook.status,
-            ['get'],
+            ["get"],
             [[]],
             [200],
         )
 
-    @patch.object(Session, 'get')
+    @patch.object(Session, "get")
     def testRankedv1Responses(self, mock_get):
         _testEndpointRequests(
             self,
             mock_get,
             self.hook.ranked,
-            ['get'],
+            ["get"],
             [[]],
             [200],
         )
 
-    @patch.object(Session, 'get')
+    @patch.object(Session, "get")
     def testInventoryv1Responses(self, mock_get):
         _testEndpointRequests(
             self,
             mock_get,
             self.hook.inventory,
-            ['me'],
+            ["me"],
             [[]],
             [200],
         )
 
-    @patch.object(Session, 'get')
+    @patch.object(Session, "get")
     def testDeckv1Responses(self, mock_get):
         _testEndpointRequests(
             self,
             mock_get,
             self.hook.deck,
             [
-                'my_decks',
-                'create_deck', 'create_deck',
+                "my_decks",
+                "create_deck",
+                "create_deck",
             ],
             [
                 [],
-                [{'code': 'xd', 'name': 'cool deck forsen'}], ['this is my deck'],
+                [{"code": "xd", "name": "cool deck forsen"}],
+                ["this is my deck"],
             ],
             [
                 200,
-                200, 404,
+                200,
+                404,
             ],
         )
 
-    @patch.object(Session, 'get')
+    @patch.object(Session, "get")
     def testMatchv1Responses(self, mock_get):
         _testEndpointRequests(
             self,
             mock_get,
             self.hook.match,
             [
-                'matchlist_by_puuid', 'matchlist_by_puuid',
-                'by_id', 'by_id',
+                "matchlist_by_puuid",
+                "matchlist_by_puuid",
+                "by_id",
+                "by_id",
             ],
             [
-                ['8172481748'], ['kebaerino'],
-                ['812748'], ['this is my best match'],
+                ["8172481748"],
+                ["kebaerino"],
+                ["812748"],
+                ["this is my best match"],
             ],
             [
-                200, 404,
-                200, 404,
+                200,
+                404,
+                200,
+                404,
             ],
         )
-

@@ -1,25 +1,41 @@
-# Gromp [![PyPi version](https://img.shields.io/pypi/v/gromp.svg)](https://pypi.org/project/gromp/) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![codecov](https://codecov.io/gh/wilhelmagren/gromp/branch/main/graph/badge.svg?token=52WSCE8Q09)](https://codecov.io/gh/willeagren/gromp) ![Lines of code](https://img.shields.io/tokei/lines/github/willeagren/gromp)
+<div align="center">
+<br/>
+<div align="left">
+<br/>
+<p align="center">
+<a href="https://github.com/wilhelmagren/gromp">
+<img align="center" width=75% src="./docs/images/gromp-banner.png"></img>
+</a>
+</p>
+</div>
 
-Gromp is a holistic wrapper of the public [Riot Games developer API](https://developer.riotgames.com/apis), 
+[![PyPI - Version](https://img.shields.io/pypi/v/gromp)](https://pypi.org/project/gromp/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![codecov](https://codecov.io/gh/wilhelmagren/gromp/branch/main/graph/badge.svg?token=52WSCE8Q09)](https://codecov.io/gh/willeagren/gromp)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Lint style: Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+[![Poetry](https://img.shields.io/endpoint?url=https://python-poetry.org/badge/v0.json)](https://python-poetry.org/)
+
+</div>
+
+## 🔎 Overview
+*gromp* is a holistic wrapper of the public [Riot Games developer API](https://developer.riotgames.com/apis), 
 written in Python. All public methods are, as of 2023-02-27, implemented.
 
 The core principle of the wrapper is to offer a complete, yet simple, interface which implements some of the core functionality that a developer might want to communicate with the Riot Games developer API.
 
 For a full list of all available requests, see each respective endpoint documentation.
 
-## :lock: Requirements
+## 🔑 Requirements
 
-- A fairly recent version of Python, preferably 3.6 or greater.
-- If installing locally, you need the dependencies from the [requirements.txt](https://github.com/willeagren/gromp/blob/55a99e52138a7c9f3b5faa446c30bc6b66c9295d/requirements.txt) file.
 - To perform requests you need an API key from Riot Games, get yours [here](https://developer.riotgames.com/).
 
-## :package: Installation
-
-Either clone this repository and perform a local install accordingly
+## 📦 Installation
+Either clone this repository and perform a local install with [poetry](https://github.com/python-poetry/poetry/tree/master) accordingly
 ```
-git clone https://github.com/willeagren/gromp.git
+git clone https://github.com/wilhelmagren/gromp.git
 cd gromp
-pip install -e .
+poetry install
 ```
 or install the most recent release from the Python Package Index (PyPI).
 ```
@@ -27,7 +43,7 @@ pip install gromp
 ```
 
 
-## :rocket: Example usage
+## 🚀 Example usage
 Any HTTP errors that are returned by the requested API are propagated and, as of writing this, not handled.
 ```python
 import gromp
@@ -80,9 +96,9 @@ for match_id in matches:
 
 ```
 
-## :bulb: Gromp facts
+## 💡 Gromp facts
 His real name is Lord Grompulus Kevin Ribbiton of Croaksworth, and he likes to eat small insects, mushrooms, and people ([source](https://leagueoflegends.fandom.com/wiki/Gromp)). 
 
-## :clipboard: License
+## 📋 License
 All code is to be held under a general MIT license, please see [LICENSE](https://github.com/willeagren/gromp/blob/main/LICENSE) for specific information.
 

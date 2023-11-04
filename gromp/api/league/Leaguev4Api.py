@@ -22,38 +22,29 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-13
-Last updated: 2023-02-15
+Last updated: 2023-11-04
 """
 
 from __future__ import annotations
 
-import builtins
-String = builtins.str
-
 from typing import NoReturn
 from gromp.api.base import LeagueApi
 
-__all__ = (
-    'Leaguev4Api',
-)
+import builtins
+
+String = builtins.str
+
+__all__ = ("Leaguev4Api",)
+
 
 class Leaguev4Api(LeagueApi):
-
     api = {
-        'challenger_queue':
-        'challengerleagues/by-queue/{challenger_queue}',
-
-        'encrypted_summoner_id':
-        'entries/by-summoner/{encrypted_summoner_id}',
-
-        'by_queue_tier_division':
-        'entries/{queue}/{tier}/{division}',
-
-        'grandmaster_queue':
-        'grandmasterleagues/by-queue/{grandmaster_queue}',
-
-        'by_id': 'leagues/{league_id}',
-        'master_queue': 'masterleagues/by-queue/{master_queue}',
+        "challenger_queue": "challengerleagues/by-queue/{challenger_queue}",
+        "encrypted_summoner_id": "entries/by-summoner/{encrypted_summoner_id}",
+        "by_queue_tier_division": "entries/{queue}/{tier}/{division}",
+        "grandmaster_queue": "grandmasterleagues/by-queue/{grandmaster_queue}",
+        "by_id": "leagues/{league_id}",
+        "master_queue": "masterleagues/by-queue/{master_queue}",
     }
 
     def __init__(
@@ -61,6 +52,6 @@ class Leaguev4Api(LeagueApi):
         key: String,
     ) -> NoReturn:
         super(Leaguev4Api, self).__init__(
-            '{platform}', f'league/v4/{self.api[key]}',
+            "{platform}",
+            f"league/v4/{self.api[key]}",
         )
-

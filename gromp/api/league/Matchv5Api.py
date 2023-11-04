@@ -22,32 +22,26 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-13
-Last updated: 2023-02-15
+Last updated: 2023-11-04
 """
 
 from __future__ import annotations
 
-import builtins
-String = builtins.str
-
 from typing import NoReturn
 from gromp.api.base import LeagueApi
 
-__all__ = (
-    'Matchv5Api',
-)
+import builtins
+
+String = builtins.str
+
+__all__ = ("Matchv5Api",)
+
 
 class Matchv5Api(LeagueApi):
-
     api = {
-        'matchlist_by_puuid':
-        'by-puuid/{puuid}/ids',
-
-        'by_id':
-        '{match_id}',
-
-        'timeline_by_id':
-        '{match_id}/timeline',
+        "matchlist_by_puuid": "by-puuid/{puuid}/ids",
+        "by_id": "{match_id}",
+        "timeline_by_id": "{match_id}/timeline",
     }
 
     def __init__(
@@ -55,6 +49,6 @@ class Matchv5Api(LeagueApi):
         key: String,
     ) -> NoReturn:
         super(Matchv5Api, self).__init__(
-            '{region}', f'match/v5/matches/{self.api[key]}',
+            "{region}",
+            f"match/v5/matches/{self.api[key]}",
         )
-

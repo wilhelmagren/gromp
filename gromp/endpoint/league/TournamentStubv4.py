@@ -22,13 +22,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-05
-Last updated: 2023-02-15
+Last updated: 2023-11-04
 """
 
 from __future__ import annotations
-
-import builtins
-String = builtins.str
 
 from typing import Union, Any
 from requests import Response
@@ -36,46 +33,44 @@ from requests import Response
 from gromp.endpoint.base import NamedEndpoint
 from gromp.api.league import TournamentStubv4Api
 
-__all__ = (
-    'TournamentStubv4',
-)
+import builtins
+
+String = builtins.str
+
+__all__ = ("TournamentStubv4",)
+
 
 class TournamentStubv4(NamedEndpoint):
     def codes(
         self: TournamentStubv4,
     ) -> Union[Response, Any]:
-        """
-        """
+        """ """
         return self._request_api(
-            TournamentStubv4Api('codes'),
+            TournamentStubv4Api("codes"),
         )
 
     def events_by_code(
         self: TournamentStubv4,
         code: String,
     ) -> Union[Response, Any]:
-        """
-        """
+        """ """
         return self._request_api(
-            TournamentStubv4Api('events_by_code'),
+            TournamentStubv4Api("events_by_code"),
             tournament_code=code,
         )
 
     def providers(
         self: TournamentStubv4,
     ) -> Union[Response, Any]:
-        """
-        """
+        """ """
         return self._request_api(
-            TournamentStubv4Api('providers'),
+            TournamentStubv4Api("providers"),
         )
 
     def tournaments(
         self: TournamentStubv4,
     ) -> Union[Response, Any]:
-        """
-        """
+        """ """
         return self._request_api(
-            TournamentStubv4Api('tournaments'),
+            TournamentStubv4Api("tournaments"),
         )
-

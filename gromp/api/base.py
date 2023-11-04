@@ -22,30 +22,30 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-13
-Last updated: 2023-02-27
+Last updated: 2023-11-04
 """
 
 from __future__ import annotations
-
-import builtins
-String = builtins.str
 
 from typing import (
     Dict,
     Tuple,
     NoReturn,
 )
-
 import re
+import builtins
+
+String = builtins.str
 
 __all__ = (
-    'Api',
-    'AccountsApi',
-    'TftApi',
-    'LeagueApi',
-    'LorApi',
-    'ValorantApi',
+    "Api",
+    "AccountsApi",
+    "TftApi",
+    "LeagueApi",
+    "LorApi",
+    "ValorantApi",
 )
+
 
 class Api(object):
     def __init__(
@@ -54,14 +54,14 @@ class Api(object):
         game: String,
         api: String,
     ) -> NoReturn:
-        self._url = f'https://{base}.api.riotgames.com/{game}/{api}'
+        self._url = f"https://{base}.api.riotgames.com/{game}/{api}"
 
     @property
     def url(
         self: Api,
     ) -> String:
         return self._url
-    
+
     def prepare_request(
         self: Api,
         **kwargs: Dict,
@@ -70,20 +70,17 @@ class Api(object):
         Prepare a GET request by validating the url and extracting
         optional query parameters.
         """
-        url_params = re.findall('{(\w*)}', self.url)
+        url_params = re.findall("{(\w*)}", self.url)
 
         for required in url_params:
             if required not in kwargs:
-                raise ValueError(
-                    f'Missing required parameter in url, {required=}.'
-                )
-        
-        query_params = {
-            key: val for key, val in kwargs.items()
-        }
+                raise ValueError(f"Missing required parameter in url, {required=}.")
+
+        query_params = {key: val for key, val in kwargs.items()}
 
         request_url = self.url.format(**kwargs)
         return (request_url, query_params)
+
 
 class AccountsApi(Api):
     def __init__(
@@ -91,7 +88,8 @@ class AccountsApi(Api):
         base: String,
         api: String,
     ) -> NoReturn:
-        super(AccountsApi, self).__init__(base, 'lol', api)
+        super(AccountsApi, self).__init__(base, "lol", api)
+
 
 class LeagueApi(Api):
     def __init__(
@@ -99,7 +97,8 @@ class LeagueApi(Api):
         base: String,
         api: String,
     ) -> NoReturn:
-        super(LeagueApi, self).__init__(base, 'lol', api)
+        super(LeagueApi, self).__init__(base, "lol", api)
+
 
 class ValorantApi(Api):
     def __init__(
@@ -107,7 +106,8 @@ class ValorantApi(Api):
         base: String,
         api: String,
     ) -> NoReturn:
-        super(ValorantApi, self).__init__(base, 'val', api)
+        super(ValorantApi, self).__init__(base, "val", api)
+
 
 class TftApi(Api):
     def __init__(
@@ -115,7 +115,8 @@ class TftApi(Api):
         base: String,
         api: String,
     ) -> NoReturn:
-        super(TftApi, self).__init__(base, 'tft', api)
+        super(TftApi, self).__init__(base, "tft", api)
+
 
 class LorApi(Api):
     def __init__(
@@ -123,5 +124,4 @@ class LorApi(Api):
         base: String,
         api: String,
     ) -> NoReturn:
-        super(LorApi, self).__init__(base, 'lor', api)
-
+        super(LorApi, self).__init__(base, "lor", api)

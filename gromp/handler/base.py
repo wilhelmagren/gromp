@@ -30,9 +30,8 @@ from __future__ import annotations
 from typing import Tuple, Dict, Any
 import abc
 
-__all__ = (
-    'Handler',
-)
+__all__ = ("Handler",)
+
 
 class Handler(abc.ABC):
     def outgoing_request(
@@ -48,4 +47,3 @@ class Handler(abc.ABC):
         **kwargs: Dict,
     ) -> Any:
         pass
-

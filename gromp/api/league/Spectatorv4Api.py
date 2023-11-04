@@ -22,29 +22,25 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-13
-Last updated: 2023-02-15
+Last updated: 2023-11-04
 """
 
 from __future__ import annotations
 
-import builtins
-String = builtins.str
-
 from typing import NoReturn
 from gromp.api.base import LeagueApi
 
-__all__ = (
-    'Spectatorv4Api',
-)
+import builtins
+
+String = builtins.str
+
+__all__ = ("Spectatorv4Api",)
+
 
 class Spectatorv4Api(LeagueApi):
-
     api = {
-        'by_summoner':
-        'active-games/by-summoner/{encrypted_summoner_id}',
-
-        'featured_games':
-        'featured-games',
+        "by_summoner": "active-games/by-summoner/{encrypted_summoner_id}",
+        "featured_games": "featured-games",
     }
 
     def __init__(
@@ -52,6 +48,6 @@ class Spectatorv4Api(LeagueApi):
         key: String,
     ) -> NoReturn:
         super(Spectatorv4Api, self).__init__(
-            '{platform}', f'spectator/v4/{self.api[key]}',
+            "{platform}",
+            f"spectator/v4/{self.api[key]}",
         )
-

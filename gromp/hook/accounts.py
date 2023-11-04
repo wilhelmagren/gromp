@@ -22,23 +22,21 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-23
-Last updated: 2023-02-23
+Last updated: 2023-11-04
 """
 
 from __future__ import annotations
 
+from gromp.hook.base import Hook
+from gromp.endpoint.accounts import Accountv1
+from typing import NoReturn, Dict
+
 import builtins
+
 String = builtins.str
 
-from typing import NoReturn, Dict
-from gromp.hook.base import Hook
-from gromp.endpoint.base import NamedEndpoint
-from gromp.endpoint.accounts import Accountv1
-from gromp.utils import AccountsRegions
+__all__ = ("Accounts",)
 
-__all__ = (
-    'Accounts',
-)
 
 class Accounts(Hook):
     def __init__(self, token: String, **kwargs: Dict) -> NoReturn:
@@ -51,4 +49,3 @@ class Accounts(Hook):
     @property
     def account(self) -> Accountv1:
         return self._setup_named_endpoint(Accountv1)
-

@@ -33,13 +33,11 @@ from requests import Response
 from gromp.endpoint.base import NamedEndpoint
 from gromp.api.tft import TftStatusv1Api
 
-__all__ = (
-    'TftStatusv1',
-)
+__all__ = ("TftStatusv1",)
+
 
 class TftStatusv1(NamedEndpoint):
     def get(self) -> Union[Response, Any]:
         return self._request_api(
             TftStatusv1Api(),
         )
-

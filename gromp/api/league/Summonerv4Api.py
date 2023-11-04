@@ -22,35 +22,27 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-13
-Last updated: 2023-02-15
+Last updated: 2023-11-04
 """
 
 from __future__ import annotations
 
-import builtins
-String = builtins.str
-
 from typing import NoReturn
 from gromp.api.base import LeagueApi
 
-__all__ = (
-    'Summonerv4Api',
-)
+import builtins
+
+String = builtins.str
+
+__all__ = ("Summonerv4Api",)
+
 
 class Summonerv4Api(LeagueApi):
-
     api = {
-        'encrypted_account_id':
-        'by-account/{encrypted_account_id}',
-
-        'summoner_name':
-        'by-name/{summoner_name}',
-
-        'encrypted_puuid':
-        'by-puuid/{encrypted_puuid}',
-
-        'encrypted_summoner_id':
-        '{encrypted_summoner_id}',
+        "encrypted_account_id": "by-account/{encrypted_account_id}",
+        "summoner_name": "by-name/{summoner_name}",
+        "encrypted_puuid": "by-puuid/{encrypted_puuid}",
+        "encrypted_summoner_id": "{encrypted_summoner_id}",
     }
 
     def __init__(
@@ -58,6 +50,6 @@ class Summonerv4Api(LeagueApi):
         key: String,
     ) -> NoReturn:
         super(Summonerv4Api, self).__init__(
-            '{platform}', f'summoner/v4/summoners/{self.api[key]}',
+            "{platform}",
+            f"summoner/v4/summoners/{self.api[key]}",
         )
-

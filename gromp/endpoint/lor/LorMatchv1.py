@@ -22,13 +22,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-27
-Last updated: 2023-02-27
+Last updated: 2023-11-04
 """
 
 from __future__ import annotations
-
-import builtins
-String = builtins.str
 
 from typing import Union, Any
 from requests import Response
@@ -36,20 +33,22 @@ from requests import Response
 from gromp.endpoint.base import NamedEndpoint
 from gromp.api.lor import LorMatchv1Api
 
-__all__ = (
-    'LorMatchv1',
-)
+import builtins
+
+String = builtins.str
+
+__all__ = ("LorMatchv1",)
+
 
 class LorMatchv1(NamedEndpoint):
     def matchlist_by_puuid(self, puuid: String) -> Union[Response, Any]:
         return self._request_api(
-            LorMatchv1Api('matchlist_by_puuid'),
+            LorMatchv1Api("matchlist_by_puuid"),
             puuid=puuid,
         )
 
     def by_id(self, match_id: String) -> Union[Response, Any]:
         return self._request_api(
-            LorMatchv1Api('by_id'),
+            LorMatchv1Api("by_id"),
             match_id=match_id,
         )
-

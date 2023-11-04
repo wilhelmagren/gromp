@@ -22,38 +22,30 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-23
-Last updated: 2023-02-23
+Last updated: 2023-11-04
 """
 
 from __future__ import annotations
 
-import builtins
-String = builtins.str
-
 from typing import NoReturn
 from gromp.api.base import ValorantApi
 
-__all__ = (
-    'ValMatchv1Api',
-)
+import builtins
+
+String = builtins.str
+
+__all__ = ("ValMatchv1Api",)
+
 
 class ValMatchv1Api(ValorantApi):
-
     api = {
-
-        'by_id':
-        'matches/{match_id}',
-
-        'matchlist_by_puuid':
-        'matchlists/by-puuid/{puuid}',
-
-        'recent_by_queue':
-        'recent-matches/by-queue/{queue}',
-
+        "by_id": "matches/{match_id}",
+        "matchlist_by_puuid": "matchlists/by-puuid/{puuid}",
+        "recent_by_queue": "recent-matches/by-queue/{queue}",
     }
 
     def __init__(self, key: String) -> NoReturn:
         super(ValMatchv1Api, self).__init__(
-            '{region}', f'match/v1/{self.api[key]}',
+            "{region}",
+            f"match/v1/{self.api[key]}",
         )
-

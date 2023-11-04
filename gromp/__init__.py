@@ -22,15 +22,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-01-23
-Last updated: 2023-02-16
+Last updated: 2023-11-04
 """
 
-from gromp import api
-from gromp import endpoint
-from gromp import handler
-from gromp import hook
-from gromp.utils import *
-from .__version__ import __version__
+from gromp.utils import *  # noqa
+from .__version__ import (
+    __version__,  # noqa
+    __author__,  # noqa
+    __title__,  # noqa
+)
 
 # Create logger and set up configuration
 # Levels in decreasing order of verbosity:
@@ -44,25 +44,24 @@ from .__version__ import __version__
 # To change the logging level after having imported the library,
 # use the function set_logging_level with preferred logging level.
 
+import builtins
 import logging
+from typing import NoReturn
+
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
 console_handler = logging.StreamHandler()
 console_handler.setLevel(logging.DEBUG)
 
-formatter = logging.Formatter(
-    '[%(asctime)s] [%(name)s] [%(levelname)s\t] %(message)s'
-)
+formatter = logging.Formatter("[%(asctime)s] [%(name)s] [%(levelname)s\t] %(message)s")
 
 console_handler.setFormatter(formatter)
 logger.addHandler(console_handler)
 
-from typing import NoReturn
-import builtins
 
 Integer = builtins.int
 
+
 def set_logging_level(level: Integer) -> NoReturn:
     logger.setLevel(level)
-

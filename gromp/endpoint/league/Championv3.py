@@ -33,9 +33,8 @@ from requests import Response
 from gromp.endpoint.base import NamedEndpoint
 from gromp.api.league import Championv3Api
 
-__all__ = (
-    'Championv3',
-)
+__all__ = ("Championv3",)
+
 
 class Championv3(NamedEndpoint):
     def rotations(
@@ -44,4 +43,3 @@ class Championv3(NamedEndpoint):
         return self._request_api(
             Championv3Api(),
         )
-

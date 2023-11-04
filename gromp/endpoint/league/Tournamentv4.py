@@ -22,13 +22,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-09
-Last updated: 2023-02-15
+Last updated: 2023-11-04
 """
 
 from __future__ import annotations
-
-import builtins
-String = builtins.str
 
 from typing import Union, Any
 from requests import Response
@@ -36,28 +33,29 @@ from requests import Response
 from gromp.endpoint.base import NamedEndpoint
 from gromp.api.league import Tournamentv4Api
 
-__all__ = (
-    'Tournamentv4',
-)
+import builtins
+
+String = builtins.str
+
+__all__ = ("Tournamentv4",)
+
 
 class Tournamentv4(NamedEndpoint):
     def codes(
         self: Tournamentv4,
     ) -> Union[Response, Any]:
-        """
-        """
+        """ """
         return self._request_api(
-            Tournamentv4Api('codes'),
+            Tournamentv4Api("codes"),
         )
 
     def dto_by_code(
         self: Tournamentv4,
         tournament_code: String,
     ) -> Union[Response, Any]:
-        """
-        """
+        """ """
         return self._request_api(
-            Tournamentv4Api('dto_by_code'),
+            Tournamentv4Api("dto_by_code"),
             tournament_code=tournament_code,
         )
 
@@ -65,28 +63,24 @@ class Tournamentv4(NamedEndpoint):
         self: Tournamentv4,
         tournament_code: String,
     ) -> Union[Response, Any]:
-        """
-        """
+        """ """
         return self._request_api(
-            Tournamentv4Api('events_by_code'),
+            Tournamentv4Api("events_by_code"),
             tournament_code=tournament_code,
         )
 
     def providers(
         self: Tournamentv4,
     ) -> Union[Response, Any]:
-        """
-        """
+        """ """
         return self._request_api(
-            Tournamentv4Api('providers'),
+            Tournamentv4Api("providers"),
         )
 
     def tournaments(
         self: Tournamentv4,
     ) -> Union[Response, Any]:
-        """
-        """
+        """ """
         return self._request_api(
-            Tournamentv4Api('tournaments'),
+            Tournamentv4Api("tournaments"),
         )
-

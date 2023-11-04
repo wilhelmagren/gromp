@@ -22,13 +22,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-22
-Last updated: 2023-02-23
+Last updated: 2023-11-04
 """
 
 from __future__ import annotations
-
-import builtins
-String = builtins.str
 
 from typing import Union, Any
 from requests import Response
@@ -36,14 +33,16 @@ from requests import Response
 from gromp.endpoint.base import NamedEndpoint
 from gromp.api.valorant import ValRankedv1Api
 
-__all__ = (
-    'ValRankedv1',
-)
+import builtins
+
+String = builtins.str
+
+__all__ = ("ValRankedv1",)
+
 
 class ValRankedv1(NamedEndpoint):
     def by_act(self, act_id: String) -> Union[Response, Any]:
         return self._request_api(
-            ValRankedv1Api('by_act'),
+            ValRankedv1Api("by_act"),
             act_id=act_id,
         )
-

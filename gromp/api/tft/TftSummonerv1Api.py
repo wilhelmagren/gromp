@@ -22,41 +22,32 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-27
-Last updated: 2023-02-27
+Last updated: 2023-11-04
 """
 
 from __future__ import annotations
 
-import builtins
-String = builtins.str
-
 from typing import NoReturn
 from gromp.api.base import TftApi
 
-__all__ = (
-    'TftSummonerv1Api',
-)
+import builtins
+
+String = builtins.str
+
+__all__ = ("TftSummonerv1Api",)
+
 
 class TftSummonerv1Api(TftApi):
     api = {
-        'by_account_id':
-        'by-account/{account_id}',
-
-        'by_summoner_name':
-        'by-name/{name}',
-
-        'by_puuid':
-        'by-puuid/{puuid}',
-
-        'me':
-        'me',
-
-        'by_summoner_id':
-        'summoner/v1/summoners/{summoner_id}'
+        "by_account_id": "by-account/{account_id}",
+        "by_summoner_name": "by-name/{name}",
+        "by_puuid": "by-puuid/{puuid}",
+        "me": "me",
+        "by_summoner_id": "summoner/v1/summoners/{summoner_id}",
     }
-    
+
     def __init__(self, key: String) -> NoReturn:
         super(TftSummonerv1Api, self).__init__(
-            '{platform}', f'summoner/v1/summoners/{self.api[key]}',
+            "{platform}",
+            f"summoner/v1/summoners/{self.api[key]}",
         )
-

@@ -22,41 +22,29 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-13
-Last updated: 2023-02-15
+Last updated: 2023-11-04
 """
 
 from __future__ import annotations
 
-import builtins
-String = builtins.str
-
 from typing import NoReturn
 from gromp.api.base import LeagueApi
 
-__all__ = (
-    'LolChallengesv1Api',
-)
+import builtins
+
+String = builtins.str
+
+__all__ = ("LolChallengesv1Api",)
+
 
 class LolChallengesv1Api(LeagueApi):
-
     api = {
-        'config':
-        'challenges/config',
-
-        'percentiles':
-        'challenges/percentiles',
-
-        'challenge_config':
-        'challenges/{challenge_id}/config',
-
-        'top_players_for_challenge':
-        'challenges/{challenge_id}/leaderboards/by-level/{level}',
-
-        'challenge_percentiles':
-        'challenges/{challenge_id}/percentiles',
-
-        'player_data_by_puuid':
-        'player-data/{puuid}',
+        "config": "challenges/config",
+        "percentiles": "challenges/percentiles",
+        "challenge_config": "challenges/{challenge_id}/config",
+        "top_players_for_challenge": "challenges/{challenge_id}/leaderboards/by-level/{level}",
+        "challenge_percentiles": "challenges/{challenge_id}/percentiles",
+        "player_data_by_puuid": "player-data/{puuid}",
     }
 
     def __init__(
@@ -64,6 +52,6 @@ class LolChallengesv1Api(LeagueApi):
         key: String,
     ) -> NoReturn:
         super(LolChallengesv1Api, self).__init__(
-            '{platform}', f'challenges/v1/{self.api[key]}',
+            "{platform}",
+            f"challenges/v1/{self.api[key]}",
         )
-

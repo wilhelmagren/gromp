@@ -22,13 +22,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-05
-Last updated: 2023-02-15
+Last updated: 2023-11-04
 """
 
 from __future__ import annotations
-
-import builtins
-String = builtins.str
 
 from typing import Any, Union
 from requests import Response
@@ -36,28 +33,28 @@ from requests import Response
 from gromp.endpoint.base import NamedEndpoint
 from gromp.api.league import Spectatorv4Api
 
-__all__ = (
-    'Spectatorv4',
-)
+import builtins
+
+String = builtins.str
+
+__all__ = ("Spectatorv4",)
+
 
 class Spectatorv4(NamedEndpoint):
     def by_summoner_id(
         self: Spectatorv4,
         summoner_id: String,
     ) -> Union[Response, Any]:
-        """
-        """
+        """ """
         return self._request_api(
-            Spectatorv4Api('by_summoner'),
+            Spectatorv4Api("by_summoner"),
             encrypted_summoner_id=summoner_id,
         )
 
     def featured_games(
         self: Spectatorv4,
     ) -> Union[Response, Any]:
-        """
-        """
+        """ """
         return self._request_api(
-            Spectatorv4Api('featured_games'),
+            Spectatorv4Api("featured_games"),
         )
-

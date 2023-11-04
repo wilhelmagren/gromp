@@ -30,13 +30,12 @@ from __future__ import annotations
 from typing import NoReturn
 from gromp.api.base import LorApi
 
-__all__ = (
-    'LorInventoryv1Api',
-)
+__all__ = ("LorInventoryv1Api",)
+
 
 class LorInventoryv1Api(LorApi):
     def __init__(self) -> NoReturn:
         super(LorInventoryv1Api, self).__init__(
-            '{region}', 'inventory/v1/cards/me',
+            "{region}",
+            "inventory/v1/cards/me",
         )
-

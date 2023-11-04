@@ -33,13 +33,11 @@ from requests import Response
 from gromp.endpoint.base import NamedEndpoint
 from gromp.api.lor import LorInventoryv1Api
 
-__all__ = (
-    'LorInventoryv1',
-)
+__all__ = ("LorInventoryv1",)
+
 
 class LorInventoryv1(NamedEndpoint):
     def me(self) -> Union[Response, Any]:
         return self._request_api(
             LorInventoryv1Api(),
         )
-
