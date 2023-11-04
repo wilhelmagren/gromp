@@ -29,6 +29,7 @@ import logging
 import unittest
 import rsa
 
+from gromp import set_logging_level
 from gromp.hook import Hook
 from gromp.utils import (
     LeagueRegions,
@@ -50,6 +51,8 @@ class HookTest(unittest.TestCase):
             keylen=1024,
             timeout=10,
         )
+
+        set_logging_level(logging.WARNING)
 
         self.assertTrue(isinstance(hook, Hook))
 
