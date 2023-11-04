@@ -32,7 +32,7 @@ jobs:
       - name: Install dependencies
         run: poetry install --no-root --with dev
       - name: Run tests
-        run: poetry run pytest --cov=gromp tests
+        run: poetry run pytest --cov=gromp --cov-report=xml tests
       - name: Upload coverage report
         uses: codecov/codecov-action@v3
         env:
