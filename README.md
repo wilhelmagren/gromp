@@ -3,7 +3,9 @@
 <div align="left">
 <br/>
 <p align="center">
-<b><i>Gromp</i></b>
+<a href="https://github.com/wilhelmagren/gromp">
+<img align="center" width=75% src="./docs/images/gromp-banner.png"></img>
+</a>
 </p>
 </div>
 
