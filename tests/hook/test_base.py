@@ -27,6 +27,7 @@ Last updated: 2023-11-04
 
 import logging
 import unittest
+import rsa
 
 from gromp.hook import Hook
 from gromp.utils import (
@@ -51,6 +52,16 @@ class HookTest(unittest.TestCase):
         )
 
         self.assertTrue(isinstance(hook, Hook))
+
+        game = hook.game
+        pkey = hook.public_key
+        config = hook.config
+
+        self.assertTrue(isinstance(game, str))
+        self.assertTrue(isinstance(pkey, rsa.PublicKey))
+        self.assertTrue(isinstance(config, dict))
+        self.assertEqual(game, config["game"])
+        self.assertEqual(pkey, config["keys"]["public"])
 
     def testNoPlatformValorant(self):
         logger.debug("no platform for Valorant..")
