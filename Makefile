@@ -18,5 +18,9 @@ format:
 lint:
 	poetry run ruff check gromp tests --fix
 
+.PHONY: build
+build:
+	poetry build --format wheel
+
 .PHONY: clean-test
 clean-test: clean test
