@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "gromp"
 version = "1.0.0"
-description = "Holistic python wrapper for the public Riot Games developer API."
+description = "Holistic Python implementation of the public Riot Games Developer API."
 authors = [
     "Wilhelm Ågren <wilhelmagren98@gmail.com>",
 ]
@@ -15,7 +15,9 @@ keywords = [
     "python",
     "api",
     "league-of-legends",
+    "discord-bot",
     "api-wrapper",
+    "riot-games",
     "riot",
     "riot-games-api",
     "teamfight-tactics",
