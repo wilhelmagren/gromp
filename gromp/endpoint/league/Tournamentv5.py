@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-09
-Last updated: 2023-11-04
+Last updated: 2023-11-10
 """
 
 from __future__ import annotations
@@ -31,56 +31,68 @@ from typing import Union, Any
 from requests import Response
 
 from gromp.endpoint.base import NamedEndpoint
-from gromp.api.league import Tournamentv4Api
+from gromp.api.league import Tournamentv5Api
 
 import builtins
 
 String = builtins.str
 
-__all__ = ("Tournamentv4",)
+__all__ = ("Tournamentv5",)
 
 
-class Tournamentv4(NamedEndpoint):
+class Tournamentv5(NamedEndpoint):
+    """ """
+
     def codes(
-        self: Tournamentv4,
+        self: Tournamentv5,
     ) -> Union[Response, Any]:
         """ """
         return self._request_api(
-            Tournamentv4Api("codes"),
+            Tournamentv5Api("codes"),
         )
 
     def dto_by_code(
-        self: Tournamentv4,
+        self: Tournamentv5,
         tournament_code: String,
     ) -> Union[Response, Any]:
         """ """
         return self._request_api(
-            Tournamentv4Api("dto_by_code"),
+            Tournamentv5Api("dto_by_code"),
+            tournament_code=tournament_code,
+        )
+
+    def games_by_code(
+        self: Tournamentv5,
+        tournament_code: String,
+    ) -> Union[Response, Any]:
+        """ """
+        return self._request_api(
+            Tournamentv5Api("games_by_code"),
             tournament_code=tournament_code,
         )
 
     def events_by_code(
-        self: Tournamentv4,
+        self: Tournamentv5,
         tournament_code: String,
     ) -> Union[Response, Any]:
         """ """
         return self._request_api(
-            Tournamentv4Api("events_by_code"),
+            Tournamentv5Api("events_by_code"),
             tournament_code=tournament_code,
         )
 
     def providers(
-        self: Tournamentv4,
+        self: Tournamentv5,
     ) -> Union[Response, Any]:
         """ """
         return self._request_api(
-            Tournamentv4Api("providers"),
+            Tournamentv5Api("providers"),
         )
 
     def tournaments(
-        self: Tournamentv4,
+        self: Tournamentv5,
     ) -> Union[Response, Any]:
         """ """
         return self._request_api(
-            Tournamentv4Api("tournaments"),
+            Tournamentv5Api("tournaments"),
         )

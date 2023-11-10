@@ -21,56 +21,37 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-File created: 2023-02-05
-Last updated: 2023-11-04
+File created: 2023-02-13
+Last updated: 2023-11-10
 """
 
 from __future__ import annotations
 
-from typing import Union, Any
-from requests import Response
-
-from gromp.endpoint.base import NamedEndpoint
-from gromp.api.league import TournamentStubv4Api
+from typing import NoReturn
+from gromp.api.base import LeagueApi
 
 import builtins
 
 String = builtins.str
 
-__all__ = ("TournamentStubv4",)
+__all__ = ("Tournamentv5Api",)
 
 
-class TournamentStubv4(NamedEndpoint):
-    def codes(
-        self: TournamentStubv4,
-    ) -> Union[Response, Any]:
-        """ """
-        return self._request_api(
-            TournamentStubv4Api("codes"),
-        )
+class Tournamentv5Api(LeagueApi):
+    api = {
+        "codes": "codes",
+        "dto_by_code": "codes/{tournament_code}",
+        "games_by_code": "games/by_code/{tournament_code}",
+        "events_by_code": "lobby-events/by-code/{tournament_code}",
+        "providers": "providers",
+        "tournaments": "tournaments",
+    }
 
-    def events_by_code(
-        self: TournamentStubv4,
-        code: String,
-    ) -> Union[Response, Any]:
-        """ """
-        return self._request_api(
-            TournamentStubv4Api("events_by_code"),
-            tournament_code=code,
-        )
-
-    def providers(
-        self: TournamentStubv4,
-    ) -> Union[Response, Any]:
-        """ """
-        return self._request_api(
-            TournamentStubv4Api("providers"),
-        )
-
-    def tournaments(
-        self: TournamentStubv4,
-    ) -> Union[Response, Any]:
-        """ """
-        return self._request_api(
-            TournamentStubv4Api("tournaments"),
+    def __init__(
+        self: Tournamentv5Api,
+        key: String,
+    ) -> NoReturn:
+        super(Tournamentv5Api, self).__init__(
+            "{platform}",
+            f"tournament/v5/{self.api[key]}",
         )

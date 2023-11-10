@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-05
-Last updated: 2023-11-04
+Last updated: 2023-11-10
 """
 
 from __future__ import annotations
@@ -41,6 +41,8 @@ __all__ = ("Summonerv4",)
 
 
 class Summonerv4(NamedEndpoint):
+    """ """
+
     def by_account(
         self: Summonerv4,
         encrypted_account_id: String,
@@ -76,6 +78,10 @@ class Summonerv4(NamedEndpoint):
             Summonerv4Api("encrypted_puuid"),
             encrypted_puuid=encrypted_puuid,
         )
+
+    def me(self: Summonerv4) -> Union[Response, Any]:
+        """ """
+        return self._request_api(Summonerv4Api("me"))
 
     def by_id(
         self: Summonerv4,

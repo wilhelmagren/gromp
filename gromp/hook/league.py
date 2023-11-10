@@ -22,12 +22,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-01-23
-Last updated: 2023-11-04
+Last updated: 2023-11-10
 """
 
 from __future__ import annotations
 
-from typing import NoReturn, Dict
 from gromp.hook.base import Hook
 from gromp.endpoint.league import (
     ChampionMasteryv4,
@@ -40,10 +39,14 @@ from gromp.endpoint.league import (
     Matchv5,
     Spectatorv4,
     Summonerv4,
-    TournamentStubv4,
-    Tournamentv4,
+    TournamentStubv5,
+    Tournamentv5,
 )
-
+from typing import (
+    NoReturn,
+    Dict,
+    Any,
+)
 import builtins
 
 String = builtins.str
@@ -55,7 +58,7 @@ class League(Hook):
     def __init__(
         self: League,
         token: String,
-        **kwargs: Dict,
+        **kwargs: Dict[str, Any],
     ) -> NoReturn:
         super(League, self).__init__(
             token=token,
@@ -104,9 +107,9 @@ class League(Hook):
         return self._setup_named_endpoint(Summonerv4)
 
     @property
-    def tournament_stub(self: League) -> TournamentStubv4:
-        return self._setup_named_endpoint(TournamentStubv4)
+    def tournament_stub(self: League) -> TournamentStubv5:
+        return self._setup_named_endpoint(TournamentStubv5)
 
     @property
-    def tournament(self: League) -> Tournamentv4:
-        return self._setup_named_endpoint(Tournamentv4)
+    def tournament(self: League) -> Tournamentv5:
+        return self._setup_named_endpoint(Tournamentv5)

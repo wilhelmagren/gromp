@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-13
-Last updated: 2023-11-04
+Last updated: 2023-11-10
 """
 
 from __future__ import annotations
@@ -38,7 +38,13 @@ __all__ = ("ChampionMasteryv4Api",)
 
 
 class ChampionMasteryv4Api(LeagueApi):
+    """ """
+
     api = {
+        "all_by_puuid": "champion-masteries/by-puuid/{encrypted_puuid}",
+        "champion_by_puuid": "champion-masteries/by-puuid/{encrypted_puuid}/by-champion/{champion_id}",
+        "top_by_puuid":  "champion-masteries/by-puuid/{encrypted_puuid}/top",
+        "puuid_total_score": "scores/by-puuid/{encrypted_puuid}",
         "all_for_summoner": "champion-masteries/by-summoner/{encrypted_summoner_id}",
         "champion_for_summoner": "champion-masteries/by-summoner/{encrypted_summoner_id}/by-champion/{champion_id}",
         "top_for_summoner": "champion-masteries/by-summoner/{encrypted_summoner_id}/top",
@@ -51,5 +57,5 @@ class ChampionMasteryv4Api(LeagueApi):
     ) -> NoReturn:
         super(ChampionMasteryv4Api, self).__init__(
             "{platform}",
-            f"champion-master/v4/{self.api[key]}",
+            f"champion-mastery/v4/{self.api[key]}",
         )
