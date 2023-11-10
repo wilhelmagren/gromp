@@ -43,7 +43,7 @@ class ChampionMasteryv4Api(LeagueApi):
     api = {
         "all_by_puuid": "champion-masteries/by-puuid/{encrypted_puuid}",
         "champion_by_puuid": "champion-masteries/by-puuid/{encrypted_puuid}/by-champion/{champion_id}",
-        "top_by_puuid":  "champion-masteries/by-puuid/{encrypted_puuid}/top",
+        "top_by_puuid": "champion-masteries/by-puuid/{encrypted_puuid}/top",
         "puuid_total_score": "scores/by-puuid/{encrypted_puuid}",
         "all_for_summoner": "champion-masteries/by-summoner/{encrypted_summoner_id}",
         "champion_for_summoner": "champion-masteries/by-summoner/{encrypted_summoner_id}/by-champion/{champion_id}",

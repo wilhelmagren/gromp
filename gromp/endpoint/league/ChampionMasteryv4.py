@@ -43,7 +43,6 @@ __all__ = ("ChampionMasteryv4",)
 class ChampionMasteryv4(NamedEndpoint):
     """ """
 
-
     def all_by_puuid(
         self: ChampionMasteryv4,
         encrypted_puuid: String,

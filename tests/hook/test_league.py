@@ -99,7 +99,6 @@ class LeagueHookTest(unittest.TestCase):
                 "top_by_puuid",
                 "puuid_total_score",
                 "puuid_total_score",
-
                 "all_for_summoner",
                 "all_for_summoner",
                 "champion_for_summoner",
@@ -117,7 +116,6 @@ class LeagueHookTest(unittest.TestCase):
                 ["xdlol"],
                 ["98491"],
                 ["xdlol"],
-
                 ["1010101"],
                 ["xd"],
                 ["1010101", "10"],
@@ -136,7 +134,6 @@ class LeagueHookTest(unittest.TestCase):
                 404,
                 200,
                 404,
-
                 200,
                 404,
                 200,

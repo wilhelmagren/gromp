@@ -39,7 +39,7 @@ __all__ = ("Summonerv4Api",)
 
 class Summonerv4Api(LeagueApi):
     """
-    The SUMMONER-V4 API has an extra route which we won't implement, it is 
+    The SUMMONER-V4 API has an extra route which we won't implement, it is
     `/fulfillment/v1/summoners/by-puuid/{rsoPUUID}` since this goes against
     the normal naming convention for the routes for each API.
 
