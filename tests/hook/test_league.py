@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-12
-Last updated: 2023-11-04
+Last updated: 2023-11-10
 """
 
 import logging
@@ -42,8 +42,8 @@ from gromp.endpoint.league import (
     Matchv5,
     Spectatorv4,
     Summonerv4,
-    TournamentStubv4,
-    Tournamentv4,
+    TournamentStubv5,
+    Tournamentv5,
 )
 from gromp.utils import LeaguePlatforms, LeagueRegions
 
@@ -91,6 +91,15 @@ class LeagueHookTest(unittest.TestCase):
             mock_get,
             self.hook.mastery,
             [
+                "all_by_puuid",
+                "all_by_puuid",
+                "champion_by_puuid",
+                "champion_by_puuid",
+                "top_by_puuid",
+                "top_by_puuid",
+                "puuid_total_score",
+                "puuid_total_score",
+
                 "all_for_summoner",
                 "all_for_summoner",
                 "champion_for_summoner",
@@ -100,6 +109,15 @@ class LeagueHookTest(unittest.TestCase):
                 "total_score_for_summoner",
             ],
             [
+                ["98491"],
+                ["xdlol"],
+                ["9481941", "99"],
+                ["981491", "xdchamp"],
+                ["98491"],
+                ["xdlol"],
+                ["98491"],
+                ["xdlol"],
+
                 ["1010101"],
                 ["xd"],
                 ["1010101", "10"],
@@ -110,6 +128,15 @@ class LeagueHookTest(unittest.TestCase):
                 ["xd"],
             ],
             [
+                200,
+                404,
+                200,
+                404,
+                200,
+                404,
+                200,
+                404,
+
                 200,
                 404,
                 200,
@@ -151,6 +178,8 @@ class LeagueHookTest(unittest.TestCase):
             mock_get,
             self.hook.clash,
             [
+                "players_by_puuid",
+                "players_by_puuid",
                 "summoner_by_id",
                 "summoner_by_id",
                 "team_by_id",
@@ -162,6 +191,8 @@ class LeagueHookTest(unittest.TestCase):
                 "tournament_by_id",
             ],
             [
+                ["9484918"],
+                ["xdcopelol"],
                 ["1010101"],
                 ["lolxdahaha"],
                 ["14"],
@@ -173,6 +204,8 @@ class LeagueHookTest(unittest.TestCase):
                 ["LEC420xd"],
             ],
             [
+                200,
+                404,
                 200,
                 404,
                 200,
@@ -426,6 +459,7 @@ class LeagueHookTest(unittest.TestCase):
                 "by_name",
                 "by_puuid",
                 "by_puuid",
+                "me",
                 "by_id",
                 "by_id",
             ],
@@ -436,6 +470,7 @@ class LeagueHookTest(unittest.TestCase):
                 ["pure4silver"],
                 ["981293816471"],
                 ["water man"],
+                [],
                 ["faa89ajhg8ga546124"],
                 ["encrypted summoner id xd"],
             ],
@@ -447,23 +482,26 @@ class LeagueHookTest(unittest.TestCase):
                 200,
                 404,
                 200,
+                200,
                 404,
             ],
         )
 
-    def testTournamentStubv4(self):
-        logger.debug("TournamentStubv4 property...")
+    def testTournamentStubv5(self):
+        logger.debug("TournamentStubv5 property...")
         endpoint = self.hook.tournament_stub
-        self.assertEqual(endpoint.__class__, TournamentStubv4)
+        self.assertEqual(endpoint.__class__, TournamentStubv5)
 
     @patch.object(Session, "get")
-    def testTournamentStubv4Responses(self, mock_get):
+    def testTournamentStubv5Responses(self, mock_get):
         _testEndpointRequests(
             self,
             mock_get,
             self.hook.tournament_stub,
             [
                 "codes",
+                "dto_by_code",
+                "dto_by_code",
                 "events_by_code",
                 "events_by_code",
                 "providers",
@@ -471,6 +509,8 @@ class LeagueHookTest(unittest.TestCase):
             ],
             [
                 [],
+                ["87149812814"],
+                ["super secret cope code"],
                 ["87149812814"],
                 ["super secret LEC code"],
                 [],
@@ -485,13 +525,13 @@ class LeagueHookTest(unittest.TestCase):
             ],
         )
 
-    def testTournamentv4(self):
-        logger.debug("Tournamentv4 property...")
+    def testTournamentv5(self):
+        logger.debug("Tournamentv5 property...")
         endpoint = self.hook.tournament
-        self.assertEqual(endpoint.__class__, Tournamentv4)
+        self.assertEqual(endpoint.__class__, Tournamentv5)
 
     @patch.object(Session, "get")
-    def testTournamentv4Responses(self, mock_get):
+    def testTournamentv5Responses(self, mock_get):
         _testEndpointRequests(
             self,
             mock_get,
@@ -500,6 +540,8 @@ class LeagueHookTest(unittest.TestCase):
                 "codes",
                 "dto_by_code",
                 "dto_by_code",
+                "games_by_code",
+                "games_by_code",
                 "events_by_code",
                 "events_by_code",
                 "providers",
@@ -509,6 +551,8 @@ class LeagueHookTest(unittest.TestCase):
                 [],
                 ["98afhufy87561287"],
                 ["coderino"],
+                ["98afhufy87561287"],
+                ["coperino"],
                 ["1927488varf878ga"],
                 ["book book book"],
                 [],
@@ -516,6 +560,8 @@ class LeagueHookTest(unittest.TestCase):
             ],
             [
                 200,
+                200,
+                404,
                 200,
                 404,
                 200,
