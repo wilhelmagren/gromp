@@ -518,6 +518,8 @@ class LeagueHookTest(unittest.TestCase):
                 200,
                 404,
                 200,
+                404,
+                200,
                 200,
             ],
         )
