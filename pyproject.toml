@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "gromp"
-version = "1.0.0"
+version = "1.1.0"
 description = "Holistic Python implementation of the public Riot Games Developer API."
 authors = [
     "Wilhelm Ågren <wilhelmagren98@gmail.com>",

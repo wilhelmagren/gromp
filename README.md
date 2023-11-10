@@ -23,7 +23,7 @@
 
 ## 🔎 Overview
 *gromp* is a holistic wrapper of the public [Riot Games developer API](https://developer.riotgames.com/apis), 
-written in Python. All public methods are, as of 2023-02-27, implemented.
+written in Python. **All public methods are, as of 2023-11-10, implemented.**
 
 The core principle of the wrapper is to offer a complete, yet simple, interface which implements some of the core functionality that a developer might want to communicate with the Riot Games developer API.
 
