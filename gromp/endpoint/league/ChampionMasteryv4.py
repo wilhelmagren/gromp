@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-09
-Last updated: 2023-11-04
+Last updated: 2023-11-10
 """
 
 from __future__ import annotations
@@ -41,6 +41,50 @@ __all__ = ("ChampionMasteryv4",)
 
 
 class ChampionMasteryv4(NamedEndpoint):
+    """ """
+
+    def all_by_puuid(
+        self: ChampionMasteryv4,
+        encrypted_puuid: String,
+    ) -> Union[Response, Any]:
+        """ """
+        return self._request_api(
+            ChampionMasteryv4Api("all_by_puuid"),
+            encrypted_puuid=encrypted_puuid,
+        )
+
+    def champion_by_puuid(
+        self: ChampionMasteryv4,
+        encrypted_puuid: String,
+        champion_id: String,
+    ) -> Union[Response, Any]:
+        """ """
+        return self._request_api(
+            ChampionMasteryv4Api("champion_by_puuid"),
+            encrypted_puuid=encrypted_puuid,
+            champion_id=champion_id,
+        )
+
+    def top_by_puuid(
+        self: ChampionMasteryv4,
+        encrypted_puuid: String,
+    ) -> Union[Response, Any]:
+        """ """
+        return self._request_api(
+            ChampionMasteryv4Api("top_by_puuid"),
+            encrypted_puuid=encrypted_puuid,
+        )
+
+    def puuid_total_score(
+        self: ChampionMasteryv4,
+        encrypted_puuid: String,
+    ) -> Union[Response, Any]:
+        """ """
+        return self._request_api(
+            ChampionMasteryv4Api("puuid_total_score"),
+            encrypted_puuid=encrypted_puuid,
+        )
+
     def all_for_summoner(
         self: ChampionMasteryv4,
         summoner_id: String,

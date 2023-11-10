@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-13
-Last updated: 2023-11-04
+Last updated: 2023-11-10
 """
 
 from __future__ import annotations
@@ -34,10 +34,10 @@ import builtins
 
 String = builtins.str
 
-__all__ = ("Tournamentv4Api",)
+__all__ = ("TournamentStubv5Api",)
 
 
-class Tournamentv4Api(LeagueApi):
+class TournamentStubv5Api(LeagueApi):
     api = {
         "codes": "codes",
         "dto_by_code": "codes/{tournament_code}",
@@ -47,10 +47,10 @@ class Tournamentv4Api(LeagueApi):
     }
 
     def __init__(
-        self: Tournamentv4Api,
+        self: TournamentStubv5Api,
         key: String,
     ) -> NoReturn:
-        super(Tournamentv4Api, self).__init__(
+        super(TournamentStubv5Api, self).__init__(
             "{platform}",
-            f"tournament/v4/{self.api[key]}",
+            f"tournament-stub/v5/{self.api[key]}",
         )

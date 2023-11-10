@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-05
-Last updated: 2023-11-04
+Last updated: 2023-11-10
 """
 
 from .ChampionMasteryv4 import ChampionMasteryv4  # noqa
@@ -35,5 +35,5 @@ from .LolStatusv4 import LolStatusv4  # noqa
 from .Matchv5 import Matchv5  # noqa
 from .Spectatorv4 import Spectatorv4  # noqa
 from .Summonerv4 import Summonerv4  # noqa
-from .TournamentStubv4 import TournamentStubv4  # noqa
-from .Tournamentv4 import Tournamentv4  # noqa
+from .TournamentStubv5 import TournamentStubv5  # noqa
+from .Tournamentv5 import Tournamentv5  # noqa

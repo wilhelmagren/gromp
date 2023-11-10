@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 File created: 2023-02-13
-Last updated: 2023-11-04
+Last updated: 2023-11-10
 """
 
 from __future__ import annotations
@@ -38,10 +38,18 @@ __all__ = ("Summonerv4Api",)
 
 
 class Summonerv4Api(LeagueApi):
+    """
+    The SUMMONER-V4 API has an extra route which we won't implement, it is
+    `/fulfillment/v1/summoners/by-puuid/{rsoPUUID}` since this goes against
+    the normal naming convention for the routes for each API.
+
+    """
+
     api = {
         "encrypted_account_id": "by-account/{encrypted_account_id}",
         "summoner_name": "by-name/{summoner_name}",
         "encrypted_puuid": "by-puuid/{encrypted_puuid}",
+        "me": "me",
         "encrypted_summoner_id": "{encrypted_summoner_id}",
     }
 
