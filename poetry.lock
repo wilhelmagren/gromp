@@ -444,13 +444,13 @@ files = [
 
 [[package]]
 name = "pyclean"
-version = "2.7.6"
+version = "3.0.0"
 description = "Pure Python cross-platform pyclean. Clean up your Python bytecode."
 optional = false
-python-versions = "*"
+python-versions = ">=3.5"
 files = [
-    {file = "pyclean-2.7.6-py3-none-any.whl", hash = "sha256:db5f74f6d2fedb79366e3260b260f5ab0053e1df28af14fc2c860800bf00fe96"},
-    {file = "pyclean-2.7.6.tar.gz", hash = "sha256:cde95ad4fbc194e970fd7ad009e82718f6c1d1309b195be9018d334d79661cca"},
+    {file = "pyclean-3.0.0-py3-none-any.whl", hash = "sha256:a1d8114991cf09994bc511cd0b050f3e398ae2bc8bfc0bbd1bdbec8ba048e6dd"},
+    {file = "pyclean-3.0.0.tar.gz", hash = "sha256:a48be7afd512b1923a7b9decc1219bbbe2d73199c939b46c936448f904a180ce"},
 ]
 
 [[package]]
@@ -692,4 +692,4 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8,<3.13"
-content-hash = "3e9d64240abc9320c74500a64c85aedec55ab293b0c76a1ac4956283ff965fc4"
+content-hash = "27a4d64d04401869a3e61c649caafe9005d43d5d4de7b916a7b561450d555b9a"
